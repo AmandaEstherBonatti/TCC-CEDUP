@@ -1,20 +1,19 @@
-<header>
-    <div class="nav container">
-      {{title  }}     
-      <div class="logo">
-        <!--<img src="./img/download (1).jpg" alt="">-->
-        <h1 class="logo">Out<span>flow</span></h1>
-       </div>
-       <!--menu icon-->
-       <input type="checkbox" name="" id="menu">
-       <label for="menu" ><i class="fa-solid fa-bars" id="menu-icon"></i></label>
-       <!--navlist-->
-       <ul class="navbar">
-         <li><a href="#home">Página inicial</a></li>
-         <li><a href="#about">Sobre Nós</a></li>
-         <li><a href="#contato">Contato</a></li>
-       </ul>
-       <!-- form button-->
-       <a href="#formulario" class="btn-form">Entre</a>
-    </div>
-</header>
+<mat-toolbar fxLayoutAlign="space-between center">
+  <h1 class="logo">Out<span>flow</span></h1>
+  <div>
+    <button mat-button class="menu-button" >
+      <span>Página inicial</span>
+    </button>  
+    <a href="#quem" mat-button class="menu-button" >
+      <span>Sobre Nós</span>
+    </a>  
+    <button mat-button class="menu-button" >
+      <span>Contato</span>
+    </button>  
+    <button mat-flat-button class="menu-button-login" >
+      <mat-icon>login</mat-icon>
+      <span>Entre</span>
+    </button>  
+
+  </div>
+</mat-toolbar>

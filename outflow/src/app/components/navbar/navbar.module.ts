@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { MatIconModule } from "@angular/material/icon";
 import { NavbarComponent } from "./navbar.component";
 
 @NgModule({
@@ -6,7 +7,7 @@ import { NavbarComponent } from "./navbar.component";
         NavbarComponent
     ],
     imports: [
-
+        MatIconModule,
     ],
     providers: [],
     bootstrap: [NavbarComponent]

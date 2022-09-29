@@ -22,6 +22,11 @@
   --box-shadow: 2px 2px 18px rgb(14 52 54 /15%)
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
 img {
   width: 100%;
 }

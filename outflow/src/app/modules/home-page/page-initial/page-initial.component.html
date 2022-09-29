@@ -1,12 +1,12 @@
 
 <!--banner serviço-->
-<div class="banner-container">
-         <div class="text-banner">
+<div fxLayout="row" fxLayoutAlign=" center"   class="banner-container">
+         <div  fxLayout="column" fxLayoutAlign=" center"  class="text-banner">
               <h2>Consultas híbridas</h2>
              <p>Nosso sistema dispõe de um sistema híbrido que consiste nas consultas onlines, no atendimento
                  pessoalmente, abrangendo melhor as necessidades dos clientes.</p>
              <div class="button-banner">
-              <button mat-button (click)="openDialog()">Marque uma consulta</button>
+              <button class="botao-service" (click)="openDialog()">Marque uma consulta</button>
              </div>
              
          </div>
@@ -21,7 +21,7 @@
 </div>
 <div class="about-container">
  <div class="content-about">
-   <h2>Quem somos</h2>
+   <h2 id="quem" >Quem somos</h2>
    <p>Surgimos como um melhoramento aos serviços de terapia que tem como base o processo online. 
      Visto isso, buscamos oferecer um claro e vasto catálogo de profissionais ou psicólogos especialidados 
      na área para o melhor atendimento de cada cliente. Disponibilizamos a primeira conversa cliente-profissional
