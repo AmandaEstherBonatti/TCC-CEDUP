@@ -11,7 +11,7 @@ import { NavigationEnd, Router } from "@angular/router";
 export class AppComponent {
   activeMenu!: "";
 
-  
+
   constructor(
     private router: Router,
   ) {
@@ -19,6 +19,6 @@ export class AppComponent {
 
 
   ngOnInit(): void {
-    // this.router.navigate(['menu/inicial']);   
+    this.router.navigate(['menu/inicial']);
   }
 }

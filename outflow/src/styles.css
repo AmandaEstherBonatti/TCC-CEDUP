@@ -1,29 +1,32 @@
-*{
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    scroll-padding-top: 3rem;
-    list-style: none;
-    text-decoration: none;
-  }
-  /*variaveis*/
-  :root{
-    --main-color: #232323;
-    --second-color: white;
-    --text-color: #235ee7;
-    --bg-color: white;
-  
-    /*box shadow */
-    --box-shadow: 2px 2px 18px rgb(14 52 54 /15%)
-  
-  }
-  img{
-    width: 100%;
-  }
-  body{
-    padding: 0;
-    margin: 0;
-  }
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-padding-top: 3rem;
+  list-style: none;
+  text-decoration: none;
+}
+
+/*variaveis*/
+:root {
+  --main-color: #232323;
+  --second-color: white;
+  --text-color: #235ee7;
+  --bg-color: white;
+
+  /*box shadow */
+  --box-shadow: 2px 2px 18px rgb(14 52 54 /15%)
+}
+
+img {
+  width: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}

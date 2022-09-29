@@ -11,7 +11,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { LayoutModule } from "@angular/cdk/layout";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDividerModule } from "@angular/material/divider";
-import {  HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -29,8 +29,7 @@ import { RegisterDialogComponent } from './modules/home-page/register-dialog/reg
     AppComponent,
     SidebarComponent,
     NavbarComponent,
-    PageInitialComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -47,7 +46,7 @@ import { RegisterDialogComponent } from './modules/home-page/register-dialog/reg
     HttpClientModule,
     MatDialogModule,
     MatTableModule,
-    
+
   ],
   providers: [],
   entryComponents: [RegisterDialogComponent],
