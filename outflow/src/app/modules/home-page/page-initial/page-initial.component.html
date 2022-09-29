@@ -1,10 +1,4 @@
-<section class="home container" id="home" >
-    <div class="home-text">
-         <h1>Agora ficou fácil marcar sua consulta</h1>
-         <p>Cadastre-se no site para poder marcar sua primeira consulta com o especialista</p>
-         <button class="cadastro">Cadastre-se</button>
-    </div>
-</section>
+
 <!--banner serviço-->
 <div class="banner-container">
          <div class="text-banner">
@@ -12,7 +6,7 @@
              <p>Nosso sistema dispõe de um sistema híbrido que consiste nas consultas onlines, no atendimento
                  pessoalmente, abrangendo melhor as necessidades dos clientes.</p>
              <div class="button-banner">
-              <a class="btn-banner">Marque uma consulta</a>
+              <button mat-button (click)="openDialog()">Marque uma consulta</button>
              </div>
              
          </div>

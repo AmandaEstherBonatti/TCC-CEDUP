@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { filter } from "rxjs";
+import { NavigationEnd, Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'outflow';
+  activeMenu!: "";
+
+  
+  constructor(
+    private router: Router,
+  ) {
+  }
+
+
+  ngOnInit(): void {
+    // this.router.navigate(['menu/inicial']);   
+  }
 }
