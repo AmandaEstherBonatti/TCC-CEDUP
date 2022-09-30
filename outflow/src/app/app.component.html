@@ -1,7 +1,9 @@
 <!-- <app-sidebar></app-sidebar> -->
 
-<app-navbar>
+<app-navbar *ngIf="url !== '/login'">
 
 </app-navbar>
+<div class="content">
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+</div>

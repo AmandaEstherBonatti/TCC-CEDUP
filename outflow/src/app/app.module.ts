@@ -22,22 +22,31 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PageInitialComponent } from './modules/home-page/page-initial/page-initial.component';
 import { HomePageModule } from './modules/home-page/home-page.module';
 import { RegisterDialogComponent } from './modules/home-page/register-dialog/register-dialog.component';
+import { LoginComponent } from './modules/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     NavbarComponent,
+    LoginComponent,
 
   ],
   imports: [
     BrowserModule,
     MatDialogModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FlexLayoutModule,
     MatSidenavModule,
     LayoutModule,
     MatButtonModule,

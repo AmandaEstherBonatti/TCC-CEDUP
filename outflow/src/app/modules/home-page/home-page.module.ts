@@ -16,6 +16,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     PageInitialComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
   ],
   imports: [
     CommonModule,

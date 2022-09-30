@@ -1,0 +1,128 @@
+#login-page {
+  width: 100%;
+  background-image: url(../../../assets/bgtcc.png);
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh !important;
+
+  .login-text {
+    margin-top: 30px;
+    font-size: 19.7px;
+    margin-bottom: 30px;
+    color: #5F7161 !important;
+  }
+
+
+  .login-wrapper {
+    margin-left: 10%;
+    margin-top: 12%;
+
+    h2 {
+      color: #5F7161 !important;
+      font-size: 62px;
+      font-weight: bold;
+    }
+
+    .form {
+      font-size: 20px;
+      height: 100px;
+    }
+  }
+
+  .login-form {
+    width: 100%;
+  }
+
+  .logo {
+    margin-top: 20px;
+    margin-left: 9.5%;
+    width: 100%;
+    max-width: 150px;
+    max-height: 200px;
+    color:  #2e5dc2;
+  }
+
+
+  .logo span{
+    color: rgb(189, 219, 227);
+  }
+
+  .mat-form-field {
+    height: 100%;
+    width: 100%;
+    max-width: 200%;
+    margin-left: 0% !important;
+    padding-left: 0% !important;
+  }
+
+  .mat-raised-button {
+    background-color: #2e5dc2;
+    text-align: center;
+    color: #72FFFF;
+    width: 100%;
+    font-size: 16px;
+    max-width: 400px;
+    margin-left: 15%;
+    border-radius: 13px;
+    height: 48px;
+    border: 1px solid #72FFFF;
+    margin: 0%;
+  }
+
+
+
+  .input {
+    color: #5F7161 !important;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    max-height: 200px;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #5F7161 !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #5F7161 !important;
+  }
+
+  .mat-form-field-outline-start {
+    border-radius: 20px 0 0 20px !important;
+    min-width: 28px !important;
+  }
+
+  .mat-form-field-outline-end {
+    border-radius: 0 20px 20px 0 !important;
+  }
+
+  .mat-input-placeholder-wrapper {
+    top: -1em;
+  }
+
+  .mat-input-element {
+    margin-bottom: 7px !important;
+  }
+
+
+  .mat-form-field-outline,
+  .mat-form-field-empty.mat-form-field-label,
+  .mat-form-field-label,
+  .mat-form-field-underline,
+  .mat-input-element,
+  ::placeholder {
+    color: #5F7161 !important;
+  }
+
+
+
+  @media screen and (max-width: 1265px) {
+    background-image: none;
+
+  }
+
+
+}

@@ -12,7 +12,6 @@ export class PageInitialComponent {
 
   constructor(
     public dialog: MatDialog,
-
   ) { }
 
 
@@ -24,5 +23,7 @@ export class PageInitialComponent {
 
 
   }
+
+
 
 }
