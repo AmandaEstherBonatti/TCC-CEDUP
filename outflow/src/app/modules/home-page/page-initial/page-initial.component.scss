@@ -75,26 +75,32 @@
    height: 700px;
    width: 100%;
  }
- .banner-container img{
-   height: 500px;
-   right: 200px;
-   border-radius: 100%;
-   width: 590px;
-   background-color: #235ee7;
-   top: 100px;
-   object-fit: cover;
+
+ .image-banner{
+  background-image: url(../../../../assets/AdobeStock_261529596_Preview-removebg-preview.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 500px;
+  right: 200px;
+  width: 590px;
+  top: 100px;
+  margin-top: 330px;
+
  }
  .text-banner{
-   z-index: 1;
-   position: relative;
-   display: inline-block;
-   left: 55%;
-   width: 350px;
+  width: 100%;
+   max-width: 600px;
+   padding:50px;
+   background-color: #fff;
+   border-radius: 40px;
+   margin-right: 100px;
+   margin-bottom: 100px;
  }
+
  .text-banner h2{
    text-align: center;
    margin-bottom: 20px;
-   color: #fff;
+   color: #000;
    font-size: 50px;
    font-weight: 800;
  }
@@ -102,26 +108,11 @@
  .text-banner p{ 
    text-align: center;
    font-size: 20px;
-   color: #fff;
+   color: #5F7161;
    font-weight: 400;
    margin-bottom: 15px;
  }
- .button-banner .btn-banner{
-   top: 30px;
-   padding: 20px;
-   left: 20%;
-   width: 220px;
-   height: 80px;
-   font-size: 15px;
-   color: #fff;
-   box-shadow: inset 0 0 0 0 #fff;
-   border: none;
-   background-color: #000;
-   outline: none;
-   text-align: center;
-   justify-content: center;
-   transition: ease-out 0.3s;
- }
+
  .btn-banner:hover{
    color: #000;
    box-shadow: inset 220px 0 0 0 #fff;
@@ -134,25 +125,45 @@
    height: 600px;
  }
  .container-color{
-   width: 50%;
+   width: 100%;
    height: 600px;
    background: linear-gradient(to right top, #14E3DD, #6860FF);
  }
  
  .about-container{
-   position: relative;
-   z-index: 1;
-   top: 150px;
-   right: 90px;
-   width: 800px;
+   overflow: auto;
+   width: 100%;
+   max-width: 800px;
    height: 300px;
    background: #fff;
-   padding: 50px;
-   text-align: left;
-   justify-content: center;
-   border-radius: 20px;
-   box-shadow: -10px 10px 20px #5F7161;
+   padding: 70px;
+   border-radius: 40px;
+   margin-right: 14%;
  }
+
+ 
+ @media screen and (max-width: 1000px) {
+   .about-container{
+    margin-right: 0;
+   }
+
+   .imagem-servico{
+    width: 0!important;
+   }
+
+   .text-banner{
+    margin-right: 60px;
+   }
+
+  .image-banner{
+    background-image: none;
+  }
+
+  .text-service{
+    margin-left: 0!important;
+  }
+
+}
  .content-about h2{
     font-size: 30px;
     color:#000;
@@ -192,28 +203,28 @@
   height: 3px;
   margin: 10px auto;
 }
-.imagem-servico-meio{
- width: 400px;
- height: 400px;
-}
+
 .imagem-servico{
- position: relative;
- left: 20%;
  width: 400px;
  height: 400px;
 }
 .service-content{
  padding-top: 100px ;
- display: flex;
- justify-content: space-between;
+ width: 100%;
 }
 .text-service{
- border-left: 2px solid red;
+  border: 2px solid red;
+  border-radius: 40px;
  padding: 30px;
- position: relative;
- right: 50%;
  width: 400px;
+ margin-left: 100px;
+ margin-bottom: 40px;
 }
+
+.text-meio{
+  background-color: #fff;
+}
+
 .text-service h3{
  text-align: center;
  font-size: 25px;
@@ -227,54 +238,57 @@
  text-align: center;
  margin-bottom: 10px;
 }
-.service-content-meio{
- display: flex;
- width: 100%;
-}
-.imagem-servico-meio{
- position: relative;
-  left: 35%;
-}
-.text-service-meio{
- width: 400px;
- border-right: 2px solid red;
- padding: 30px;
- position: relative;
- left: 25%;
- width: 400px;
-}
-.text-service-meio h3{
- text-align: center;
- font-size: 25px;
- font-weight: 700;
- margin-bottom: 30px;
-}
-.text-service-meio p{
- font-size: 16px;
- font-weight: 300;
- text-align: center;
- margin-bottom: 10px;
+.color-servico{
+  background: linear-gradient(to right top, #14E3DD, #6860FF);
 }
 .botao-service{
  right: 100px;
  width: 200px;
  height: 50px;
- font-size: 12px;
+ font-size: 16px;
  color: #fff;
  box-shadow: inset 0 0 0 0 #fff;
- border-radius: 12px;
+ border-radius: 25px;
  border: none;
  background-color: #000;
  outline: none;
  text-align: center;
  justify-content: center;
  transition: ease-out 0.3s;
+ cursor: pointer;
 }
+
+
 .botao-service:hover{
  border: 1px solid black;
  color: #000;
  box-shadow: inset 220px 0 0 0 #fff;
 }
+
+.botao-service-bottom{
+  right: 100px;
+  width: 300px;
+  height: 50px;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  box-shadow: inset 0 0 0 0 #fff;
+  border-radius: 25px;
+  border: none;
+  background-color: #000;
+  outline: none;
+  text-align: center;
+  justify-content: center;
+  transition: ease-out 0.3s;
+  cursor: pointer;
+ }
+ 
+ 
+ .botao-service-bottom:hover{
+  border: 1px solid black;
+  color: #000;
+  box-shadow: inset 300px 0 0 0 #fff;
+ }
  /*como funka */
  .testimonial-tittle{
    position: relative;
@@ -312,8 +326,6 @@
    align-items: center;
  }
  .testimonial-content {
-   position: relative;
-   left: 10%;
    width: 400px;
  }
  .testimonial-content h3{
