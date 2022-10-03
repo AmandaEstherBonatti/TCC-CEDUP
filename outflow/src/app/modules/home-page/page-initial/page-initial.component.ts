@@ -17,8 +17,8 @@ export class PageInitialComponent {
 
   openDialog() {
     const dialogRef = this.dialog.open(RegisterDialogComponent, {
-      width: "500px",
-      height: "400px",
+      width: "800px",
+      height: "500px",
     });
 
 

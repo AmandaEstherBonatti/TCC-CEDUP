@@ -15,4 +15,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
       @Inject(MAT_DIALOG_DATA) public data: any
     ) {}
+
+    close() {
+      this.dialogRef.close();
+    }
   }
