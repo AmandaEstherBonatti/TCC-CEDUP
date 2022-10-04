@@ -4,6 +4,7 @@ import { validateBasis } from '@angular/flex-layout';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/providers/api.provider';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
     private _fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
+    private api: ApiService
   ) {
 
   }
@@ -63,15 +65,31 @@ export class LoginComponent implements OnInit {
     this.showBanner = false;
   }
 
-  buttonClick(){
+  buttonClick() {
     this.loginForm.controls['email'].markAsTouched();
     this.loginForm.controls['password'].markAsTouched();
   }
 
   async onSubmit(): Promise<void> {
-    if(this.loginForm.valid){
+    if (this.loginForm.valid) {
+      const formData = this.loginForm.getRawValue();
+      const data = {
+        email: formData.email,
+        password: formData.password,
+      };
 
+      try {
+        const auth = await this.api.login(data);
+        if (auth.token) {
+          console.log('deu boms')
+
+        }
+      } catch (error) {
+        console.log('ERROR 132' + error);
+        this.showBanner = true;
+        this.message = 'Ops!E-mail e/ou senha inválidos.Tente novamente.';
+      }
     }
-    }
+  }
 
 }
