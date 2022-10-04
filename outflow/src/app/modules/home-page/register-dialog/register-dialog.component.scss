@@ -32,6 +32,7 @@
     height: 150px;
     border: 2px solid #0096FF;
     border-radius: 25px;
+    overflow: auto;
 
     h2 {
       color: #000 !important;
@@ -56,5 +57,5 @@
 
 mat-dialog-container {
   padding: 0 !important;
-  border-radius: 10px !important;
+  border-radius: 25px !important;
 }
