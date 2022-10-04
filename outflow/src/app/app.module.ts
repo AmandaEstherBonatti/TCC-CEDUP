@@ -26,6 +26,7 @@ import { LoginComponent } from './modules/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { PacientComponent } from './modules/pacient/pacient.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     SidebarComponent,
     NavbarComponent,
     LoginComponent,
+    PacientComponent,
 
   ],
   imports: [

@@ -1,5 +1,6 @@
 import { Component, Inject, ViewEncapsulation } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-register-modal',
@@ -12,11 +13,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
     
     constructor(
       public dialogRef: MatDialogRef<RegisterDialogComponent>,
+      private router: Router,
 
       @Inject(MAT_DIALOG_DATA) public data: any
     ) {}
 
     close() {
+      this.dialogRef.close();
+    }
+
+    login() {
+      this.router.navigate(['/pacient']);
       this.dialogRef.close();
     }
   }
