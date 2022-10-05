@@ -29,6 +29,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { PacientComponent } from './modules/pacient/pacient.component';
 import {MatCardModule} from '@angular/material/card';
 import { DoctorComponent } from './modules/doctor/doctor.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { DoctorComponent } from './modules/doctor/doctor.component';
     HttpClientModule,
     MatDialogModule,
     MatTableModule,
+    MatRadioModule,
+    MatTabsModule
 
   ],
   providers: [],

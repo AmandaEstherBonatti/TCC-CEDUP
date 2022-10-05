@@ -1,3 +1,94 @@
-<div class="pacient-page">
-    
+<div class="main" fxLayout="row" fxFlex="100">
+    <div class="container" fxFlex="50">
+        <div class="header"  fxLayout="column" fxLayoutAlign="center start">
+            <h1 class="logo">Out<span>flow</span></h1>
+            <h2><b>Que bom que você está aqui!</b></h2>
+            <p>Inicie a sua jornada de saúde emocional</p>
+        </div>
+        <div class="adress">
+            <form class="form">
+                <mat-form-field appearance="outline" class="input-name">
+                    <mat-label>Nome</mat-label>
+                    <input type="text" matInput [formControl]="nameFormControl" placeholder="Digite seu nome completo">
+                </mat-form-field>
+            </form>
+            <form class="form">
+                <mat-form-field appearance="outline" class="input-email">
+                    <mat-label>E-mail</mat-label>
+                    <input  type="email" matInput [formControl]="emailFormControl" placeholder="Digite seu endereço de e-mail">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Por favor, digite um e-mail válido!
+                    </mat-error>
+                </mat-form-field>
+            </form>
+            <br>
+            <small class="small">Lembre-se de usar um e-mail corporativo</small>
+            <form class="form">
+                <mat-form-field appearance="outline" class="input-ativation">
+                    <mat-label>Código de Ativação</mat-label>
+                    <input type="text" matInput [formControl]="codeFormControl" placeholder="Código de ativação">
+                </mat-form-field>
+            </form>
+            <br>
+            <small class="small">Este é o código que foi compartilhado com você pelo RH</small>
+            <form class="form">
+                <mat-form-field appearance="outline" class="input-ativation">
+                    <mat-label>Telefone</mat-label>
+                    <input type="tel" matInput [formControl]="telFormControl" >
+                </mat-form-field>
+            </form>
+            <form class="form">
+                <mat-form-field appearance="outline" class="input-ativation">
+                    <mat-label>Senha</mat-label>
+                    <mat-icon (click)="viewPassword()" style="text-align: center;" style="cursor: pointer;" matSuffix>remove_red_eye</mat-icon>
+                    <input id="password-input" type="password" matInput [formControl]="passwordFormControl">
+                </mat-form-field>
+            </form>
+            <form class="form">
+                <mat-form-field appearance="outline" class="input-ativation">
+                    <mat-label>Data de Nascimento</mat-label>
+                    <input type="date" matInput [formControl]="birthdayFormControl">
+                </mat-form-field>
+            </form>
+            <div class="genre">
+                <h5><b>Gênero</b></h5>
+                <mat-radio-group id="radio-button"  fxLayout="row">
+                    <mat-radio-button value="1">Masculino</mat-radio-button>
+                    <mat-radio-button value="2">Feminino</mat-radio-button>
+                    <mat-radio-button value="3">Não Binário</mat-radio-button>
+                    <p class="more"*ngIf="genreView == false" (click)="viewGenre()">Mais<mat-icon class="arrow">keyboard_arrow_down</mat-icon></p>
+                    <mat-radio-button value="4" *ngIf="genreView == true">Homem trans</mat-radio-button>
+                    <mat-radio-button value="5" *ngIf="genreView == true">Mulher trans</mat-radio-button>
+                    <mat-radio-button value="6" *ngIf="genreView == true">Fluído</mat-radio-button>
+                    <mat-radio-button value="7" *ngIf="genreView == true">Outro</mat-radio-button>
+                    <mat-radio-button value="8" *ngIf="genreView == true">Prefiro não responder</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div>
+                <div class="login">
+                    <button class="login-btn">CRIAR A MINHA CONTA</button>
+                </div>
+            </div>
+            <br>
+            <div class="log-in">
+                <p>Já possui a conta?<a class="sign-in" routerLink="/login"> Entrar</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="image-responsive" fxFlex="50" fxLayout="column" fxLayoutAlign="center center">
+        <mat-tab-group headerPosition="below" class="tab">
+            <mat-tab *ngFor="let tab of asyncTabs | async">
+                <div class="block-white">
+                    <div class="content">
+                        <img class="img" [src]="tab.bool" alt="">
+                    </div>
+                    <ng-template mat-tab-label><mat-icon class="icon">fiber_manual_record</mat-icon></ng-template>
+                    <p>{{tab.content}}</p>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+        <div>
+        </div>
+
+        </div>
 </div>

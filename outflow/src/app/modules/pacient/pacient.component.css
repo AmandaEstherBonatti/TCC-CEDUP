@@ -1,4 +1,200 @@
-.container{
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main{
+    height: 100%;
+}
+
+.header{
+    margin-top: 20px;
+    margin-left: 20%;
+}
+
+.header h2{
+    margin-bottom: 5px!important;
+    font-size: 25px;
+}
+
+
+.header p{
+    font-size: 17px;
+    font-weight: 300;
+    color: #5F7161;
+}
+
+.logo{
+    display: flex;
     align-items: center;
-    margin-top: 90px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color:  #2e5dc2;
+}
+
+.logo span{
+    color: rgb(189, 219, 227);
+}
+
+.form{
+    margin-left: 20%;
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.adress{
+    margin-top: 30px;
+    width: 100%;
+}
+.input-name{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 30px;
+}
+
+.input-email{
+    width: 100%;
+    height: 40px;
+}
+
+.input-ativation{
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+}
+
+.small{
+    color: #5F7161;
+    margin-top: 60px;
+    margin-left: 21%;
+}
+
+
+.genre{
+    width: 100%;
+    margin-top: 30px;
+    margin-left: 20%;
+    min-width: 150px;
+    max-width: 500px;
+}
+
+mat-radio-button{
+    padding-right: 20px;
+    padding-bottom: 10px;
+    color: #5F7161;
+}
+#radio-button{
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.more{
+    color:  #2e5dc2;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: -8px;
+}
+
+.arrow{
+    padding-top: 7px;
+    color:  #2e5dc2;
+    cursor: pointer;
+}
+
+::ng-deep.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: #2e5dc2!important;
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #2e5dc2!important;
+}
+
+.login{
+    width: 100%;
+    margin-left: 20%;
+    min-width: 150px;
+    max-width: 500px;
+}
+
+.login-btn{
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    border-radius: 7px;
+    background-color: #2e5dc2;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    border-style: none;
+    margin-top: 30px;
+}
+
+.login-btn:hover{
+    background-color: cornsilk;
+    color: #2e5dc2;
+}
+
+.log-in p{
+    font-size: 15px;
+}
+
+.log-in a{
+    color: #2e5dc2;
+    cursor: pointer;
+}
+
+.log-in{
+    margin-left: 20%;
+}
+
+.image-responsive{
+    background-color: #2e5dc2;
+    position: relative;
+    text-align: center;
+    align-items: center;
+}
+.block-white{
+    background-color: white;
+    width: 355px;
+    height: 300px;
+    margin-bottom: 120px;
+    border-radius: 10px;
+}
+
+.img{
+    height: 250px;
+    width: 250px;
+    margin-top: 20px;
+}
+
+.block-white p{
+    margin-top: 40px!important;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    display: none!important;
+}
+
+::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    display: none!important;
+}
+
+::ng-deep ng-template{
+    visibility: hidden!important;
+}
+
+::ng-deep.mat-tab-label, .mat-tab-link {
+    color: #fff!important;
+}
+
+@media screen and (min-height: 900px) {
+    .image-responsive{
+        height: 100vh;
+    }
 }
