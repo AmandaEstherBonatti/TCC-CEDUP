@@ -193,8 +193,15 @@ mat-radio-button{
     color: #fff!important;
 }
 
+
 @media screen and (min-height: 900px) {
     .image-responsive{
         height: 100vh;
+    }
+}
+
+@media (max-width: 800px){
+    .image-responsive{
+        display: none;
     }
 }
