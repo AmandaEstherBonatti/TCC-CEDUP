@@ -22,8 +22,13 @@ import { Router } from "@angular/router";
       this.dialogRef.close();
     }
 
-    login() {
+    registerPacient() {
       this.router.navigate(['/pacient']);
+      this.dialogRef.close();
+    }
+
+    registerDoctor() {
+      this.router.navigate(['/doctor']);
       this.dialogRef.close();
     }
   }

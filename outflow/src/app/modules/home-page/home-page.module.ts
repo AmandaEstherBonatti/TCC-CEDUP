@@ -19,6 +19,7 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 
 
+
 const routes: Routes = [
   {
     path: 'inicial',
