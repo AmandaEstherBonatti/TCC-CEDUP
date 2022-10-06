@@ -133,7 +133,7 @@ mat-radio-button{
 }
 
 .login-btn:hover{
-    background-color: cornsilk;
+    background-color: rgb(148, 169, 190);
     color: #2e5dc2;
 }
 
@@ -193,6 +193,82 @@ mat-radio-button{
     color: #fff!important;
 }
 
+@media (max-width: 767px) {
+    .image-responsive{
+        display: none!important;
+    }
+
+    .container{
+        max-width: 100%!important;
+    }
+
+    .header{
+        margin-left: 5%;
+    }
+
+    .form{
+        margin-left: 5%;
+    }
+
+    .small{
+        margin-left: 5%;
+    }
+
+    .genre{
+        margin-left: 5%;
+    }
+
+    .login{
+        margin-left: 5%;
+    }
+
+    .log-in{
+        margin-left: 5%;
+    }
+
+    mat-form-field{
+        width: 80%!important;
+    }
+
+    .login-btn{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .header{
+        margin-left: 5%;
+    }
+
+    .form{
+        margin-left: 5%;
+    }
+
+    .small{
+        margin-left: 5%;
+    }
+
+    .genre{
+        margin-left: 5%;
+    }
+
+    .login{
+        margin-left: 5%;
+    }
+
+    .log-in{
+        margin-left: 5%;
+    }
+
+    mat-form-field{
+        width: 80%!important;
+    }
+
+    .login-btn{
+        width: 80%;
+    }
+
+}
 
 @media screen and (min-height: 900px) {
     .image-responsive{
@@ -200,8 +276,3 @@ mat-radio-button{
     }
 }
 
-@media (max-width: 800px){
-    .image-responsive{
-        display: none;
-    }
-}

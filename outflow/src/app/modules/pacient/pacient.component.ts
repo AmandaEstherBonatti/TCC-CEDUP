@@ -5,7 +5,7 @@ import {Observable, Observer} from 'rxjs';
 export interface ExampleTab {
   label: string;
   content: string;
-  bool: string;
+  imagePath: string;
 }
 
 @Component({
@@ -30,8 +30,8 @@ export class PacientComponent implements OnInit {
     this.asyncTabs = new Observable((observer: Observer<ExampleTab[]>) => {
       setTimeout(() => {
         observer.next([
-          {label: '', content: 'Sessões online com profissionais certificados a qualquer hora e em qualquer lugar com segurança', bool: "../../../assets/profissional-online.png"},
-          {label: '', content: 'Conteúdos personalizados para diferentes momentos e situações da sua vida', bool: "../../../assets/content-online.png"}
+          {label: '', content: 'Sessões online com profissionais certificados a qualquer hora e em qualquer lugar com segurança', imagePath: "../../../assets/profissional-online.png"},
+          {label: '', content: 'Conteúdos personalizados para diferentes momentos e situações da sua vida', imagePath: "../../../assets/content-online.png"}
         ]);
       }, 1000);
     })
@@ -54,7 +54,4 @@ export class PacientComponent implements OnInit {
     this.genreView = true;
     width.style.maxWidth = '80%'
   }
-
-  
-
 }
