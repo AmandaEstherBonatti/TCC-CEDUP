@@ -31,6 +31,9 @@ import {MatCardModule} from '@angular/material/card';
 import { DoctorComponent } from './modules/doctor/doctor.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatDialogModule,
     MatTableModule,
     MatRadioModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatListModule
 
   ],
   providers: [],
