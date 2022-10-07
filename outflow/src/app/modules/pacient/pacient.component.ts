@@ -17,7 +17,7 @@ export class PacientComponent implements OnInit {
   nameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   codeFormControl = new FormControl('', [Validators.required]);
-  telFormControl = new FormControl('', [Validators.required]);
+  telFormControl = new FormControl('55', [Validators.maxLength(14)]);
   passwordFormControl = new FormControl('', [Validators.required]);
   birthdayFormControl = new FormControl('', [Validators.required]);
 
