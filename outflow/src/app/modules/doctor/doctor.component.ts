@@ -20,6 +20,7 @@ export class DoctorComponent implements OnInit {
 
   passwordView = false;
   checked = false;
+  crpBox = true;
   constructor() {}
 
   ngOnInit(): void {}
@@ -33,6 +34,14 @@ export class DoctorComponent implements OnInit {
         .getElementById('password-input')
         ?.setAttribute('type', 'password');
     }
+  }
+
+  viewCRP(){
+    this.crpBox = true;
+  }
+
+  dontViewCRP(){
+    this.crpBox = false;
   }
 
 }
