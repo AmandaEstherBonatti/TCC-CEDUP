@@ -15,8 +15,8 @@ export class DoctorComponent implements OnInit {
     Validators.email,
   ]);
   passwordFormControl = new FormControl('', [Validators.required]);
-  telFormControl = new FormControl('', [Validators.maxLength(14)]);
-  cpfFormControl = new FormControl('', [Validators.required]);
+  telFormControl = new FormControl('55', [Validators.maxLength(14)]);
+  cpfFormControl = new FormControl('', [Validators.maxLength(11)]);
 
   passwordView = false;
   checked = false;
@@ -43,5 +43,17 @@ export class DoctorComponent implements OnInit {
   dontViewCRP(){
     this.crpBox = false;
   }
+
+  // check(){
+  //   this.checked = !this.checked;
+  //   let block = document.getElementById('block') as HTMLDivElement
+  //   if(this.checked == true) {
+  //     block.style.backgroundColor = '#df3ccf'
+  //   }else{
+  //     block.style.backgroundColor = '#fff'
+  //   }
+  //   console.log("🚀 ~ file: doctor.component.ts ~ line 49 ~ DoctorComponent ~ check ~ this.checked", this.checked)
+    
+  // }
 
 }

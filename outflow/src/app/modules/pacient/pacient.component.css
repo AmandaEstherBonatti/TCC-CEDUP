@@ -102,6 +102,14 @@ mat-radio-button{
     cursor: pointer;
 }
 
+.viewEye{
+    max-width: 20px;
+    max-height: 20px;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
+
 ::ng-deep.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
     background-color: #2e5dc2!important;
 }
@@ -190,6 +198,14 @@ mat-radio-button{
 
 ::ng-deep.mat-tab-label, .mat-tab-link {
     color: #fff!important;
+}
+
+::ng-deep.mat-input-element {
+    caret-color: #2e5dc2!important;
+}
+
+::ng-deep.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color:#2e5dc2!important;
 }
 
 @media (max-width: 767px) {

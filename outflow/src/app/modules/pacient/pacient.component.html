@@ -34,7 +34,8 @@
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="input-ativation">
                     <mat-label>Senha</mat-label>
-                    <mat-icon (click)="viewPassword()" style="text-align: center;" style="cursor: pointer;" matSuffix>remove_red_eye</mat-icon>
+                    <img *ngIf="passwordView == true" (click)="viewPassword()"class="viewEye" src="../../../assets/hide.png" alt="" matSuffix>
+                    <img *ngIf="passwordView == false" (click)="viewPassword()" class="viewEye" src="../../../assets/view.png" alt="" matSuffix>
                     <input id="password-input" type="password" matInput [formControl]="passwordFormControl">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="input-ativation">
