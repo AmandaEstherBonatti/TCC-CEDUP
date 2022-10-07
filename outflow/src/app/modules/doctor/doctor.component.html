@@ -18,14 +18,16 @@
                     <mat-icon (click)="viewPassword()" style="text-align: center;" style="cursor: pointer;" matSuffix>remove_red_eye</mat-icon>
                     <input id="password-input" type="password" matInput [formControl]="passwordFormControl">
                 </mat-form-field>
-                <mat-form-field appearance="outline" class="input-half">
-                    <mat-label>Celular</mat-label>
-                    <input type="tel" matInput [formControl]="telFormControl" >
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="input-half">
-                    <mat-label>CPF</mat-label>
-                    <input type="number" matInput [formControl]="cpfFormControl">
-                </mat-form-field>
+                <div fxLayoutAlign="space-evenly">
+                    <mat-form-field appearance="outline" class="input-half">
+                        <mat-label>Celular</mat-label>
+                        <input type="tel" matInput [formControl]="telFormControl" >
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="input-half">
+                        <mat-label>CPF</mat-label>
+                        <input type="number" matInput [formControl]="cpfFormControl">
+                    </mat-form-field>
+                </div>
                 <mat-form-field appearance="outline" class="input">
                     <mat-label>Gênero</mat-label>
                     <mat-select disableRipple>
