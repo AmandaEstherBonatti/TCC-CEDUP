@@ -1,98 +1,103 @@
-<div class="main" fxLayout="row" fxFlex="100">
-    <div class="container">
-        <div class="header"  fxLayout="column" fxLayoutAlign="center center" >
-            <h1>Sobre você</h1>
-        </div>
-        <div class="address"  fxLayout="row" fxLayoutAlign="center stretch">
-            <form class="form">
-                <mat-form-field appearance="outline" class="input">
-                    <mat-label>Nome</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="input">
-                    <mat-label>E-mail</mat-label>
-                    <input  type="email" matInput [formControl]="emailFormControl" placeholder="Digite seu endereço de e-mail">
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="input">
-                    <mat-label>Senha</mat-label>
-                    <mat-icon (click)="viewPassword()" style="text-align: center;" style="cursor: pointer;" matSuffix>remove_red_eye</mat-icon>
-                    <input id="password-input" type="password" matInput [formControl]="passwordFormControl">
-                </mat-form-field>
-                <div fxLayoutAlign="space-evenly">
-                    <mat-form-field appearance="outline" class="input-half">
-                        <mat-label>Celular</mat-label>
-                        <input type="tel" matInput [formControl]="telFormControl" >
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" class="input-half">
-                        <mat-label>CPF</mat-label>
-                        <input type="number" matInput [formControl]="cpfFormControl">
-                    </mat-form-field>
-                </div>
-                <mat-form-field appearance="outline" class="input">
-                    <mat-label>Gênero</mat-label>
-                    <mat-select disableRipple>
-                        <mat-option value="1">Masculino</mat-option>
-                        <mat-option value="2">Feminino</mat-option>
-                        <mat-option value="3">Não binário</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </form>
-        </div>
+<div id="doctor-component">
+    <div class="title" fxLayoutAlign=" start">
+        <h1 class="logo" routerLink="/menu/inicial">Out<span>flow</span></h1>
     </div>
-    <div class="container">
-        <div class="header"  fxLayout="column" fxLayoutAlign="center center" >
-            <h1>Sua especialidade</h1>
-        </div>
-        <div class="address" fxLayout="column" fxLayoutAlign="stretch">
-            <div class="speciality" fxLayout="row" fxLayoutAlign="center center">
-                <div class="block" >
-                    <button (click)="viewCRP()">
-                        <img src="../../../assets/autismo.png">
-                        <p>Psicólogo(a)</p>
-                    </button>
-                    <button (click)="dontViewCRP()">
-                        <img src="../../../assets/alvo.png">
-                        <p>Psicanalista(a)</p>
-                    </button>
-                    <button (click)="dontViewCRP()">
-                        <img src="../../../assets/calma.png">
-                        <p>Terapeuta</p>
-                    </button>
-                    <button (click)="dontViewCRP()">
-                        <img src="../../../assets/ideia (2).png">
-                        <p>Coach</p>
-                    </button>
-                </div>
+    <div class="main" fxLayout="row" fxFlex="100" fxLayoutAlign="space-around">
+        <div class="container">
+            <div class="header"  fxLayout="column" fxLayoutAlign="center center" >
+                <h1>Sobre você</h1>
             </div>
-            <br>
-            <form class="form">
-                <mat-form-field appearance="outline" class="input" *ngIf="crpBox == true">
-                    <mat-label>CRP</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="input">
-                    <mat-label>Tempo de experiência</mat-label>
-                    <mat-select disableRipple>
-                        <mat-option value="1">Acima de 6 anos</mat-option>
-                        <mat-option value="2">Entre 3 e 6 anos</mat-option>
-                        <mat-option value="3">Menos de 3 anos</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="input">
-                    <mat-label>Principal expectativa com o Outflow</mat-label>
-                    <mat-select disableRipple>
-                        <mat-option value="1">Atender carteira de clientes remotamente</mat-option>
-                        <mat-option value="2">Aumentar minha carteira de clientes</mat-option>
-                        <mat-option value="3">Construir minha carteira de clientes</mat-option>
-                        <mat-option value="4">Gerenciamento de agenda e pagamento</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </form>
-            <div class="terms">
-                <mat-checkbox>Li e concordo com os <a href="https://zenklub.com.br/termos-especialistas/" target="_blank">Termos e Condições</a> e <a href="https://zenklub.com.br/privacidade/" target="_blank">Política de Privacidade</a></mat-checkbox>
-            </div>    
-            <div class="login">
-                <button class="login-btn">Quero me cadastrar</button>
+            <div class="address"  fxLayout="row" fxLayoutAlign="center stretch">
+                <form class="form">
+                    <mat-form-field appearance="outline" class="input">
+                        <mat-label>Nome</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="input">
+                        <mat-label>E-mail</mat-label>
+                        <input  type="email" matInput placeholder="Digite seu endereço de e-mail">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="input">
+                        <mat-label>Senha</mat-label>
+                        <mat-icon (click)="viewPassword()" style="text-align: center;" style="cursor: pointer;" matSuffix>remove_red_eye</mat-icon>
+                        <input id="password-input" type="password" matInput >
+                    </mat-form-field>
+                    <div fxLayoutAlign="space-evenly">
+                        <mat-form-field appearance="outline" class="input-half">
+                            <mat-label>Celular</mat-label>
+                            <input type="tel" matInput [formControl]="telFormControl" mask="(00) 00000-0000">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="input-half">
+                            <mat-label>CPF</mat-label>
+                            <input type="number" matInput >
+                        </mat-form-field>
+                    </div>
+                    <mat-form-field appearance="outline" class="input">
+                        <mat-label>Gênero</mat-label>
+                        <mat-select disableRipple>
+                            <mat-option value="1">Masculino</mat-option>
+                            <mat-option value="2">Feminino</mat-option>
+                            <mat-option value="3">Não binário</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header"  fxLayout="column" fxLayoutAlign="center center" >
+                <h1>Sua especialidade</h1>
+            </div>
+            <div class="address" fxLayout="column" fxLayoutAlign="stretch">
+                <div class="speciality" fxLayout="row" fxLayoutAlign="center center">
+                    <div class="block" >
+                        <button (click)="viewCRP()">
+                            <img src="../../../assets/autismo.png">
+                            <p>Psicólogo(a)</p>
+                        </button>
+                        <button (click)="dontViewCRP()">
+                            <img src="../../../assets/alvo.png">
+                            <p>Psicanalista(a)</p>
+                        </button>
+                        <button (click)="dontViewCRP()">
+                            <img src="../../../assets/calma.png">
+                            <p>Terapeuta</p>
+                        </button>
+                        <button (click)="dontViewCRP()">
+                            <img src="../../../assets/ideia (2).png">
+                            <p>Coach</p>
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <form class="form">
+                    <mat-form-field appearance="outline" class="input" *ngIf="crpBox == true">
+                        <mat-label>CRP</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="input">
+                        <mat-label>Tempo de experiência</mat-label>
+                        <mat-select disableRipple>
+                            <mat-option value="1">Acima de 6 anos</mat-option>
+                            <mat-option value="2">Entre 3 e 6 anos</mat-option>
+                            <mat-option value="3">Menos de 3 anos</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="input">
+                        <mat-label>Principal expectativa com o Outflow</mat-label>
+                        <mat-select disableRipple>
+                            <mat-option value="1">Atender carteira de clientes remotamente</mat-option>
+                            <mat-option value="2">Aumentar minha carteira de clientes</mat-option>
+                            <mat-option value="3">Construir minha carteira de clientes</mat-option>
+                            <mat-option value="4">Gerenciamento de agenda e pagamento</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form>
+                <div class="terms">
+                    <mat-checkbox>Li e concordo com os <a href="https://zenklub.com.br/termos-especialistas/" target="_blank">Termos e Condições</a> e <a href="https://zenklub.com.br/privacidade/" target="_blank">Política de Privacidade</a></mat-checkbox>
+                </div>    
+                <div class="login">
+                    <button class="login-btn">Quero me cadastrar</button>
+                </div>
             </div>
         </div>
     </div>

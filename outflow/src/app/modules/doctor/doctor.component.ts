@@ -15,7 +15,7 @@ export class DoctorComponent implements OnInit {
     Validators.email,
   ]);
   passwordFormControl = new FormControl('', [Validators.required]);
-  telFormControl = new FormControl('', [Validators.required]);
+  telFormControl = new FormControl('', [Validators.maxLength(14)]);
   cpfFormControl = new FormControl('', [Validators.required]);
 
   passwordView = false;
