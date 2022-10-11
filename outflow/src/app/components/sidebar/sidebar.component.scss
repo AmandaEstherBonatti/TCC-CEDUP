@@ -1,0 +1,26 @@
+.example-container {}
+
+.example-sidenav {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    border: rgba(0, 0, 0, 0.152) solid 0.1rem;
+}
+
+.logo {
+    margin-top: 20px;
+    margin-left: 9.5%;
+    width: 100%;
+    max-width: 200px;
+    max-height: 200px;
+    color: #2e5dc2;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+.logo span {
+    color: rgb(189, 219, 227);
+}

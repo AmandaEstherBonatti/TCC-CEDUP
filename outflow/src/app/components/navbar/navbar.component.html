@@ -1,19 +1,19 @@
 <mat-toolbar fxLayoutAlign="space-between center">
   <h1 class="logo">Out<span>flow</span></h1>
   <div>
-    <button mat-button class="menu-button" >
+    <button mat-button class="menu-button">
       <span>Página inicial</span>
-    </button>  
-    <button href="#quem" mat-button class="menu-button" >
+    </button>
+    <button href="#quem" mat-button class="menu-button">
       <span>Sobre Nós</span>
-    </button>  
-    <button mat-button class="menu-button" >
+    </button>
+    <button mat-button class="menu-button" (click)="open()">
       <span>Contato</span>
-    </button>  
-    <button (click)="login()" mat-flat-button class="menu-button-login" >
+    </button>
+    <button (click)="login()" mat-flat-button class="menu-button-login">
       <mat-icon>login</mat-icon>
       <span>Entre</span>
-    </button>  
+    </button>
 
   </div>
 </mat-toolbar>

@@ -20,4 +20,15 @@ export class ApiService {
                 }, reject);
         });
     }
+
+    createPacient(pacient: any) {
+        return new Promise((resolve, reject) => {
+            this.apiGateway
+                .post('clients', pacient)
+
+                .subscribe((response: HttpResponse<any>) => {
+                    resolve(response.body);
+                }, reject);
+        });
+    }
 }

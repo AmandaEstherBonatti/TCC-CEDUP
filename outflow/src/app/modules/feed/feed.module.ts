@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { PageInitialComponent } from './page-initial/page-initial.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,45 +14,46 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
+import { FeedComponent } from './feed.component';
+import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 
 
 
 const routes: Routes = [
-  {
-    path: 'inicial',
-    component: PageInitialComponent
-  },
+    {
+        path: 'inicial',
+        component: FeedComponent
+    }
 ];
 
 @NgModule({
-  declarations: [
-    PageInitialComponent,
-    RegisterDialogComponent,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatTabsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatTableModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatSelectModule,
-    MatSortModule,
-    MatDialogModule,
+    declarations: [
+        FeedComponent,
+        SidebarComponent
+    ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MatTabsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatTableModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatSelectModule,
+        MatSortModule,
+        MatDialogModule,
 
-  ],
-  providers: [],
-  entryComponents: [RegisterDialogComponent],
-  bootstrap: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    ],
+    providers: [],
+    entryComponents: [],
+    bootstrap: [],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
 })
-export class HomePageModule { }
+export class FeedModule { }

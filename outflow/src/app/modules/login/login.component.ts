@@ -82,8 +82,12 @@ export class LoginComponent implements OnInit {
         const auth = await this.api.login(data);
         if (auth.token) {
           console.log('deu boms')
+          this.router.navigate(['feed/inicial']);
 
         }
+
+
+        console.log(auth)
       } catch (error) {
         console.log('ERROR 132' + error);
         this.showBanner = true;

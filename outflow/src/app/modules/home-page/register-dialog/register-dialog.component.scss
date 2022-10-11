@@ -29,7 +29,7 @@
   .dialog-option {
     width: 100%;
     margin-top: 16px;
-    height: 150px;
+    height: 170px;
     border: 2px solid #0096FF;
     border-radius: 25px;
     overflow: auto;
@@ -39,11 +39,12 @@
       font-size: 26px;
       padding: 0 !important;
     }
-    p{
-        font-size: 18px;
-        color: #5F7161;
-        white-space: normal !important;
-        text-align: start!important;
+
+    p {
+      font-size: 18px;
+      color: #5F7161;
+      white-space: normal !important;
+      text-align: start !important;
     }
   }
 
