@@ -1,3 +1,29 @@
 <mat-sidenav #sidenav mode="side" opened class="example-sidenav " [fixedInViewport]="true">
-    <h1 class="logo" routerLink="/menu/inicial">Out<span>flow</span></h1>
+    <div class="header">
+        <h1 class="logo" routerLink="/menu/inicial">Out<span>flow</span></h1>
+    </div>
+    <div class="content" fxLayout="column" fxLayoutAlign="space-between center">
+        <div class="list-menu" >
+            <div class="icon"  fxLayout="row">
+                <img src="../../../assets/home.png" class="nav-img">
+                <p>Feed</p>
+            </div>
+            <div class="icon"  fxLayout="row" >
+                <img src="../../../assets/perfil.png" class="nav-img">
+                <p>Perfil</p>
+            </div>
+            <div class="icon"  fxLayout="row" >
+                <img src="../../../assets/calendar.png" class="nav-img">
+                <p>Agenda</p>
+            </div>
+            <div class="icon"  fxLayout="row" >
+                <img src="../../../assets/user.png" class="nav-img">
+                <p>Clientes</p>
+            </div>
+            <div class="icon"  fxLayout="row" >
+                <img src="../../../assets/money-bag.png" class="nav-img">
+                <p>Consultas</p>
+            </div>
+        </div>
+    </div>
 </mat-sidenav>

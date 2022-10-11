@@ -1,26 +1,63 @@
-.example-container {}
 
 .example-sidenav {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 350px;
+    
+    width: 20%;
     border: rgba(0, 0, 0, 0.152) solid 0.1rem;
+    height: 100%;
 }
 
 .logo {
-    margin-top: 20px;
-    margin-left: 9.5%;
     width: 100%;
     max-width: 200px;
     max-height: 200px;
     color: #2e5dc2;
     font-weight: 700;
     cursor: pointer;
+    margin-bottom: 50px;
 }
-
 
 .logo span {
     color: rgb(189, 219, 227);
+}
+
+.icon{
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.icon img{
+    max-width: 30px;
+    max-height: 30px;
+    width: auto;
+    height: auto;
+}
+
+// .icon img:hover{
+//     max-width: 35px;
+//     max-height: 35px;
+//     width: auto;
+//     height: auto;
+//     color: #2e5dc2;
+// }
+
+.icon p{
+    text-align: center;
+    margin-left: 15px;
+    padding-top: 5px;
+}
+
+.icon:hover{
+    p{
+        opacity: 0.6;
+        font-size: 16px;
+    }
+
+    .nav-img{
+        max-width: 35px;
+        max-height: 35px;
+        width: auto;
+        height: auto;
+        opacity: 0.8;
+    }
 }
