@@ -1,65 +1,62 @@
 <div class="main" fxLayout="row" fxFlex="100">
     <div class="container" fxFlex="50">
-        <div class="header"  fxLayout="column" fxLayoutAlign="center start">
+        <div class="header" fxLayout="column" fxLayoutAlign="center start">
             <h1 class="logo" routerLink="/menu/inicial">Out<span>flow</span></h1>
             <h2><b>Que bom que você está aqui!</b></h2>
             <p>Inicie a sua jornada de saúde emocional</p>
         </div>
         <div class="address">
-            <form class="form">
+            <form class="form" fxLayout="column" [formGroup]="pacientForm">
                 <mat-form-field appearance="outline" class="input-name">
                     <mat-label>Nome</mat-label>
-                    <input type="text" matInput [formControl]="nameFormControl" placeholder="Digite seu nome completo">
+                    <input type="text" matInput formControlName="name" placeholder="Digite seu nome completo">
                 </mat-form-field>
-                <mat-form-field appearance="outline" class="input-email">
-                    <mat-label>E-mail</mat-label>
-                    <input  type="email" matInput [formControl]="emailFormControl" placeholder="Digite seu endereço de e-mail">
-                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                        Por favor, digite um e-mail válido!
-                    </mat-error>
-                </mat-form-field>
-                <br>
-                <br>
-                <small class="small">Lembre-se de usar um e-mail corporativo</small>
-                <mat-form-field appearance="outline" class="input-ativation">
-                    <mat-label>Código de Ativação</mat-label>
-                    <input type="text" matInput [formControl]="codeFormControl" placeholder="Código de ativação">
-                </mat-form-field>
-                <br>
-                <br>
-                <small class="small">Este é o código que foi compartilhado com você pelo RH</small>
-                <mat-form-field appearance="outline" class="input-ativation">
-                    <mat-label>Telefone</mat-label>
-                    <input type="tel" matInput [formControl]="telFormControl" mask="+00 (00) 00000-0000">
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="input-ativation">
-                    <mat-label>Senha</mat-label>
-                    <img *ngIf="passwordView == true" (click)="viewPassword()"class="viewEye" src="../../../assets/hide.png" alt="" matSuffix>
-                    <img *ngIf="passwordView == false" (click)="viewPassword()" class="viewEye" src="../../../assets/view.png" alt="" matSuffix>
-                    <input id="password-input" type="password" matInput [formControl]="passwordFormControl">
+                <mat-form-field appearance="outline" class="input-name">
+                    <mat-label>Sobrenome</mat-label>
+                    <input type="text" matInput formControlName="lastName" placeholder="Digite seu nome completo">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="input-ativation">
                     <mat-label>Data de Nascimento</mat-label>
-                    <input type="date" matInput [formControl]="birthdayFormControl">
+                    <input type="date" matInput formControlName="birthday">
                 </mat-form-field>
+                <mat-form-field appearance="outline" class="input-ativation">
+                    <mat-label>Telefone</mat-label>
+                    <input type="tel" matInput formControlName="phoneNumber" mask="+00 (00) 00000-0000">
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline" class="input-email" formGroupName="User">
+                    <mat-label>E-mail</mat-label>
+                    <input type="email" matInput formControlName="email" placeholder="Digite seu endereço de e-mail">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="input-ativation" formGroupName="User">
+                    <mat-label>Senha</mat-label>
+                    <img *ngIf="passwordView == true" (click)="viewPassword()" class="viewEye"
+                        src="../../../assets/hide.png" alt="" matSuffix>
+                    <img *ngIf="passwordView == false" (click)="viewPassword()" class="viewEye"
+                        src="../../../assets/view.png" alt="" matSuffix>
+                    <input id="password-input" type="password" matInput formControlName="password">
+                </mat-form-field>
+                <div class="genre">
+                    <h5><b>Gênero</b></h5>
+                    <mat-radio-group id="radio-button" fxLayout="row" formControlName="gender">
+                        <mat-radio-button value="1">Masculino</mat-radio-button>
+                        <mat-radio-button value="2">Feminino</mat-radio-button>
+                        <mat-radio-button value="3">Não Binário</mat-radio-button>
+                        <p class="more" *ngIf="genreView == false" (click)="viewGenre()">Mais<mat-icon class="arrow">
+                                keyboard_arrow_down</mat-icon>
+                        </p>
+                        <mat-radio-button value="4" *ngIf="genreView == true">Homem trans</mat-radio-button>
+                        <mat-radio-button value="5" *ngIf="genreView == true">Mulher trans</mat-radio-button>
+                        <mat-radio-button value="6" *ngIf="genreView == true">Fluído</mat-radio-button>
+                        <mat-radio-button value="7" *ngIf="genreView == true">Outro</mat-radio-button>
+                        <mat-radio-button value="8" *ngIf="genreView == true">Prefiro não responder</mat-radio-button>
+                    </mat-radio-group>
+                </div>
             </form>
-            <div class="genre">
-                <h5><b>Gênero</b></h5>
-                <mat-radio-group id="radio-button"  fxLayout="row">
-                    <mat-radio-button value="1">Masculino</mat-radio-button>
-                    <mat-radio-button value="2">Feminino</mat-radio-button>
-                    <mat-radio-button value="3">Não Binário</mat-radio-button>
-                    <p class="more"*ngIf="genreView == false" (click)="viewGenre()">Mais<mat-icon class="arrow">keyboard_arrow_down</mat-icon></p>
-                    <mat-radio-button value="4" *ngIf="genreView == true">Homem trans</mat-radio-button>
-                    <mat-radio-button value="5" *ngIf="genreView == true">Mulher trans</mat-radio-button>
-                    <mat-radio-button value="6" *ngIf="genreView == true">Fluído</mat-radio-button>
-                    <mat-radio-button value="7" *ngIf="genreView == true">Outro</mat-radio-button>
-                    <mat-radio-button value="8" *ngIf="genreView == true">Prefiro não responder</mat-radio-button>
-                </mat-radio-group>
-            </div>
             <div>
                 <div class="login">
-                    <button class="login-btn">CRIAR A MINHA CONTA</button>
+                    <button class="login-btn" (click)="save()">CRIAR A MINHA CONTA</button>
                 </div>
             </div>
             <br>
@@ -75,7 +72,9 @@
                     <div class="content">
                         <img class="img" [src]="tab.imagePath" alt="">
                     </div>
-                    <ng-template mat-tab-label><mat-icon class="icon">fiber_manual_record</mat-icon></ng-template>
+                    <ng-template mat-tab-label>
+                        <mat-icon class="icon">fiber_manual_record</mat-icon>
+                    </ng-template>
                     <p>{{tab.content}}</p>
                 </div>
             </mat-tab>

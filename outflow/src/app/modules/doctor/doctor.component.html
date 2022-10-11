@@ -4,24 +4,26 @@
     </div>
     <div class="main" fxLayout="row" fxFlex="100" fxLayoutAlign="space-around">
         <div class="container">
-            <div class="header"  fxLayout="column" fxLayoutAlign="center center" >
+            <div class="header" fxLayout="column" fxLayoutAlign="center center">
                 <h1>Sobre você</h1>
             </div>
-            <div class="address"  fxLayout="row" fxLayoutAlign="center stretch">
+            <div class="address" fxLayout="row" fxLayoutAlign="center stretch">
                 <form class="form">
                     <mat-form-field appearance="outline" class="input">
                         <mat-label>Nome</mat-label>
                         <input matInput>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="input">
-                        <mat-label>E-mail</mat-label>
-                        <input  type="email" matInput placeholder="Digite seu endereço de e-mail">
+                        <mat-label>Sobrenome</mat-label>
+                        <input matInput>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="input">
-                        <mat-label>Senha</mat-label>
-                        <img *ngIf="passwordView == true" (click)="viewPassword()"class="viewEye" src="../../../assets/hide.png" alt="" matSuffix>
-                        <img *ngIf="passwordView == false" (click)="viewPassword()" class="viewEye" src="../../../assets/view.png" alt="" matSuffix>
-                        <input id="password-input" type="password" matInput >
+                        <mat-label>Gênero</mat-label>
+                        <mat-select disableRipple>
+                            <mat-option value="1">Masculino</mat-option>
+                            <mat-option value="2">Feminino</mat-option>
+                            <mat-option value="3">Não binário</mat-option>
+                        </mat-select>
                     </mat-form-field>
                     <div fxLayoutAlign="space-evenly">
                         <mat-form-field appearance="outline" class="input-half">
@@ -34,18 +36,22 @@
                         </mat-form-field>
                     </div>
                     <mat-form-field appearance="outline" class="input">
-                        <mat-label>Gênero</mat-label>
-                        <mat-select disableRipple>
-                            <mat-option value="1">Masculino</mat-option>
-                            <mat-option value="2">Feminino</mat-option>
-                            <mat-option value="3">Não binário</mat-option>
-                        </mat-select>
+                        <mat-label>E-mail</mat-label>
+                        <input type="email" matInput placeholder="Digite seu endereço de e-mail">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="input">
+                        <mat-label>Senha</mat-label>
+                        <img *ngIf="passwordView == true" (click)="viewPassword()" class="viewEye"
+                            src="../../../assets/hide.png" alt="" matSuffix>
+                        <img *ngIf="passwordView == false" (click)="viewPassword()" class="viewEye"
+                            src="../../../assets/view.png" alt="" matSuffix>
+                        <input id="password-input" type="password" matInput>
                     </mat-form-field>
                 </form>
             </div>
         </div>
         <div class="container">
-            <div class="header"  fxLayout="column" fxLayoutAlign="center center" >
+            <div class="header" fxLayout="column" fxLayoutAlign="center center">
                 <h1>Sua especialidade</h1>
             </div>
             <div class="address" fxLayout="column" fxLayoutAlign="stretch">
@@ -94,8 +100,10 @@
                     </mat-form-field>
                 </form>
                 <div class="terms">
-                    <mat-checkbox>Li e concordo com os <a href="https://zenklub.com.br/termos-especialistas/" target="_blank">Termos e Condições</a> e <a href="https://zenklub.com.br/privacidade/" target="_blank">Política de Privacidade</a></mat-checkbox>
-                </div>    
+                    <mat-checkbox>Li e concordo com os <a href="https://zenklub.com.br/termos-especialistas/"
+                            target="_blank">Termos e Condições</a> e <a href="https://zenklub.com.br/privacidade/"
+                            target="_blank">Política de Privacidade</a></mat-checkbox>
+                </div>
                 <div class="login">
                     <button class="login-btn">Quero me cadastrar</button>
                 </div>

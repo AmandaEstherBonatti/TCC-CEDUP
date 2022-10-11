@@ -15,4 +15,8 @@ export class NavbarComponent {
   login() {
     this.router.navigate(['/login']);
   }
+
+  open() {
+    this.router.navigate(['/sidebar']);
+  }
 }
