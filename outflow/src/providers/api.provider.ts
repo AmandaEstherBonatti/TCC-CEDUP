@@ -31,4 +31,14 @@ export class ApiService {
                 }, reject);
         });
     }
+
+    createDoctor(doctor: any) {
+        return new Promise((resolve, reject) => {
+            this.apiGateway
+                .post('doctors', doctor)
+                .subscribe((response: HttpResponse<any>) => {
+                    resolve(response.body);
+                }, reject);
+        });
+    }
 }

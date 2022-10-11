@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { removeStyles } from '@angular/flex-layout';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
+import { ApiService } from 'src/providers/api.provider';
 
 @Component({
   selector: 'app-doctor',
@@ -18,12 +20,35 @@ export class DoctorComponent implements OnInit {
   telFormControl = new FormControl('55', [Validators.maxLength(14)]);
   cpfFormControl = new FormControl('', [Validators.maxLength(11)]);
 
+  doctorForm!: FormGroup;
+
   passwordView = false;
   checked = false;
   crpBox = true;
-  constructor() {}
+  constructor(private fb: FormBuilder, private api: ApiService, private router: Router,) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initForm()
+  }
+
+  initForm() {
+    this.doctorForm = this.fb.group({
+      name: [null, Validators.required],
+      lastName: [null, Validators.required],
+      gender: [null],
+      timeExperience: [null],
+      mainExpectation: [null],
+      kindOfDoctor: [null],
+      crp: [null],
+      cpf: [null],
+      phoneNumber: [null, Validators.required],
+      User: this.fb.group({
+        email: [null, [Validators.required]],
+        password: [null, Validators.required],
+        role: 2
+      }),
+    })
+  }
 
   viewPassword() {
     this.passwordView = !this.passwordView;
@@ -36,12 +61,18 @@ export class DoctorComponent implements OnInit {
     }
   }
 
-  viewCRP(){
+  viewCRP() {
     this.crpBox = true;
   }
 
-  dontViewCRP(){
+  dontViewCRP() {
     this.crpBox = false;
+  }
+
+  async save() {
+    const data = this.doctorForm.getRawValue();
+    const doctor = await this.api.createDoctor(data)
+    this.router.navigate(['/login']);
   }
 
 }
