@@ -22,7 +22,7 @@ import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 
 const routes: Routes = [
     {
-        path: 'inicial',
+        path: '',
         component: FeedComponent
     }
 ];
@@ -54,6 +54,8 @@ const routes: Routes = [
     entryComponents: [],
     bootstrap: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    // exports: [SidebarComponent]
+
 
 })
 export class FeedModule { }

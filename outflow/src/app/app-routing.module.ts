@@ -13,6 +13,7 @@ const routes: Routes = [
     redirectTo: 'menu/inicial',
     pathMatch: 'full',
   },
+
   {
     path: 'login',
     component: LoginComponent
@@ -22,15 +23,16 @@ const routes: Routes = [
     path: 'pacient',
     component: PacientComponent
   },
+
   {
     path: 'doctor',
     component: DoctorComponent
   },
+
   {
     path: 'sidebar',
     component: SidebarComponent
   },
-
 
   {
     path: 'menu',
@@ -39,6 +41,7 @@ const routes: Routes = [
         (m) => m.HomePageModule
       ),
   },
+
   {
     path: 'feed',
     loadChildren: () =>
@@ -47,6 +50,37 @@ const routes: Routes = [
       ),
   },
 
+  {
+    path: 'perfil',
+    loadChildren: () =>
+    import('./modules/perfil/perfil.module').then(
+      (m) => m.PerfilModule
+    )
+  },
+
+  {
+    path: 'consulting',
+    loadChildren: () =>
+    import('./modules/consulting/consulting.module').then(
+      (m) => m.ConsultingModule
+    )
+  },
+
+  {
+    path: 'clients',
+    loadChildren: () =>
+    import('./modules/clients/clients.module').then(
+      (m) => m.ClientsModule
+    )
+  },
+
+  {
+    path: 'calendar',
+    loadChildren: () =>
+    import('./modules/calendar/calendar.module').then(
+      (m) => m.CalendarModule
+    )
+  }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

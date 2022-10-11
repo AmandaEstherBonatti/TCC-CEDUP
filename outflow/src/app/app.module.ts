@@ -42,7 +42,8 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     NavbarComponent,
     LoginComponent,
     PacientComponent,
-    DoctorComponent
+    DoctorComponent,
+    // SidebarComponent,
 
   ],
   imports: [

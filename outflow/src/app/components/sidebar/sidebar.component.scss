@@ -33,13 +33,6 @@
     height: auto;
 }
 
-// .icon img:hover{
-//     max-width: 35px;
-//     max-height: 35px;
-//     width: auto;
-//     height: auto;
-//     color: #2e5dc2;
-// }
 
 .icon p{
     text-align: center;
@@ -59,5 +52,15 @@
         width: auto;
         height: auto;
         opacity: 0.8;
+    }
+}
+
+@media (max-width: 768px){
+    .icon p{
+        display: none;
+    }
+
+    .logo{
+        font-size: 20px;
     }
 }

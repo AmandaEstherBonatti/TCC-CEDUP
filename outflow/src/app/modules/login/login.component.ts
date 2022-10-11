@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
       }
     }
     console.log('deu boms')
-    this.router.navigate(['feed/inicial']);
+    this.router.navigate(['feed']);
   }
 
 }
