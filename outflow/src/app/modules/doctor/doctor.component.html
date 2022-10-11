@@ -55,25 +55,35 @@
                 <h1>Sua especialidade</h1>
             </div>
             <div class="address" fxLayout="column" fxLayoutAlign="stretch">
-                <div class="speciality" fxLayout="row" fxLayoutAlign="center center">
-                    <div id="block">
-                        <button (click)="viewCRP()">
-                            <img src="../../../assets/autismo.png">
+                <div id="block" fxLayout="row" fxLayoutAlign="center center">
+                    <label class="labelExpanded" (click)="viewCRP()">
+                        <input type="radio" name="targetGroup">
+                        <div class="radio-btns">
+                            <img src="../../../assets/autismo.png" alt="">
                             <p>Psicólogo(a)</p>
-                        </button>
-                        <button (click)="dontViewCRP()">
+                        </div>
+                    </label>
+                    <label class="labelExpanded" (click)="dontViewCRP()">
+                        <input type="radio" name="targetGroup">
+                        <div class="radio-btns">
                             <img src="../../../assets/alvo.png">
                             <p>Psicanalista(a)</p>
-                        </button>
-                        <button (click)="dontViewCRP()">
+                        </div>
+                    </label>
+                    <label class="labelExpanded" (click)="dontViewCRP()">
+                        <input type="radio" name="targetGroup">
+                        <div class="radio-btns">
                             <img src="../../../assets/calma.png">
                             <p>Terapeuta</p>
-                        </button>
-                        <button (click)="dontViewCRP()">
+                        </div>
+                    </label>
+                    <label class="labelExpanded" (click)="dontViewCRP()">
+                        <input type="radio" name="targetGroup">
+                        <div class="radio-btns">
                             <img src="../../../assets/ideia (2).png">
                             <p>Coach</p>
-                        </button>
-                    </div>
+                        </div>
+                    </label>
                 </div>
                 <br>
                 <form class="form">

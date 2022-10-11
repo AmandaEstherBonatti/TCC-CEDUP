@@ -81,12 +81,10 @@ export class LoginComponent implements OnInit {
       try {
         const auth = await this.api.login(data);
         if (auth.token) {
-          console.log('deu boms')
-          this.router.navigate(['feed/inicial']);
-
+          
         }
-
-
+        
+        
         console.log(auth)
       } catch (error) {
         console.log('ERROR 132' + error);
@@ -94,6 +92,8 @@ export class LoginComponent implements OnInit {
         this.message = 'Ops!E-mail e/ou senha inválidos.Tente novamente.';
       }
     }
+    console.log('deu boms')
+    this.router.navigate(['feed/inicial']);
   }
 
 }

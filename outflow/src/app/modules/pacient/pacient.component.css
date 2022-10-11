@@ -28,7 +28,7 @@
     display: flex;
     align-items: center;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
     color: #2e5dc2;
     cursor: pointer;
 }
@@ -204,6 +204,23 @@ mat-radio-button {
 ::ng-deep.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
     color: #2e5dc2 !important;
 }
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #2e5dc2;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: #2e5dc2;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: #2e5dc2;
+}
+
+.mat-tab-label, .mat-tab-link {
+    color: #fff;
+}
+
 
 @media (max-width: 767px) {
     .image-responsive {
