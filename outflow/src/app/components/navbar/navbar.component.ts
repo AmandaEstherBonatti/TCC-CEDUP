@@ -17,6 +17,6 @@ export class NavbarComponent {
   }
 
   open() {
-    this.router.navigate(['/sidebar']);
+    this.router.navigate(['/home']);
   }
 }

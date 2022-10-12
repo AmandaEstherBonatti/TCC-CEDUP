@@ -42,7 +42,8 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     NavbarComponent,
     LoginComponent,
     PacientComponent,
-    DoctorComponent
+    DoctorComponent,
+    // SidebarComponent,
 
   ],
   imports: [
@@ -76,6 +77,6 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
   providers: [],
   entryComponents: [RegisterDialogComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
