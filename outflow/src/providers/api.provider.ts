@@ -21,6 +21,16 @@ export class ApiService {
         });
     }
 
+    findOneUser(id: string | null): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.apiGateway
+                .get("users/:id", { id: id })
+                .subscribe((response: HttpResponse<any>) => {
+                    resolve(response.body);
+                }, reject);
+        });
+    }
+
     createPacient(pacient: any) {
         return new Promise((resolve, reject) => {
             this.apiGateway

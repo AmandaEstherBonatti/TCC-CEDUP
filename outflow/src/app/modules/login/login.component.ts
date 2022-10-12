@@ -81,8 +81,12 @@ export class LoginComponent implements OnInit {
       try {
         const auth = await this.api.login(data);
         if (auth.token) {
-          this.router.navigate(['feed/inicial']);
+          sessionStorage.setItem('token', auth.token)
           sessionStorage.setItem('user_id', auth.id)
+
+
+          this.router.navigate(['/home']);
+
         }
         console.log(auth)
       } catch (error) {
@@ -93,5 +97,4 @@ export class LoginComponent implements OnInit {
     }
     console.log('deu boms')
   }
-
 }

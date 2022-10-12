@@ -9,6 +9,7 @@ import { ConsultingComponent } from './consulting/consulting.component';
 import { ClientsComponent } from './clients/clients.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
     {
@@ -44,16 +45,18 @@ const routes: Routes = [
         FeedComponent,
         ConsultingComponent,
         ClientsComponent,
-        CalendarComponent
+        CalendarComponent,
+
     ],
     imports: [
         RouterModule.forChild(routes),
         MatIconModule,
         FlexLayoutModule,
-        MatButtonModule
+        MatButtonModule,
+        CommonModule,
+
     ],
     providers: [],
-    bootstrap: [SidebarComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class NavbarModule {}
+export class NavbarModule { }
