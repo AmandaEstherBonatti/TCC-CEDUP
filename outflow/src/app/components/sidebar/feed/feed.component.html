@@ -1,1 +1,38 @@
-<app-sidebar></app-sidebar>
+<div class="sidebar">
+    <app-sidebar></app-sidebar>
+</div>
+<div class="container">
+    <div class="header">
+        <h2>Página Inicial</h2>
+    </div>
+    <div class="profile">
+        <div class="main" fxLayout="row">
+            <div class="icon-serv" >
+                <img src="https://osegredo.com.br/wp-content/uploads/2017/09/O-que-as-pessoas-felizes-t%C3%AAm-em-comum-site.jpg" alt="">
+            </div>
+            <form [formGroup]="myFormGroup">
+                <input type="text" formControlName="public" placeholder="Algum exercício para compartilhar?" #feedInput [(ngModel)]="inputText">
+                <button  mat-stroked-button color="primary" (click)="addPost()" class="publish">Publicar</button>
+            </form>
+        </div>
+        <div class="icons" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="image" fxLayoutAlign="space-between">
+                <img src="../../../../assets/imagem.png" >
+            </div>
+            <div class="gif" fxLayoutAlign="space-between">
+                <img src="../../../../assets/gif.png" >
+            </div>
+            <div class="emoji" fxLayoutAlign="space-between">
+                <img src="../../../../assets/sorriso.png" (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">
+            </div>
+            <br>
+            <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" emoji="point_up" (emojiSelect)="addEmoji($event)" title="Escolha seu emoji"></emoji-mart>
+        </div>
+    </div>
+    <hr>
+    <ul class="list-group">
+        <span class="list-group-item">
+            <h3>{{publics}}</h3>
+        </span>
+    </ul>
+</div>
