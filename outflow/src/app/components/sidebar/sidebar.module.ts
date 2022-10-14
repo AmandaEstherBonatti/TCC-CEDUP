@@ -13,7 +13,9 @@ import { FormGroup } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import {MatDialogModule} from '@angular/material/dialog';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { GiphyDialogComponent } from './feed/giphy-dialog/giphy-dialog.component';
 
 const routes: Routes = [
     {
@@ -50,6 +52,7 @@ const routes: Routes = [
         ConsultingComponent,
         ClientsComponent,
         CalendarComponent,
+        GiphyDialogComponent,
     ],
     imports: [
         RouterModule.forChild(routes),
@@ -59,6 +62,7 @@ const routes: Routes = [
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
+        MatDialogModule,
         PickerModule
 
     ],

@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MatDialog } from '@angular/material/dialog';
 import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
+import { GiphyDialogComponent } from './giphy-dialog/giphy-dialog.component';
 
 @Component({
     selector: 'app-feed',
@@ -26,7 +28,7 @@ export class FeedComponent {
     inputText: string = ''
     
 
-    constructor(private formBuilder: FormBuilder) { 
+    constructor(private formBuilder: FormBuilder, public dialog: MatDialog) { 
 
     }
 
@@ -59,5 +61,9 @@ export class FeedComponent {
 
     onFocus(){
         this.showEmojiPicker = false;
+    }
+
+    openDialog(){
+        const dialogRef = this.dialog.open(GiphyDialogComponent);
     }
 }
