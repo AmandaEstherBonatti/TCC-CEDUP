@@ -12,9 +12,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { CommonModule } from '@angular/common';
-
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 const routes: Routes = [
     {
@@ -59,8 +58,8 @@ const routes: Routes = [
         MatButtonModule,
         FormsModule,
         ReactiveFormsModule,
-        PickerModule,
-        CommonModule
+        CommonModule,
+        PickerModule
 
     ],
     providers: [],

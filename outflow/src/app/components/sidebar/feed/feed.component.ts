@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
 
 @Component({
     selector: 'app-feed',
@@ -10,7 +11,18 @@ export class FeedComponent {
     @ViewChild("feedInput") feedInputRef!: ElementRef;
     myFormGroup!: FormGroup;   
     publics: Array<string> = [];
-    isEmojiPickerVisible!: boolean;
+    showEmojiPicker = false;
+    message = ''
+    sets = [
+        'native',
+        'google',
+        'twitter',
+        'facebook',
+        'emojione',
+        'apple',
+        'messenger'
+    ]
+    set = 'twitter';
     inputText: string = ''
     
 
@@ -35,7 +47,17 @@ export class FeedComponent {
     }
 
     addEmoji(event: any){
-        this.inputText = event.emoji;
-        this.isEmojiPickerVisible = false;
+        const {message} = this;
+        const text = `${message}${event.emoji.native}`
+        this.message = text;
+    }
+
+    toggleEmojiPicker(){
+        this.showEmojiPicker = !this.showEmojiPicker;
+        console.log("🚀 ~ file: feed.component.ts ~ line 57 ~ FeedComponent ~ toggleEmojiPicker ~ this.showEmojiPicker", this.showEmojiPicker)
+    }
+
+    onFocus(){
+        this.showEmojiPicker = false;
     }
 }
