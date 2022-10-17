@@ -16,6 +16,8 @@ import { CommonModule } from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { GiphyDialogComponent } from './feed/giphy-dialog/giphy-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
     {

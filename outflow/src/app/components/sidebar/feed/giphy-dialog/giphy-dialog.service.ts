@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { GiphyResult, GifData, SearchReqeust } from './giphy-dialog.interface';
 import { Subject, Observable } from 'rxjs';
 import { filter, distinct , tap, distinctUntilChanged } from 'rxjs/operators';
-import { ThisReceiver } from '@angular/compiler';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class GiphyDialogService {
   currentSearchTerm = '';
   pageSize = 20;
 
-  imageResult = []
+  imageResult!: any[];
 
   searchResultsSubject = new Subject<Array<GifData>>();
   searchResults$ = new Observable<Array<GifData>>();
@@ -49,7 +49,7 @@ export class GiphyDialogService {
     };
 
     this.http.get<GiphyResult>(GiphyDialogService.giphyUrl, { params }).subscribe((giphyResult) => {
-      this.imageResult = this.imageResult.concat();
+      this.imageResult = this.imageResult.concat(giphyResult.data);
       this.currentOffset = giphyResult.pagination.offset + giphyResult.pagination.count;
 
       this.searchResultsSubject.next(this.imageResult);

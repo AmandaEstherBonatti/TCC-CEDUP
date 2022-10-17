@@ -9,7 +9,7 @@ export interface GiphyResult {
 export interface GifData {
     images: {
         fixed_width: {
-        url: string;
+            url: string;
         };
     };
     title: string;
