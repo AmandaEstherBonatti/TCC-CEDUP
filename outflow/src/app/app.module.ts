@@ -78,5 +78,6 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
   entryComponents: [RegisterDialogComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
+  // exports: [BrowserModule]
 })
 export class AppModule { }

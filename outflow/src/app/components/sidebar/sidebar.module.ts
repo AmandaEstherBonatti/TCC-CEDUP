@@ -9,7 +9,16 @@ import { ConsultingComponent } from './consulting/consulting.component';
 import { ClientsComponent } from './clients/clients.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { RouterModule, Routes } from '@angular/router';
+
+import { FormGroup } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { GiphyDialogComponent } from './feed/giphy-dialog/giphy-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
     {
@@ -54,6 +63,11 @@ const routes: Routes = [
         FlexLayoutModule,
         MatButtonModule,
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonModule,
+        MatDialogModule,
+        PickerModule
 
     ],
     providers: [],

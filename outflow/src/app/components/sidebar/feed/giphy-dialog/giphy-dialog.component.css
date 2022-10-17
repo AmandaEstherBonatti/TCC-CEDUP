@@ -1,0 +1,20 @@
+/* @import '~@angular/material/theming'; */
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.result-panel {
+    overflow: auto!important;
+    width: 800px;
+    margin-top: 100px;
+    align-self: center;
+    height: 500px;
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
+    grid-gap: 10px;
+    cursor: pointer;
+}

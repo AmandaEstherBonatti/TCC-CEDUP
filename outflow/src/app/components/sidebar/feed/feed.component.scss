@@ -1,17 +1,68 @@
-.example-card {
-    max-width: 80px;
-    max-height: 100px;
-    margin-bottom: 8px;
-
-    img {
-        max-width: 50px;
-        max-height: 50px;
-    }
-
-    background: black;
+.container {
+    margin-left: 23%;
 }
 
+.header {
+    padding-top: 10px;
+}
 
-.container {
-    margin-left: 20%;
+.icon-serv {
+    border: 2px solid #fff;
+    position: relative;
+    left: 0;
+    bottom: 10%;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 100%;
+    margin-top: 30px;
+}
+
+.icon-serv img {
+    width: 65px;
+    object-fit: cover;
+    position: relative;
+    top: 4px;
+    height: 65px;
+    line-height: 65px;
+    border-radius: 100%;
+}
+
+.profile {
+    margin-bottom: 20px;
+}
+
+.profile input {
+    width: 250px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-top: 55px;
+    margin-left: 10px;
+}
+
+.icons {
+    max-width: 230px;
+    max-height: 230px;
+    width: auto;
+    height: auto;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.image {
+    margin-right: 50px;
+}
+
+.gif {
+    margin-right: 50px;
+}
+
+.emoji {
+    margin-right: 50px;
+}
+
+.publish {
+    cursor: pointer;
 }
