@@ -19,6 +19,7 @@ import { GiphyDialogComponent } from './feed/giphy-dialog/giphy-dialog.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const routes: Routes = [
     {
@@ -67,7 +68,8 @@ const routes: Routes = [
         CommonModule,
         MatDialogModule,
         PickerModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatSnackBarModule
 
     ],
     providers: [],

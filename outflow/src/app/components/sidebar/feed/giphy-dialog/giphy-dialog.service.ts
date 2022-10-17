@@ -50,6 +50,7 @@ export class GiphyDialogService {
 
     this.http.get<GiphyResult>(GiphyDialogService.giphyUrl, { params }).subscribe((giphyResult) => {
       this.imageResult = this.imageResult.concat(giphyResult.data);
+      console.log(giphyResult)
       this.currentOffset = giphyResult.pagination.offset + giphyResult.pagination.count;
 
       this.searchResultsSubject.next(this.imageResult);

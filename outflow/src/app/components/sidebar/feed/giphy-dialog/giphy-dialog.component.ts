@@ -23,14 +23,17 @@ export class GiphyDialogComponent implements OnInit {
 
   search(){
     this.giphyService.search(this.searchTerm);
-    console.log("🚀 ~ file: giphy-dialog.component.ts ~ line 25 ~ GiphyDialogComponent ~ search ~ this.giphyService", this.giphyService)
-    console.log("🚀 ~ file: giphy-dialog.component.ts ~ line 25 ~ GiphyDialogComponent ~ search ~ this.searchTerm", this.searchTerm)
   }
 
   ngOnInit(): void {
   }
 
   close(){
+    this.dialogGiphy.close();
+  }
+
+  selectedGiphy(url: string){
+    sessionStorage.setItem("selectedGiphy", JSON.stringify(url));
     this.dialogGiphy.close();
   }
 
