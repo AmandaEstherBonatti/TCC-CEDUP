@@ -1,13 +1,17 @@
-<div class="flex bg-blue-300 py-4 justify-center items-center fixed top-0 z-100 w-full inset-x-0 border-b border-gray-400 shadow">
-  <input class="text-gray-700 max-w-xl py-2 px-4 mx-4 shadow border rounded" type="text" placeholder="GIF Search" [(ngModel)]="searchTerm"/>
-  <button class="bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 shadow rounded" (click)="search()">
-    Search
-  </button>
-</div>
+<mat-toolbar class="navbar" fxLayoutAlign="center center">
+  <div class="search">
+    <input class="input-search" type="text" placeholder="Pesquisar GIF" [(ngModel)]="searchTerm"/>
+    <button class="button-search" (click)="search()">Pesquisar</button>
+  </div>
+  <span class="spacer"></span>
+  <div class="icon" fxLayoutAlign="end start">
+    <mat-icon class="close" fxLayoutAlign="end start" (click)="close()">close</mat-icon>
+  </div>
+</mat-toolbar>
 
 <div class="result-panel">
   <div
-    *ngFor="let result of giphyService.searchResults$ | async" class="flex justify-center flex-col w-full h-full shadow rounded overflow-hidden bg-gray-200">
+    *ngFor="let result of giphyService.searchResults$ | async" class="result-search">
     <img [src]="result.images.fixed_width.url" [alt]="result.title" />
   </div>
 </div>

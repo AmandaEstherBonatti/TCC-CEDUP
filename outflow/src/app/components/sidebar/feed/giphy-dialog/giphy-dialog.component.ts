@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { GiphyDialogService } from './giphy-dialog.service';
 
 
@@ -18,7 +19,7 @@ export class GiphyDialogComponent implements OnInit {
     }
   }
 
-  constructor(public giphyService: GiphyDialogService) { }
+  constructor(public giphyService: GiphyDialogService, public dialogGiphy: MatDialogRef<GiphyDialogComponent>) { }
 
   search(){
     this.giphyService.search(this.searchTerm);
@@ -27,6 +28,10 @@ export class GiphyDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  close(){
+    this.dialogGiphy.close();
   }
 
 }

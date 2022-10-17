@@ -18,6 +18,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { GiphyDialogComponent } from './feed/giphy-dialog/giphy-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 const routes: Routes = [
     {
@@ -65,7 +66,8 @@ const routes: Routes = [
         ReactiveFormsModule,
         CommonModule,
         MatDialogModule,
-        PickerModule
+        PickerModule,
+        MatToolbarModule
 
     ],
     providers: [],
