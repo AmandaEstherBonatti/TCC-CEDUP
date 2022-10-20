@@ -1,4 +1,12 @@
 /* @import '~@angular/material/theming'; */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+::ng-deep.mat-dialog-container{
+    padding: 0!important;
+}
 
 :host {
     display: flex;
@@ -6,10 +14,35 @@
     justify-content: center;
 }
 
+.navbar{
+    width: 100%;
+    background-color: rgb(189, 219, 227);
+}
+
+.search input{
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 40px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #fff;
+    text-align: center;
+    box-shadow: inset 220px 0 0 0 #fff;
+}
+.search button{
+    height: 40px;
+    color: #fff;
+    background-color: #2e5dc2;
+    width: 80px;
+    border-color: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
 .result-panel {
     overflow: auto!important;
     width: 800px;
-    margin-top: 100px;
+    margin-top: 30px;
     align-self: center;
     height: 500px;
     display: inline-grid;
@@ -17,4 +50,19 @@
     align-items: center;
     grid-gap: 10px;
     cursor: pointer;
+}
+
+.result-search{
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.close{
+    margin-right: 0;
+    color: #2e5dc2;
+    cursor: pointer;
+}
+
+.spacer{
+    flex: 1 1 auto;
 }

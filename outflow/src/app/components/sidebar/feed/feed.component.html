@@ -18,7 +18,10 @@
         </div>
         <div class="icons" fxLayout="row" fxLayoutAlign="space-between center">
             <div class="image" fxLayoutAlign="space-between">
-                <img src="../../../../assets/imagem.png">
+                <label for="file-input">
+                    <img src="../../../../assets/imagem.png">
+                </label>
+                <input id="file-input" type="file">
             </div>
             <div class="gif" fxLayoutAlign="space-between">
                 <img src="../../../../assets/gif.png" (click)="openDialog()">
@@ -33,8 +36,26 @@
     <emoji-mart class="emoji-mart" set="twitter" *ngIf="showEmojiPicker" (emojiSelect)="addEmoji($event)"
         title="Pick your emoji..."></emoji-mart>
     <ul class="list-group">
-        <span class="list-group-item">
-            <h3>{{publics}}</h3>
+        <span class="list-group-item" *ngFor="let publi of publics; let i = index">
+            <div class="main" fxLayout="row">
+                <div class="icon-serv">
+                    <img src="https://osegredo.com.br/wp-content/uploads/2017/09/O-que-as-pessoas-felizes-t%C3%AAm-em-comum-site.jpg"
+                        alt="">
+                </div>
+                <div class="username">
+                    <h3><b>Nicoly keyssiane</b></h3>
+                    <small>@username</small>
+                </div>
+            </div>
+            <div class="publication">
+                <h3>{{publi}}</h3>
+                <img *ngIf="link === true" [src]="publi">
+            </div>
+            <div class="interaction" fxLayoutAlign="start start">
+                <mat-icon id="mat-icon-like" (click)="likePost(i)">favorite</mat-icon>
+                <mat-icon class="mat-icon"> mode_comment</mat-icon>
+                <mat-icon class="mat-icon">share</mat-icon>
+            </div>
         </span>
     </ul>
 </div>

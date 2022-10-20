@@ -27,6 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes: Routes = [
     {
@@ -88,6 +90,8 @@ const routes: Routes = [
 
 
 
+        MatToolbarModule,
+        MatSnackBarModule
 
     ],
     providers: [],

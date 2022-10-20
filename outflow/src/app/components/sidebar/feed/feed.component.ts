@@ -1,10 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ImgSrcStyleBuilder } from '@angular/flex-layout';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from '@angular/material/dialog';
 import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { UserService } from 'src/providers/api.provider';
 import { GiphyDialogComponent } from './giphy-dialog/giphy-dialog.component';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-feed',
@@ -26,9 +28,8 @@ export class FeedComponent {
         'apple',
         'messenger'
     ]
-    set = 'twitter';
+    set = 'apple';
     inputText: string = ''
-
 
     longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
     from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
@@ -40,11 +41,15 @@ export class FeedComponent {
     role: any;
     token: any;
 
+    link!: boolean
+    horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+    verticalPosition: MatSnackBarVerticalPosition = 'top';
+    durationInSeconds = 2;
+    like: boolean = false;
 
-    constructor(private router: Router, private userService: UserService,
-        private formBuilder: FormBuilder, public dialog: MatDialog) {
 
-    }
+    constructor(private _snackBar: MatSnackBar, private router: Router, private userService: UserService,
+        private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
     async ngOnInit() {
         this.token = sessionStorage.getItem('token')!;
@@ -65,16 +70,39 @@ export class FeedComponent {
         this.user = await this.userService.findOneUser(this.userId);
 
     }
+
+
+
     initForm() {
         this.myFormGroup = this.formBuilder.group({
             public: ['', Validators.required]
         })
+        this.message = ''
+        sessionStorage.clear();
+    }
+
+    checkLink() {
+        var pattern = /^https:\/\//i
+        if (pattern.test(this.message)) {
+            this.link = true;
+        } else {
+            this.link = false;
+        }
     }
 
     addPost() {
         const publication = this.feedInputRef.nativeElement.value;
-        this.publics.push(publication);
-        this.initForm();
+        if (publication == '') {
+            this._snackBar.open("Comente algo antes de publicar!", 'Fechar', {
+                horizontalPosition: this.horizontalPosition,
+                verticalPosition: this.verticalPosition,
+                duration: this.durationInSeconds * 1000,
+            });
+        } else {
+            this.publics.push(publication);
+            this.checkLink();
+            this.initForm();
+        }
     }
 
     addEmoji(event: any) {
@@ -85,7 +113,6 @@ export class FeedComponent {
 
     toggleEmojiPicker() {
         this.showEmojiPicker = !this.showEmojiPicker;
-        console.log("🚀 ~ file: feed.component.ts ~ line 57 ~ FeedComponent ~ toggleEmojiPicker ~ this.showEmojiPicker", this.showEmojiPicker)
     }
 
     onFocus() {
@@ -94,5 +121,20 @@ export class FeedComponent {
 
     openDialog() {
         const dialogRef = this.dialog.open(GiphyDialogComponent);
+
+        dialogRef.afterClosed().subscribe(result => {
+            result = JSON.parse(sessionStorage.getItem('selectedGiphy')!);
+            this.message = result;
+        })
+    }
+
+    likePost(i: any) {
+        this.like = !this.like
+        let like = document.getElementById('mat-icon-like') as HTMLDialogElement
+        if (this.like == false) {
+            like.style.color = 'black'
+        } else {
+            like.style.color = 'red';
+        }
     }
 }

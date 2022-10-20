@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { GiphyDialogService } from './giphy-dialog.service';
 
 
@@ -18,15 +19,22 @@ export class GiphyDialogComponent implements OnInit {
     }
   }
 
-  constructor(public giphyService: GiphyDialogService) { }
+  constructor(public giphyService: GiphyDialogService, public dialogGiphy: MatDialogRef<GiphyDialogComponent>) { }
 
   search(){
     this.giphyService.search(this.searchTerm);
-    console.log("🚀 ~ file: giphy-dialog.component.ts ~ line 25 ~ GiphyDialogComponent ~ search ~ this.giphyService", this.giphyService)
-    console.log("🚀 ~ file: giphy-dialog.component.ts ~ line 25 ~ GiphyDialogComponent ~ search ~ this.searchTerm", this.searchTerm)
   }
 
   ngOnInit(): void {
+  }
+
+  close(){
+    this.dialogGiphy.close();
+  }
+
+  selectedGiphy(url: string){
+    sessionStorage.setItem("selectedGiphy", JSON.stringify(url));
+    this.dialogGiphy.close();
   }
 
 }
