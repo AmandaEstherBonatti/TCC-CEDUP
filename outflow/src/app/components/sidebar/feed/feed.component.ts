@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from '@angular/material/dialog';
 import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/providers/api.provider';
+import { UserService } from 'src/providers/api.provider';
 import { GiphyDialogComponent } from './giphy-dialog/giphy-dialog.component';
 
 @Component({
@@ -36,26 +36,35 @@ export class FeedComponent {
 
     userId: any;
     user: any;
+    url: any;
     role: any;
     token: any;
 
 
-    constructor(private api: ApiService, private router: Router,
+    constructor(private router: Router, private userService: UserService,
         private formBuilder: FormBuilder, public dialog: MatDialog) {
 
     }
 
-    ngOnInit(): void {
+    async ngOnInit() {
         this.token = sessionStorage.getItem('token')!;
+        this.userId = sessionStorage.getItem('user_id');
+
         if (!this.token) {
             this.router.navigate(['menu/inicial']);
         } else {
             this.role = sessionStorage.getItem('role')
+            await this.getUser();
+            this.url = `http://localhost:3500/api/v1/users/file/upload/${this.user.photo}`
 
         }
         this.initForm();
     }
 
+    async getUser() {
+        this.user = await this.userService.findOneUser(this.userId);
+
+    }
     initForm() {
         this.myFormGroup = this.formBuilder.group({
             public: ['', Validators.required]

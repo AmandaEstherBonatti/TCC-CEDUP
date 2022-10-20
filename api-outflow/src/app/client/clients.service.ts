@@ -24,6 +24,13 @@ export class ClientService {
     return await this.clientRepository.find(options);
   }
 
+  // async findByUser(id: string){
+  //   return await this.clientRepository.find({
+  //     select: ['id', 'name', 'lastName', 'birthday', 'gender', 'phoneNumber'],
+  //     where: { User: id },
+  //   })
+  // }
+
   async findOneOrFail(id: string) {
     try {
       return await this.clientRepository.findOneBy({ id });

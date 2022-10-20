@@ -9,6 +9,9 @@ import { ConsultingComponent } from './consulting/consulting.component';
 import { ClientsComponent } from './clients/clients.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatChipsModule } from '@angular/material/chips';
+
 
 import { FormGroup } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +22,11 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { GiphyDialogComponent } from './feed/giphy-dialog/giphy-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 const routes: Routes = [
     {
@@ -55,10 +63,12 @@ const routes: Routes = [
         ConsultingComponent,
         ClientsComponent,
         CalendarComponent,
+        GiphyDialogComponent
 
     ],
     imports: [
         RouterModule.forChild(routes),
+        MatSelectModule,
         MatIconModule,
         FlexLayoutModule,
         MatButtonModule,
@@ -67,7 +77,17 @@ const routes: Routes = [
         ReactiveFormsModule,
         CommonModule,
         MatDialogModule,
-        PickerModule
+        PickerModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FlexLayoutModule,
+        MatIconModule,
+        MatChipsModule,
+        MatAutocompleteModule,
+
+
+
 
     ],
     providers: [],

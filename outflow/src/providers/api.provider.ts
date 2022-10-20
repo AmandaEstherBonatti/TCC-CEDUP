@@ -5,7 +5,7 @@ import { ApiGateway } from "src/api-gateway";
 @Injectable({
     providedIn: 'root',
 })
-export class ApiService {
+export class UserService {
     constructor(private apiGateway: ApiGateway) { }
 
     ngOnInit(): void { }
@@ -31,6 +31,45 @@ export class ApiService {
         });
     }
 
+    update(id: string | null, user: any): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.apiGateway
+                .put("users/:id", { id: id }, user)
+                .subscribe((response: HttpResponse<any>) => {
+                    resolve(response.body);
+                }, reject);
+        });
+    }
+
+}
+
+@Injectable({
+    providedIn: 'root',
+})
+export class DoctorService {
+    constructor(private apiGateway: ApiGateway) { }
+
+    ngOnInit(): void { }
+
+    createDoctor(doctor: any) {
+        return new Promise((resolve, reject) => {
+            this.apiGateway
+                .post('doctors', doctor)
+                .subscribe((response: HttpResponse<any>) => {
+                    resolve(response.body);
+                }, reject);
+        });
+    }
+}
+
+@Injectable({
+    providedIn: 'root',
+})
+export class PacientService {
+    constructor(private apiGateway: ApiGateway) { }
+
+    ngOnInit(): void { }
+
     createPacient(pacient: any) {
         return new Promise((resolve, reject) => {
             this.apiGateway
@@ -42,13 +81,14 @@ export class ApiService {
         });
     }
 
-    createDoctor(doctor: any) {
+    update(id: string | null, client: any): Promise<any> {
         return new Promise((resolve, reject) => {
             this.apiGateway
-                .post('doctors', doctor)
+                .put("clients/:id", { id: id }, client)
                 .subscribe((response: HttpResponse<any>) => {
                     resolve(response.body);
                 }, reject);
         });
     }
+
 }

@@ -3,7 +3,7 @@ import { removeStyles } from '@angular/flex-layout';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
-import { ApiService } from 'src/providers/api.provider';
+import { DoctorService } from 'src/providers/api.provider';
 
 @Component({
   selector: 'app-doctor',
@@ -25,7 +25,7 @@ export class DoctorComponent implements OnInit {
   passwordView = false;
   checked = false;
   crpBox = true;
-  constructor(private fb: FormBuilder, private api: ApiService, private router: Router,) { }
+  constructor(private fb: FormBuilder, private api: DoctorService, private router: Router,) { }
 
   ngOnInit(): void {
     this.initForm()

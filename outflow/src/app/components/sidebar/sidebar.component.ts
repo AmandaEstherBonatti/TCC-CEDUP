@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/providers/api.provider';
+import { UserService } from 'src/providers/api.provider';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
   token: any;
   role: any;
 
-  constructor(private api: ApiService, private router: Router,
+  constructor(private api: UserService, private router: Router,
   ) { }
 
   async ngOnInit() {
@@ -28,6 +28,11 @@ export class SidebarComponent implements OnInit {
       sessionStorage.clear();
       this.router.navigate(['menu/inicial']);
     }
+  }
+
+  exit() {
+    sessionStorage.clear();
+    this.router.navigate(['menu/inicial']);
   }
 
   async getUser(id: string) {

@@ -1,4 +1,4 @@
-import { ClientEntity } from './../client/clients.entity';
+import { ClientEntity } from '../client/clients.entity';
 import {
     BeforeInsert,
     Column,
@@ -35,14 +35,22 @@ export class UsersEntity {
     @Column()
     role: Role;
 
+    @Column({ nullable: true })
+    photo: string;
 
-    @OneToOne(() => ClientEntity, (client) => client.User, { nullable: true })
+    @OneToOne(() => ClientEntity, (client) => client.User, {
+        nullable: true
+    })
     Client: ClientEntity
 
-    @OneToOne(() => DoctorsEntity, (doctor) => doctor.User, { nullable: true })
+    @OneToOne(() => DoctorsEntity, (doctor) => doctor.User, {
+        nullable: true
+    })
     Doctor: DoctorsEntity
 
-    @OneToOne(() => DetailsProfileEntity, (Details) => Details.User, { nullable: true })
+    @OneToOne(() => DetailsProfileEntity, (Details) => Details.User, {
+        nullable: true
+    })
     DetailsProfile: DetailsProfileEntity
 
     @OneToMany(() => FeedPostEntity, (feedPostEntity) => feedPostEntity.User, { nullable: true })

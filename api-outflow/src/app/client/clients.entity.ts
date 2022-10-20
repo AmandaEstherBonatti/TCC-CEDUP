@@ -37,7 +37,6 @@ export class ClientEntity {
   @OneToOne(() => AddressEntity, {
     cascade: ['insert', 'update', 'remove'],
     orphanedRowAction: 'delete',
-    eager: true
   })
   @JoinColumn()
   Address: AddressEntity;
@@ -45,9 +44,9 @@ export class ClientEntity {
   @OneToOne(() => UsersEntity, {
     cascade: ['insert', 'update', 'remove'],
     orphanedRowAction: 'delete',
-    eager: true
   })
   @JoinColumn()
+
   User: UsersEntity;
 
 }

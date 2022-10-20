@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/providers/api.provider';
 
 @Component({
   selector: 'app-clients',
@@ -14,7 +13,7 @@ export class ClientsComponent implements OnInit {
   role: any;
   token: any;
 
-  constructor(private api: ApiService, private router: Router,) { }
+  constructor(private router: Router,) { }
 
   ngOnInit(): void {
     this.token = sessionStorage.getItem('token')!;

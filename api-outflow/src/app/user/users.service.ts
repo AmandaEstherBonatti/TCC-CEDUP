@@ -26,9 +26,17 @@ export class UsersService {
     return await this.usersRepository.find(options);
   }
 
-  findOneOrFail(id: string) {
+  async findOneOrFail(id: string) {
     try {
-      return from(this.usersRepository.findOneBy({ id }));
+      return from(this.usersRepository.findOne({
+        where: { id },
+        relations: {
+          Client: true,
+          Doctor: true
+
+        },
+      }));
+
     } catch {
       throw new NotFoundException();
     }

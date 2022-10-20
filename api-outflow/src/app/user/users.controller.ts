@@ -10,13 +10,20 @@ import {
   Post,
   Put,
   Query,
+  Res,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { Public } from 'src/auth/decorators/public.decorator';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { diskStorage } from 'multer';
 import { UsersService } from './users.service';
+import { editFileName } from './utils/file-upload-rename';
+import { imageFileFilter } from './utils/photo-upload-validator';
 
 // @UseGuards(AuthGuard('jwt'))
 @Controller('api/v1/users')
@@ -55,4 +62,29 @@ export class UsersController {
   async destroy(@Param('id', new ParseUUIDPipe()) id: string) {
     await this.usersService.destroy(id);
   }
+
+  @Post('file/upload')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: '../files',
+        filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
+    }),
+  )
+  async uploadedFile(@UploadedFile() file) {
+    const response = {
+      originalname: file.originalname,
+      filename: file.filename,
+    };
+    return response;
+  }
+
+  @Get('file/upload/:imgpath')
+  seeUploadedFile(@Param('imgpath') image, @Res() res) {
+    let url = image.split('.')
+    return res.sendFile(image, { root: '../files' });
+  }
+
 }  
