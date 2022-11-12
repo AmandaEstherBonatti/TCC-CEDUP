@@ -44,7 +44,10 @@ export class DoctorsController {
         return await this.doctorService.update(id, body);
     }
 
-
+    @Post('find')
+    async find(@Body() body: any) {
+        return await this.doctorService.find(body.name, body.type);
+    }
 
     @Delete(':id')
     @HttpCode(HttpStatus.NO_CONTENT)

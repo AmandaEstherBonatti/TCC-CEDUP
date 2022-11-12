@@ -7,20 +7,22 @@ import {
 } from 'class-validator';
 import { AddressEntity } from 'src/app/address/address.entity';
 import { Gender } from 'src/app/client/enum/gender.enum';
+import { DoctorsEntity } from 'src/app/doctor/doctors.entity';
 import { UsersEntity } from 'src/app/user/users.entity';
 
 
 
 
 export class CreateFeedDto {
-   @IsNotEmpty()
+   @IsOptional()
    @IsString()
-   body: string;
+   description: string;
 
-   @IsNotEmpty()
-   createdAt: Date;
+   @IsOptional()
+   @IsString()
+   photoFeed: string;
 
-   @IsNotEmpty()
-   User: UsersEntity;
+   @IsOptional()
+   Doctor: DoctorsEntity;
 
 }                               

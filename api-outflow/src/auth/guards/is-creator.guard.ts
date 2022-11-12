@@ -29,11 +29,11 @@ export class IsCreatorGuard implements CanActivate {
 
     // Determine if logged-in user is the same as the user that created the feed post
 
-    this.feedService.findOneOrFail(feedId)
-    map((feedPost: FeedPostEntity) => {
-      let isAuthor = user.id === feedPost.User.id;
-      return isAuthor;
-    })
+    // this.feedService.findOneOrFail(feedId)
+    // map((feedPost: FeedPostEntity) => {
+    //   let isAuthor = user.id === feedPost.User.id;
+    //   return isAuthor;
+    // })
 
   }
 }

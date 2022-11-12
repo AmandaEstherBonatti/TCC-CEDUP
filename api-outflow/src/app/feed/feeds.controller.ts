@@ -11,11 +11,17 @@ import {
     Put,
     Query,
     Res,
+    UploadedFile,
     UseGuards,
+    UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { editFileName } from '../user/utils/file-upload-rename';
+import { imageFileFilter } from '../user/utils/photo-upload-validator';
 import { CreateFeedDto } from './dto/create-feeds.dto';
 import { UpdateFeedDto } from './dto/update-feeds.dto';
 import { FeedService } from './feeds.service';
+import { diskStorage } from 'multer';
 
 
 
@@ -24,11 +30,11 @@ export class FeedsController {
     constructor(private readonly feedService: FeedService) { }
 
     @Get()
-    async index(@Query('take') take: number = 1,
-        @Query('skip') skip: number = 1,) {
-        take = take > 20 ? 20 : take;
-        return await this.feedService.findAll(take, skip);
+    async index() {
+        return await this.feedService.findAll();
     }
+
+
 
     @Post()
     async store(@Body() body: CreateFeedDto) {
@@ -59,5 +65,29 @@ export class FeedsController {
     @HttpCode(HttpStatus.NO_CONTENT)
     async destroy(@Param('id', new ParseUUIDPipe()) id: string) {
         await this.feedService.destroy(id);
+    }
+
+    @Post('file/upload')
+    @UseInterceptors(
+        FileInterceptor('file', {
+            storage: diskStorage({
+                destination: '../files',
+                filename: editFileName,
+            }),
+            fileFilter: imageFileFilter,
+        }),
+    )
+    async uploadedFile(@UploadedFile() file) {
+        const response = {
+            originalname: file.originalname,
+            filename: file.filename,
+        };
+        return response;
+    }
+
+    @Get('file/upload/:imgpath')
+    seeUploadedFile(@Param('imgpath') image, @Res() res) {
+        let url = image.split('.')
+        return res.sendFile(image, { root: '../files' });
     }
 }

@@ -32,7 +32,8 @@ export class UsersService {
         where: { id },
         relations: {
           Client: true,
-          Doctor: true
+          Doctor: true,
+          DetailsProfile: true
 
         },
       }));

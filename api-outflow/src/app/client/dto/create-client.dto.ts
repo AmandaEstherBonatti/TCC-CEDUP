@@ -1,31 +1,31 @@
 import {
-    IsNotEmpty,
-    IsNumber,
-    IsObject,
-    IsOptional,
-    IsString
-  } from 'class-validator';
-  import { Gender } from '../enum/gender.enum';
-
- 
- export class CreateClientDto{
-    @IsNotEmpty()
-    @IsString()
-    name: string;
-
-    @IsNotEmpty()
-    @IsString()
-    lastName: string;
+   IsNotEmpty,
+   IsNumber,
+   IsObject,
+   IsOptional,
+   IsString
+} from 'class-validator';
+import { Gender } from '../enum/gender.enum';
 
 
-    @IsNotEmpty()
-    birthday: Date;
+export class CreateClientDto {
+   @IsNotEmpty()
+   @IsString()
+   name: string;
 
-    @IsNotEmpty()
-    gender: Gender ;
+   @IsNotEmpty()
+   @IsString()
+   lastName: string;
 
-    @IsNotEmpty()
-    @IsString()
-    phoneNumber: string;
 
- }                               
+   @IsNotEmpty()
+   birthday: string;
+
+   @IsNotEmpty()
+   gender: Gender;
+
+   @IsNotEmpty()
+   @IsString()
+   phoneNumber: string;
+
+}                               

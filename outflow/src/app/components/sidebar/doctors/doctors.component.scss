@@ -1,0 +1,141 @@
+.container {
+    margin-left: 20%;
+    padding-top: 3%;
+
+    overflow: auto;
+    height: calc(100vh - 0px);
+
+    .container-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 350px;
+        align-items: center;
+    }
+
+    .container-header h1 {
+        font-weight: 900;
+        font-size: 40px;
+        margin-bottom: 20px;
+
+    }
+
+    .container-header p {
+        font-weight: 300;
+        color: #555;
+        margin-bottom: 50px;
+    }
+
+    .search-box {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        width: 400px;
+        border: 3px solid #242F9B;
+        border-radius: 12px;
+    }
+
+    .search-box input {
+        border: none;
+        height: 100%;
+        width: 100%;
+
+    }
+
+    .search-box i {
+        color: #242F9B;
+    }
+
+    .search-box input:focus {
+        outline: none;
+    }
+
+    .header-info {
+        margin-right: 40%;
+
+    }
+
+
+    .inputs-dropdown button {
+        height: 40px;
+        width: 110px;
+        border: none;
+        margin-bottom: 30%;
+
+    }
+
+    .inputs-dropdown button:hover {
+        color: #fff;
+
+        background-color: #2e5dc2;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    p {
+        margin: 10px;
+    }
+
+    .containeer {
+        width: 100%;
+        background: #DBDFFD;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .card {
+        margin: 30px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        padding: 50px;
+        width: 900px;
+        border-radius: 10px;
+    }
+
+    .profile-img {
+        object-fit: cover;
+        width: 150px;
+        border-radius: 50%;
+        border: 15px solid rgb(1, 176, 255);
+        ;
+    }
+
+    .info {
+        margin-left: 30px;
+        color: #555;
+        font-weight: 500;
+    }
+
+    .icons-header {
+        display: flex;
+        color: #000;
+        justify-content: space-around;
+        list-style: none;
+    }
+
+    .icons-header i {
+        color: #242F9B;
+    }
+
+    .info-button {
+        margin-top: 20px;
+        border: #242F9B;
+        padding: 10px;
+        background-color: #242F9B;
+        color: #fff;
+    }
+
+    .work-off {
+        margin-left: 30px;
+    }
+}

@@ -5,9 +5,8 @@ import {
    IsOptional,
    IsString
 } from 'class-validator';
+import { UsersEntity } from 'src/app/user/users.entity';
 
-import { LangugesEntity } from 'src/app/languages/languages.entity';
-import { SpecialtyEntity } from 'src/app/specialty/specialty.entity';
 
 
 export class UpdateDetailsProfileDto {
@@ -18,9 +17,9 @@ export class UpdateDetailsProfileDto {
    description: string;
 
    @IsOptional()
-   Languages: LangugesEntity[];
+   specialty: string;
 
-   @IsOptional()
-   Specialtys: SpecialtyEntity[];
+   @IsNotEmpty()
+   User: UsersEntity;
 
 }                               

@@ -3,11 +3,31 @@ import { ImgSrcStyleBuilder } from '@angular/flex-layout';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from '@angular/material/dialog';
 import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
-import { UserService } from 'src/providers/api.provider';
 import { GiphyDialogComponent } from './giphy-dialog/giphy-dialog.component';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { HttpClient } from '@angular/common/http';
+import { FeedService, UserService } from 'src/providers/api.provider';
+import { Router } from '@angular/router';
 
+
+export interface Ifeed {
+    Doctor: {
+        id: string;
+        name: string;
+        lastName: string;
+        photoDoctor: string;
+        User: {
+            id: string;
+            photo: string;
+        }
+    };
+
+    view: boolean;
+    description: string;
+    id: string;
+    photoFeed: string;
+    photoF: string;
+}
 @Component({
     selector: 'app-feed',
     templateUrl: './feed.component.html',
@@ -18,6 +38,7 @@ export class FeedComponent {
     myFormGroup!: FormGroup;
     publics: Array<string> = [];
     showEmojiPicker = false;
+
     message = ''
     sets = [
         'native',
@@ -30,56 +51,107 @@ export class FeedComponent {
     ]
     set = 'apple';
     inputText: string = ''
-
-    longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-    from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-    originally bred for hunting.`;
-
-    userId: any;
-    user: any;
-    url: any;
-    role: any;
-    token: any;
-
     link!: boolean
     horizontalPosition: MatSnackBarHorizontalPosition = 'center';
     verticalPosition: MatSnackBarVerticalPosition = 'top';
     durationInSeconds = 2;
     like: boolean = false;
+    feeds: Ifeed[] = [];
+    stylesbol: boolean = false;
 
+    file!: any;
+    url: any;
+    urlProfileUser: any;
+    selectedFile: any;
+    fileName!: string;
+    createPhoto: any;
+    post: any;
+    userId: any;
+    photoDoctor: any[] = [];
+    photoFeed!: string;
+    user: any;
+    doctor: any;
+    role: any;
+    token: any;
 
-    constructor(private _snackBar: MatSnackBar, private router: Router, private userService: UserService,
-        private formBuilder: FormBuilder, public dialog: MatDialog) { }
+    constructor(private formBuilder: FormBuilder, private router: Router, public dialog: MatDialog, private _snackBar: MatSnackBar,
+        private httpClient: HttpClient, private userService: UserService, private feedService: FeedService) {
 
-    async ngOnInit() {
-        this.token = sessionStorage.getItem('token')!;
+    }
+
+    async ngOnInit(): Promise<void> {
+        this.token = sessionStorage.getItem('token');
+        this.role = sessionStorage.getItem('role');
+
         this.userId = sessionStorage.getItem('user_id');
 
         if (!this.token) {
             this.router.navigate(['menu/inicial']);
         } else {
-            this.role = sessionStorage.getItem('role')
-            await this.getUser();
-            this.url = `http://localhost:3500/api/v1/users/file/upload/${this.user.photo}`
+            await this.getUser()
 
+            this.role = this.user.role;
+            if (this.user.photo != undefined) {
+                this.urlProfileUser = `http://localhost:3500/api/v1/users/file/upload/${this.user.photo}`
+            } else {
+                this.urlProfileUser = '../../../../assets/cloud.jpg'
+            }
+
+            this.getFeeds()
         }
-        this.initForm();
+    }
+
+    async showPhoto(fileName: string) {
+        return this.photoFeed = `http://localhost:3500/api/v1/feeds/file/upload/${fileName}`
+    }
+
+    async getFeeds() {
+        this.feeds = await this.feedService.findAll()
+        for (let feed of this.feeds) {
+            if (feed.Doctor.User.photo != null) {
+                feed.Doctor.photoDoctor = `http://localhost:3500/api/v1/feeds/file/upload/${feed.Doctor.User.photo}`
+            } else {
+                feed.Doctor.photoDoctor = '../../../../assets/cloud.jpg'
+            }
+            if (feed.photoFeed != null) {
+                feed.view = true
+                feed.photoF = `http://localhost:3500/api/v1/feeds/file/upload/${feed.photoFeed}`
+            }
+        }
+        console.log(this.feeds)
+    }
+
+    openProfile(profileId: string) {
+        console.log(profileId)
+        sessionStorage.setItem('other_profile', '0')
+        sessionStorage.setItem('other_profile_id', profileId)
+        this.router.navigate(['home/perfil']);
     }
 
     async getUser() {
         this.user = await this.userService.findOneUser(this.userId);
+        if (this.user.Doctor) {
 
+            this.doctor = this.user.Doctor
+            this.initForm()
+        }
+        console.log(this.doctor)
     }
-
-
 
     initForm() {
         this.myFormGroup = this.formBuilder.group({
-            public: ['', Validators.required]
+            description: ['', Validators.required],
+            photoFeed: [this.fileName],
+            Doctor: [this.doctor.id],
         })
         this.message = ''
-        sessionStorage.clear();
     }
+
+    // async getPost() {
+    //     this.post = await this.feedService.findByUser(this.userId)
+    //     console.log(this.post)
+    //     this.url = `http://localhost:3500/api/v1/feeds/file/upload/${this.post.photo}`
+    // }
 
     checkLink() {
         var pattern = /^https:\/\//i
@@ -90,7 +162,7 @@ export class FeedComponent {
         }
     }
 
-    addPost() {
+    async addPost() {
         const publication = this.feedInputRef.nativeElement.value;
         if (publication == '') {
             this._snackBar.open("Comente algo antes de publicar!", 'Fechar', {
@@ -99,9 +171,14 @@ export class FeedComponent {
                 duration: this.durationInSeconds * 1000,
             });
         } else {
-            this.publics.push(publication);
-            this.checkLink();
+            let dataPost = this.myFormGroup.getRawValue();
+            await this.feedService.createFeed(dataPost);
             this.initForm();
+            this.url = ''
+            this.stylesbol = false;
+            this.getFeeds()
+
+
         }
     }
 
@@ -135,6 +212,38 @@ export class FeedComponent {
             like.style.color = 'black'
         } else {
             like.style.color = 'red';
+        }
+    }
+
+    removePhoto() {
+        this.url = ''
+        this.stylesbol = false
+        this.fileName = ''
+    }
+    async fileChanged(event: any) {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            this.httpClient
+                .post('http://localhost:3500/api/v1/users/file/upload', formData)
+                .subscribe(async resposta => {
+                    if (resposta) {
+                        this.file = resposta;
+                        this.fileName = this.file.filename
+                        this.createPhoto = {
+                            photo: this.file.filename,
+                            User: this.userId
+                        }
+                        this.myFormGroup.controls['photoFeed'].setValue(this.file.filename)
+                        this.url = 'http://localhost:3500/api/v1/feeds/file/upload/' + this.file.filename;
+                        this.stylesbol = true
+                    }
+                });
+
+        } catch (e) {
+            console.log(e);
         }
     }
 }

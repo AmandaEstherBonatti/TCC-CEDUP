@@ -8,7 +8,7 @@
                 <abbr title="Feed"><img src="../../../assets/home.png" class="nav-img"></abbr>
                 <p>Feed</p>
             </div>
-            <div class="icon" fxLayout="row" routerLink="/home/perfil">
+            <div class="icon" fxLayout="row" (click)="openProfile()">
                 <abbr title="Perfil"><img src="../../../assets/perfil.png" class="nav-img"></abbr>
                 <p>Perfil</p>
             </div>
@@ -20,10 +20,14 @@
                 <abbr title="Clientes"><img src="../../../assets/user.png" class="nav-img"></abbr>
                 <p>Clientes</p>
             </div>
-            <div class="icon" fxLayout="row" routerLink="/home/consulting" *ngIf="role === 2">
+            <div class="icon" fxLayout="row" routerLink="/home/profissionais" *ngIf="role === 2">
+                <abbr title="Profissionais"><img src="../../../assets/user.png" class="nav-img"></abbr>
+                <p>Profissionais</p>
+            </div>
+            <!-- <div class="icon" fxLayout="row" routerLink="/home/consulting" *ngIf="role === 2">
                 <abbr title="Consultas"><img src="../../../assets/money-bag.png" class="nav-img"></abbr>
                 <p>Consultas</p>
-            </div>
+            </div> -->
         </div>
     </div>
 </mat-sidenav>

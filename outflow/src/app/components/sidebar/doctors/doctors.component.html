@@ -1,0 +1,69 @@
+<app-sidebar></app-sidebar>
+<div class="container">
+    <div class="container-header">
+        <h1>Encontre seu especialista</h1>
+        <p>Fale com um profissional sem sair de casa</p>
+        <!-- <div fxLayout="column" fxLayoutAlign="space-between">
+            <div fxFlex="100" fxLayoutGap="16px" class="inputs-dropdown" style="margin-bottom: 0%; padding-bottom: 0%;">
+                <mat-form-field fxFlex="80" appearance="outline">
+                    <input matInput placeholder="Procure um profissional" />
+                </mat-form-field>
+                <mat-form-field fxFlex="30" appearance="outline" placeholder="Filtro">
+                    <mat-select matInput disableRipple>
+                        <mat-option [value]="1">Psicologo</mat-option>
+                        <mat-option [value]="2">Psiquiatra</mat-option>
+                        <mat-option [value]="3">Terapeuta</mat-option>
+                        <mat-option [value]="4">Psicanalista</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <button mat-stroked-button> Procurar</button>
+
+        </div> -->
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <form class="search" fxLayoutGap="16px">
+                <mat-form-field appearance="outline">
+                    <mat-label></mat-label>
+                    <input matInput placeholder="Currículo" #filter matInput />
+                </mat-form-field>
+                <mat-form-field fxFlex="20" appearance="outline">
+                    <mat-label>Filtro</mat-label>
+                    <mat-select (selectionChange)="selectList($event)" matInput disableRipple>
+                        <mat-option [value]="5">Todos</mat-option>
+                        <mat-option [value]="1">Psicologo</mat-option>
+                        <mat-option [value]="2">Psiquiatra</mat-option>
+                        <mat-option [value]="3">Terapeuta</mat-option>
+                        <mat-option [value]="4">Psicanalista</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+
+
+        <div class="inputs-dropdown">
+        </div>
+    </div>
+    <div>
+        <div *ngIf="data">
+            <div class="containeer" *ngFor="let doctor of data; ">
+                <div class="card">
+                    <img class="profile-img" src="{{doctor.photoDoctor}}" alt="">
+                    <div class="info">
+                        <div class="header-info">
+                            <h1>{{doctor.name}} {{doctor.lastName}}</h1>
+                        </div>
+                        <h4>{{doctor.User.email}} - (47) 99558-5689</h4>
+                        <h4>Especialidades em: </h4>
+                        <ul class="work-off" *ngIf="doctor.User.DetailsProfile">
+                            <li>{{doctor.User.DetailsProfile.specialty }}</li>
+                        </ul>
+                        <h3 *ngIf="doctor.User.DetailsProfile">R${{doctor.User.DetailsProfile.hourlyRate }}/60 minutos
+                        </h3>
+                        <p class="descricao" *ngIf="doctor.User.DetailsProfile">{{doctor.User.DetailsProfile.description
+                            }}
+                        </p>
+                        <button class="info-button">marque sua consulta </button>
+                    </div>
+                </div>
+            </div>
+        </div>

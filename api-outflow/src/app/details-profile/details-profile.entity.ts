@@ -1,6 +1,5 @@
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { LangugesEntity } from "../languages/languages.entity";
-import { SpecialtyEntity } from "../specialty/specialty.entity";
+
 import { UsersEntity } from "../user/users.entity";
 
 @Entity({ name: 'details_profile_entity' })
@@ -12,19 +11,15 @@ export class DetailsProfileEntity {
     @Column()
     hourlyRate: string;
 
-    @Column()
+    @Column({ length: '3000' })
     description: string;
 
-    @OneToMany(() => LangugesEntity, (languages) => languages.DetailsProfile, { nullable: true })
-    Languages: LangugesEntity[];
-
-    @OneToMany(() => SpecialtyEntity, (specialty) => specialty.DetailsProfile, { nullable: true })
-    Specialtys: SpecialtyEntity[];
+    @Column({ length: '3000' })
+    specialty: string;
 
     @OneToOne(() => UsersEntity, {
         cascade: ['insert', 'update', 'remove'],
-        orphanedRowAction: 'delete',
-        eager: true
+        orphanedRowAction: 'delete'
     })
     @JoinColumn()
     User: UsersEntity;

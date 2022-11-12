@@ -16,8 +16,7 @@ import { DoctorsEntity } from '../doctor/doctors.entity';
 import { Role } from './enum/role.enum';
 import { FeedPostEntity } from '../feed/feeds.entity';
 import { hashSync } from 'bcrypt';
-import { ConversationEntity } from '../chat/entitys/conversation.entity';
-import { MessageEntity } from '../chat/entitys/message.entity';
+
 import { DetailsProfileEntity } from '../details-profile/details-profile.entity';
 
 @Entity({ name: 'users_entity' })
@@ -49,32 +48,12 @@ export class UsersEntity {
     Doctor: DoctorsEntity
 
     @OneToOne(() => DetailsProfileEntity, (Details) => Details.User, {
-        nullable: true
+        nullable: true,
+        eager: true
     })
     DetailsProfile: DetailsProfileEntity
 
-    @OneToMany(() => FeedPostEntity, (feedPostEntity) => feedPostEntity.User, { nullable: true })
-    feedPosts: FeedPostEntity[];
 
-
-
-
-    @OneToMany(() => MessageEntity, (messageEntity) => messageEntity.User, { nullable: true })
-    Messages: MessageEntity[];
-
-    // @OneToMany(
-    //     () => FriendRequestEntity,
-    //     (friendRequest) => friendRequest.Creator,
-    //     { nullable: true }
-    // )
-    // SentFriendRequests: FriendRequestEntity[];
-
-    // @OneToMany(
-    //     () => FriendRequestEntity,
-    //     (friendRequest) => friendRequest.Receiver,
-    //     { nullable: true }
-    // )
-    // ReceivedFriendRequests: FriendRequestEntity[];
 
     @BeforeInsert()
     hasPassword() {

@@ -1,6 +1,7 @@
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { AddressEntity } from "../address/address.entity";
 import { Gender } from "../client/enum/gender.enum";
+import { FeedPostEntity } from "../feed/feeds.entity";
 import { UsersEntity } from "../user/users.entity";
 import { KindOfDoctor } from "./enum/kind_of_doctor.enum";
 import { MainExpectation } from "./enum/main-expectation.enum";
@@ -55,5 +56,9 @@ export class DoctorsEntity {
     })
     @JoinColumn()
     User: UsersEntity;
+
+
+    @OneToMany(() => FeedPostEntity, (feedPostEntity) => feedPostEntity.Doctor, { nullable: true })
+    FeedPosts: FeedPostEntity[];
 
 }

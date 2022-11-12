@@ -1,30 +1,30 @@
 import {
-    IsNotEmpty,
-    IsNumber,
-    IsObject,
-    IsOptional,
-    IsString
-  } from 'class-validator';
-  import { Gender } from '../enum/gender.enum';
+   IsNotEmpty,
+   IsNumber,
+   IsObject,
+   IsOptional,
+   IsString
+} from 'class-validator';
+import { Gender } from '../enum/gender.enum';
 
- 
- export class UpdateClientDto{
-    @IsOptional()
-    @IsString()
-    name: string;
 
-    @IsOptional()
-    @IsString()
-    lastName: string;
+export class UpdateClientDto {
+   @IsOptional()
+   @IsString()
+   name: string;
 
-    @IsOptional()
-    birthday: Date;
+   @IsOptional()
+   @IsString()
+   lastName: string;
 
-    @IsOptional()
-    gender: Gender ;
+   @IsOptional()
+   birthday: string;
 
-    @IsOptional()
-    @IsString()
-    phoneNumber: string;
+   @IsOptional()
+   gender: Gender;
 
- }                               
+   @IsOptional()
+   @IsString()
+   phoneNumber: string;
+
+}                               

@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import {
   FindManyOptions,
   FindOneOptions,
+  Like,
   Repository,
 } from 'typeorm';
 import { DoctorsEntity } from "./doctors.entity";
@@ -20,7 +21,7 @@ export class DoctorService {
 
   async findAll() {
     const options: FindManyOptions = {
-      order: { createdAt: 'DESC' },
+      // order: { createdAt: 'DESC' },
     };
     return await this.doctorRepository.find(options);
   }
@@ -54,6 +55,112 @@ export class DoctorService {
       throw new NotFoundException();
     }
     return await this.doctorRepository.softDelete({ id });
+  }
+
+
+  async findPsychologist() {
+    return await this.doctorRepository.find({
+      where: [
+        { kindOfDoctor: 1 },
+      ],
+    });
+  }
+
+  async findPsychoanalyst() {
+    return await this.doctorRepository.find({
+      where: [
+        { kindOfDoctor: 2 },
+      ],
+    });
+  }
+
+  async findTherapist() {
+    return await this.doctorRepository.find({
+      where: [
+        { kindOfDoctor: 3 },
+      ],
+    });
+  }
+
+  async findPsychiatrist() {
+    return await this.doctorRepository.find({
+      where: [
+        { kindOfDoctor: 4 },
+      ],
+    });
+  }
+
+  async find(name: string, type: number) {
+    let doctor;
+    if (name === '') {
+      switch (type) {
+        case 1:
+          doctor = this.findPsychologist();
+          return doctor;
+          break;
+        case 2:
+          doctor = this.findPsychoanalyst();
+          return doctor;
+          break;
+        case 3:
+          doctor = this.findTherapist();
+          return doctor;
+          break;
+        case 4:
+          doctor = this.findPsychiatrist();
+          return doctor;
+          break;
+        case 5:
+          doctor = this.findAll();
+          return doctor;
+          break;
+      }
+    } else {
+      switch (type) {
+        case 1:
+          doctor = await this.doctorRepository.find({
+            where: [
+              { name: Like(`%${name}%`), kindOfDoctor: 1 },
+            ],
+          });
+          return doctor;
+          break;
+          break;
+        case 2:
+          doctor = await this.doctorRepository.find({
+            where: [
+              { name: Like(`%${name}%`), kindOfDoctor: 2 },
+            ]
+          });
+          return doctor;
+          break;
+        case 3:
+          doctor = await this.doctorRepository.find({
+            where: [
+              { name: Like(`%${name}%`), kindOfDoctor: 3 },
+            ]
+          });
+          return doctor;
+          break;
+        case 4:
+          doctor = await this.doctorRepository.find({
+            where: [
+              { name: Like(`%${name}%`), kindOfDoctor: 4 },
+            ]
+          });
+          return doctor;
+          break;
+        case 5:
+          doctor = await this.doctorRepository.find({
+            where: [
+              {
+                name: Like(`%${name}%`),
+              },
+            ],
+          });
+          return doctor;
+      }
+    }
   }
 }
 

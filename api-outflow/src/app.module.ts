@@ -10,8 +10,9 @@ import { FeedsModule } from './app/feed/feeds.module';
 import { AuthModule } from './auth/auth.module';
 import { SnakeNamingStrategy } from 'typeorm-snake-naming-strategy';
 import { DetailsProfileModule } from './app/details-profile/details-profile.module';
-import { LanguagesModule } from './app/languages/languages.module';
-import { SpecialtyModule } from './app/specialty/specialty.module';
+import { MessageController } from './message/message.controller';
+import { PusherService } from './message/message.service';
+
 
 @Module({
   imports: [
@@ -26,9 +27,9 @@ import { SpecialtyModule } from './app/specialty/specialty.module';
       entities: [__dirname + '/**/*.entity{.js,.ts}'],
       synchronize: true,
     } as TypeOrmModuleOptions), ClientsModule, AddressModule, DoctorsModule, UsersModule, FeedsModule,
-    AuthModule, DetailsProfileModule, LanguagesModule, SpecialtyModule
+    AuthModule, DetailsProfileModule
   ],
-  controllers: [],
-  providers: [AppService],
+  controllers: [MessageController],
+  providers: [AppService, PusherService],
 })
 export class AppModule { }

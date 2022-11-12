@@ -19,16 +19,31 @@ export class FeedService {
     private readonly feedRepository: Repository<FeedPostEntity>,
   ) { }
 
-  async findAll(take: number = 10, skip: number = 0) {
-    return this.feedRepository
-      .createQueryBuilder('post')
-      .innerJoinAndSelect('post.user', 'user')
-      .orderBy('post.createdAt', 'DESC')
-      .take(take)
-      .skip(skip)
-      .getMany()
+  async findAll() {
+    // return this.feedRepository
+    //   .createQueryBuilder('feed_post_entity')
+    //   .leftJoinAndSelect('feed_post_entity.User', 'User')
+    //   .orderBy('feed_post_entity. createdAt', 'DESC')
+    //   .take(take)
+    //   .skip(skip)
+    //   .getMany()
+
+
+    return await this.feedRepository.find({
+      select: ['id', 'description', 'photoFeed', 'createdAt'],
+      relations: ['Doctor']
+    });
+
+    // return await this.feedRepository.query('select feed_post_entity.id, users_entity.photo, feed_post_entity.description,feed_post_entity.photo,feed_post_entity.createdAt, ' +
+    //   'feed_post_entity.userId, ' +
+    //   'doctors_entity.id,doctors_entity.name, doctors_entity.lastName from users_entity  ' +
+    //   'left join feed_post_entity on feed_post_entity.userId = users_entity.id ' +
+    //   'left join doctors_entity on doctors_entity.userId = users_entity.id')
+
 
   }
+
+
 
   async findOneOrFail(id: string) {
     try {

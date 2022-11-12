@@ -28,6 +28,7 @@ export class AuthService {
   }
 
   async login(user: UsersEntity) {
+    console.log(user)
     const payload = { sud: user.id, login: user.email };
     return {
       id: user.id,
@@ -47,6 +48,8 @@ export class AuthService {
     const verifyToken = this.jwtService.verify(jwt, {
       secret: process.env.JWT_SECRET_KEY,
     });
+
+    console.log(verifyToken)
     return verifyToken ?? null;
   }
 }

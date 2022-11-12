@@ -26,7 +26,7 @@ export class ClientEntity {
   lastName: string
 
   @Column()
-  birthday: Date;
+  birthday: string;
 
   @Column()
   gender: Gender;

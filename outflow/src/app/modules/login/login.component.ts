@@ -83,10 +83,7 @@ export class LoginComponent implements OnInit {
         if (auth.token) {
           sessionStorage.setItem('token', auth.token)
           sessionStorage.setItem('user_id', auth.id)
-
-
           this.router.navigate(['/home']);
-
         }
         console.log(auth)
       } catch (error) {

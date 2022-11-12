@@ -1,0 +1,51 @@
+.scrollarea {
+    width: 100%;
+
+
+}
+
+.send {
+    background: rgba(79, 198, 228, 0.5);
+    width: 50%;
+    height: 100%;
+    word-wrap: break-word;
+    overflow: auto;
+    border-radius: 10px 20px 30px;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 5px;
+
+
+}
+
+.receiver {
+    background: #2e5dc2;
+    margin-left: 50%;
+    width: 50%;
+    height: 100%;
+    word-wrap: break-word;
+    overflow: auto;
+    border-radius: 20px 10px 30px;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 5px;
+
+}
+
+.input-message {
+
+    max-height: 100%;
+    width: 98%;
+}
+
+.button {
+    width: 30%;
+}
+
+.area {
+    height: calc(100vh - 300px);
+    overflow: auto;
+    margin-bottom: 30px;
+    padding: auto;
+    width: 100%;
+
+
+}
