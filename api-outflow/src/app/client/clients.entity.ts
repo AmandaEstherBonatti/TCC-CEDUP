@@ -7,9 +7,11 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   JoinColumn,
-  OneToOne
+  OneToOne,
+  ManyToOne,
+  OneToMany
 } from 'typeorm';
-import { AddressEntity } from '../address/address.entity';
+import { HistoricEntity } from '../historic/historic.entity';
 import { UsersEntity } from '../user/users.entity';
 import { Gender } from './enum/gender.enum';
 
@@ -34,12 +36,8 @@ export class ClientEntity {
   @Column()
   phoneNumber: string;
 
-  @OneToOne(() => AddressEntity, {
-    cascade: ['insert', 'update', 'remove'],
-    orphanedRowAction: 'delete',
-  })
-  @JoinColumn()
-  Address: AddressEntity;
+  @OneToMany(() => HistoricEntity, (historic) => historic.Client, { nullable: true })
+  Historic: HistoricEntity[];
 
   @OneToOne(() => UsersEntity, {
     cascade: ['insert', 'update', 'remove'],

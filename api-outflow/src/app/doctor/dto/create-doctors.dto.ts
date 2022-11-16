@@ -5,7 +5,6 @@ import {
    IsOptional,
    IsString
 } from 'class-validator';
-import { AddressEntity } from 'src/app/address/address.entity';
 import { Gender } from 'src/app/client/enum/gender.enum';
 import { UsersEntity } from 'src/app/user/users.entity';
 import { KindOfDoctor } from '../enum/kind_of_doctor.enum';
@@ -25,9 +24,6 @@ export class CreateDoctorDto {
    @IsString()
    cpf: string;
 
-
-
-
    @IsNotEmpty()
    gender: Gender;
 
@@ -46,9 +42,6 @@ export class CreateDoctorDto {
 
    @IsOptional()
    crp: string;
-
-   @IsOptional()
-   Address: AddressEntity;
 
    @IsNotEmpty()
    User: UsersEntity;

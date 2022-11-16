@@ -1,7 +1,30 @@
 .container {
     margin-left: 20%;
+    background: rgba(1, 175, 255, 0.209);
+    overflow: auto;
+    height: calc(100vh - 0px);
 
     table {
-        width: 100%;
+        width: 90%;
+        height: 100%;
+        margin-left: 5%;
+        margin-right: 10%;
+        border-radius: 10px 20px 30px;
+        border: 7px solid #fff;
+
+
+    }
+
+    .titulo {
+        padding-top: 3%;
+        margin-left: 33%;
+        padding-bottom: 3%;
+
+    }
+
+    .titulo h1 {
+        font-weight: 800;
+        font-size: 35px;
+
     }
 }

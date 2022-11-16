@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HistoricService } from 'src/providers/api.provider';
 
 
 export interface PeriodicElement {
@@ -29,23 +30,31 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./clients.component.scss']
 })
 export class ClientsComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['name', 'phoneNumber'];
   dataSource = ELEMENT_DATA;
   userId: any;
   user: any;
   role: any;
   token: any;
 
-  constructor(private router: Router,) { }
+  constructor(private router: Router, private historicService: HistoricService) { }
 
   ngOnInit(): void {
+    this.userId = sessionStorage.getItem('user_id');
+    console.log(this.userId)
     this.token = sessionStorage.getItem('token')!;
     if (!this.token) {
       this.router.navigate(['menu/inicial']);
     } else {
       this.role = sessionStorage.getItem('role')
+      this.getClientes()
 
     }
+  }
+
+  async getClientes() {
+    this.dataSource = await this.historicService.findByDoctor(this.userId)
+    console.log(this.dataSource)
   }
 
 }

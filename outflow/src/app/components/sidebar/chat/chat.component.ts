@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import Pusher from 'pusher-js';
-import { UserService } from "src/providers/api.provider";
+import { HistoricService, UserService } from "src/providers/api.provider";
 
 
 @Component({
@@ -24,13 +25,16 @@ export class ChatComponent implements OnInit {
     user: any;
     client: any;
     doctor: any;
+    myFormGroup!: FormGroup;
 
-    constructor(private http: HttpClient, private userService: UserService) { }
+
+    constructor(private http: HttpClient, private userService: UserService, private historicService: HistoricService, private formBuilder: FormBuilder) { }
 
     async ngOnInit() {
 
         this.userId = sessionStorage.getItem('user_id');
         this.otherProfileId = sessionStorage.getItem('other_profile_id');
+
 
 
         await this.getUser(this.userId, this.otherProfileId)
@@ -57,6 +61,42 @@ export class ChatComponent implements OnInit {
         channel.bind('message', (data: any) => {
             return this.messages.push(data);
         });
+        this.saveHistoric();
+    }
+
+    initForm() {
+
+    }
+
+    async saveHistoric() {
+        if (this.doctor && this.otherClient) {
+            this.myFormGroup = this.formBuilder.group({
+                Client: [this.otherClient.id],
+                Doctor: [this.doctor.id],
+            })
+            try {
+                let historic = this.myFormGroup.getRawValue();
+                const h = await this.historicService.create(historic)
+                console.log(h)
+
+            } catch (e) {
+                console.log(e)
+            }
+
+        } else if (this.client && this.otherDoctor) {
+            this.myFormGroup = this.formBuilder.group({
+                Client: [this.client.id],
+                Doctor: [this.otherDoctor.id],
+            })
+            try {
+                let historic = this.myFormGroup.getRawValue();
+                const h = await this.historicService.create(historic)
+                console.log(h)
+
+            } catch (e) {
+                console.log(e)
+            }
+        }
     }
 
     async getUser(userId: string, otherUserId: any) {

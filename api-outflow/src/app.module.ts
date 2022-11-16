@@ -3,15 +3,14 @@ import { ConfigModule } from '@nestjs/config';
 import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ClientsModule } from './app/client/clients.module';
-import { AddressModule } from './app/address/adress.module';
 import { DoctorsModule } from './app/doctor/doctors.module';
 import { UsersModule } from './app/user/users.module';
 import { FeedsModule } from './app/feed/feeds.module';
 import { AuthModule } from './auth/auth.module';
-import { SnakeNamingStrategy } from 'typeorm-snake-naming-strategy';
 import { DetailsProfileModule } from './app/details-profile/details-profile.module';
 import { MessageController } from './message/message.controller';
 import { PusherService } from './message/message.service';
+import { HistoricModule } from './app/historic/historic.module';
 
 
 @Module({
@@ -26,8 +25,8 @@ import { PusherService } from './message/message.service';
       database: process.env.TYPEORM_DATABASE,
       entities: [__dirname + '/**/*.entity{.js,.ts}'],
       synchronize: true,
-    } as TypeOrmModuleOptions), ClientsModule, AddressModule, DoctorsModule, UsersModule, FeedsModule,
-    AuthModule, DetailsProfileModule
+    } as TypeOrmModuleOptions), ClientsModule, DoctorsModule, UsersModule, FeedsModule,
+    AuthModule, DetailsProfileModule, HistoricModule
   ],
   controllers: [MessageController],
   providers: [AppService, PusherService],

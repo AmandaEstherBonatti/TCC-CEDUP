@@ -147,12 +147,6 @@ export class FeedComponent {
         this.message = ''
     }
 
-    // async getPost() {
-    //     this.post = await this.feedService.findByUser(this.userId)
-    //     console.log(this.post)
-    //     this.url = `http://localhost:3500/api/v1/feeds/file/upload/${this.post.photo}`
-    // }
-
     checkLink() {
         var pattern = /^https:\/\//i
         if (pattern.test(this.message)) {

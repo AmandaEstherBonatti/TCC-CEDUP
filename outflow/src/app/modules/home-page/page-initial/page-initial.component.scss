@@ -19,6 +19,7 @@
   align-items: center;
   z-index: 1;
 }
+
 .home::before {
   content: "";
   border-radius: 30px 0px 30px 30px;
@@ -34,6 +35,7 @@
 .home-text {
   padding-left: 35px;
 }
+
 .home-text h1 {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
@@ -43,6 +45,7 @@
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+
 .home p {
   position: relative;
   left: 50px;
@@ -52,6 +55,7 @@
   text-transform: uppercase;
   color: #000;
 }
+
 .home button {
   font-size: 20px;
   position: relative;
@@ -64,19 +68,19 @@
   border: none;
   transition: 0.5s;
 }
+
 .home button:hover {
   background-color: #2e5dc2;
 }
+
 /*pop up*/
 /*banner-container*/
 .banner-container {
-  background: linear-gradient(
-    -55deg,
-    #72ffff 29%,
-    #5800ff 29.1%,
-    #0096ff,
-    #72ffff 68.1%
-  );
+  background: linear-gradient(-55deg,
+      #72ffff 29%,
+      #5800ff 29.1%,
+      #0096ff,
+      #72ffff 68.1%);
   height: 700px;
   width: 100%;
 }
@@ -91,6 +95,7 @@
   top: 100px;
   margin-top: 330px;
 }
+
 .text-banner {
   width: 100%;
   max-width: 600px;
@@ -103,7 +108,7 @@
 
 .text-banner h2 {
   text-align: center;
-  margin-bottom: 20px;
+  // margin-bottom: 30px;
   color: #000;
   font-size: 50px;
   font-weight: 800;
@@ -114,6 +119,7 @@
   font-size: 20px;
   color: #5f7161;
   font-weight: 400;
+  margin-top: 20px;
   margin-bottom: 15px;
 }
 
@@ -128,6 +134,7 @@
   flex-direction: row;
   height: 600px;
 }
+
 .container-color {
   width: 100%;
   height: 600px;
@@ -166,10 +173,12 @@
     margin-left: 0 !important;
   }
 }
+
 .content-about h2 {
   font-size: 30px;
   color: #000;
 }
+
 .content-about p {
   font-size: 17px;
   font-weight: 300;
@@ -180,18 +189,17 @@
 .serviços-container {
   height: 300px;
   width: 100%;
-  background: linear-gradient(
-      90deg,
+  background: linear-gradient(90deg,
       rgba(2, 2, 36, 0.7) 0%,
       rgba(9, 9, 221, 0.7) 35%,
-      rgba(0, 221, 255, 0.7) 100%
-    ),
+      rgba(0, 221, 255, 0.7) 100%),
     url(../../../../assets/rerapiaconv.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   justify-content: center;
   text-align: center;
 }
+
 .service-tittle {
   position: relative;
   top: 40%;
@@ -199,6 +207,7 @@
   color: white;
   text-align: center;
 }
+
 .service-tittle h2:after {
   content: "";
   background: white;
@@ -212,10 +221,12 @@
   width: 400px;
   height: 400px;
 }
+
 .service-content {
   padding-top: 100px;
   width: 100%;
 }
+
 .text-service {
   border: 2px solid red;
   border-radius: 40px;
@@ -235,15 +246,18 @@
   font-weight: 700;
   margin-bottom: 30px;
 }
+
 .text-service p {
   font-size: 16px;
   font-weight: 300;
   text-align: center;
   margin-bottom: 10px;
 }
+
 .color-servico {
   background: linear-gradient(to right top, #14e3dd, #6860ff);
 }
+
 .botao-service {
   right: 100px;
   width: 200px;
@@ -290,6 +304,7 @@
   color: #000;
   box-shadow: inset 300px 0 0 0 #fff;
 }
+
 /*como funka */
 .testimonial-tittle {
   position: relative;
@@ -298,6 +313,7 @@
   color: white;
   text-align: center;
 }
+
 .testimonial-tittle h2:after {
   content: "";
   background: white;
@@ -306,21 +322,21 @@
   height: 3px;
   margin: 10px auto;
 }
+
 .testimonial-container {
   height: 600px;
   width: 100%;
-  background: linear-gradient(
-      90deg,
+  background: linear-gradient(90deg,
       rgba(2, 2, 36, 0.7) 0%,
       rgba(65, 160, 242, 0.7) 35%,
-      rgba(0, 113, 242, 0.7) 100%
-    ),
+      rgba(0, 113, 242, 0.7) 100%),
     url(../../../../assets/conversa.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   justify-content: center;
   text-align: center;
 }
+
 .testimonial {
   display: flex;
   position: relative;
@@ -328,13 +344,16 @@
   color: #fff;
   align-items: center;
 }
+
 .testimonial-content {
   width: 400px;
 }
+
 .testimonial-content h3 {
   margin: 20px;
   font-size: 20px;
 }
+
 .icon-serv {
   border: 2px solid #fff;
   position: relative;
@@ -346,6 +365,7 @@
   line-height: 120px;
   border-radius: 100%;
 }
+
 .icon-serv img {
   width: 110px;
   object-fit: cover;

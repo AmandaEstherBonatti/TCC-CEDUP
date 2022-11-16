@@ -5,7 +5,6 @@ import {
    IsOptional,
    IsString
 } from 'class-validator';
-import { AddressEntity } from 'src/app/address/address.entity';
 import { Gender } from 'src/app/client/enum/gender.enum';
 
 
@@ -28,8 +27,5 @@ export class UpdateDoctorDto {
 
    @IsOptional()
    localClinic: boolean;
-
-   @IsOptional()
-   Address: AddressEntity;
 
 }                               

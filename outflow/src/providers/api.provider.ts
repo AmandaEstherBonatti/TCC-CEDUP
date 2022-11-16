@@ -203,3 +203,33 @@ export class DetailsService {
 
 }
 
+@Injectable({
+    providedIn: 'root',
+})
+export class HistoricService {
+    constructor(private apiGateway: ApiGateway) { }
+
+    ngOnInit(): void { }
+
+    create(historic: any) {
+        return new Promise((resolve, reject) => {
+            this.apiGateway
+                .post('historic', historic)
+
+                .subscribe((response: HttpResponse<any>) => {
+                    resolve(response.body);
+                }, reject);
+        });
+    }
+
+    findByDoctor(id: string | null): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.apiGateway
+                .get('historic/doctor/:id', { id })
+                .subscribe((response: HttpResponse<any>) => {
+                    resolve(response.body);
+                }, reject);
+        });
+    }
+
+}

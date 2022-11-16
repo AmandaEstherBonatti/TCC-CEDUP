@@ -3,30 +3,13 @@
     <div class="container-header">
         <h1>Encontre seu especialista</h1>
         <p>Fale com um profissional sem sair de casa</p>
-        <!-- <div fxLayout="column" fxLayoutAlign="space-between">
-            <div fxFlex="100" fxLayoutGap="16px" class="inputs-dropdown" style="margin-bottom: 0%; padding-bottom: 0%;">
-                <mat-form-field fxFlex="80" appearance="outline">
-                    <input matInput placeholder="Procure um profissional" />
-                </mat-form-field>
-                <mat-form-field fxFlex="30" appearance="outline" placeholder="Filtro">
-                    <mat-select matInput disableRipple>
-                        <mat-option [value]="1">Psicologo</mat-option>
-                        <mat-option [value]="2">Psiquiatra</mat-option>
-                        <mat-option [value]="3">Terapeuta</mat-option>
-                        <mat-option [value]="4">Psicanalista</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <button mat-stroked-button> Procurar</button>
-
-        </div> -->
         <div fxLayout="row" fxLayoutAlign="space-between">
             <form class="search" fxLayoutGap="16px">
-                <mat-form-field appearance="outline">
+                <mat-form-field fxFlex="70" appearance="outline">
                     <mat-label></mat-label>
-                    <input matInput placeholder="Currículo" #filter matInput />
+                    <input matInput placeholder="Pesquise por um profissional" #filter matInput />
                 </mat-form-field>
-                <mat-form-field fxFlex="20" appearance="outline">
+                <mat-form-field fxFlex="30" appearance="outline">
                     <mat-label>Filtro</mat-label>
                     <mat-select (selectionChange)="selectList($event)" matInput disableRipple>
                         <mat-option [value]="5">Todos</mat-option>
@@ -37,10 +20,6 @@
                     </mat-select>
                 </mat-form-field>
             </form>
-        </div>
-
-
-        <div class="inputs-dropdown">
         </div>
     </div>
     <div>
@@ -62,7 +41,8 @@
                         <p class="descricao" *ngIf="doctor.User.DetailsProfile">{{doctor.User.DetailsProfile.description
                             }}
                         </p>
-                        <button class="info-button">marque sua consulta </button>
+                        <button mat-stroked-button class="info-button" (click)="openProfile(doctor.User.id)">marque sua
+                            consulta </button>
                     </div>
                 </div>
             </div>

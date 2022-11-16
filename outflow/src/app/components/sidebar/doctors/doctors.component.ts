@@ -19,7 +19,7 @@ export class DoctorsComponent implements OnInit {
     user: any;
     params: string = '';
     select: number = 5;
-
+    profileId: any;
     role: any;
     token: any;
     photoDoctor: any[] = [];
@@ -37,6 +37,13 @@ export class DoctorsComponent implements OnInit {
             this.role = sessionStorage.getItem('role')
 
         }
+    }
+
+
+    openProfile(profileId: string) {
+        console.log(profileId)
+        sessionStorage.setItem('other_profile_id', profileId)
+        this.router.navigate(['home/perfil']);
     }
 
     initFilter() {

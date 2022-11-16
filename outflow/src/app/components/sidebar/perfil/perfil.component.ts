@@ -71,46 +71,29 @@ export class PerfilComponent implements OnInit {
         await this.getUser(this.otherProfileId)
         this.role = this.user.role;
         this.initForm()
-        if (this.user.Client === null) {
-          this.doctor = this.user.Doctor;
-          this.details = this.user.DetailsProfile
-          this.setValueDoctor()
-        } else {
-          this.client = this.user.Client;
-          this.setValue()
-        }
       } else {
-
         this.initForm()
         await this.getUser(this.userId)
         this.role = this.user.role;
-
-        if (this.user.Client === null) {
-          this.doctor = this.user.Doctor;
-          this.details = this.user.DetailsProfile
-          console.log(this.user)
-          this.setValueDoctor()
-
-        } else {
-          this.client = this.user.Client;
-          this.setValue()
-
-        }
       }
       if (this.user.photo != undefined) {
         this.url = `http://localhost:3500/api/v1/users/file/upload/${this.user.photo}`
       } else {
         this.url = '../../../../assets/cloud.jpg'
-
-
       }
-
     }
-
   }
 
   async getUser(userId: string) {
     this.user = await this.userService.findOneUser(userId);
+    if (this.user.Client === null) {
+      this.doctor = this.user.Doctor;
+      this.details = this.user.DetailsProfile
+      this.setValueDoctor()
+    } else {
+      this.client = this.user.Client;
+      this.setValue()
+    }
   }
 
   initForm() {
@@ -177,13 +160,13 @@ export class PerfilComponent implements OnInit {
   async saveEditPacient() {
     try {
       let dataClient = this.pacientForm.getRawValue();
-      await this.pacientService.update(this.client.id, dataClient)
+      const update = await this.pacientService.update(this.client.id, dataClient)
       this._snackBar.open("Informações atualizadas com sucesso!", 'Fechar', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
         duration: this.durationInSeconds * 1000,
       });
-      this.Accordion.closeAll();
+      this.getUser(update.id);
     } catch (err) {
       console.log(err)
     }
@@ -192,13 +175,14 @@ export class PerfilComponent implements OnInit {
   async saveEditDoctor() {
     try {
       let dataDoctor = this.doctorForm.getRawValue();
-      await this.doctorService.update(this.doctor.id, dataDoctor)
+      const update = await this.doctorService.update(this.doctor.id, dataDoctor)
       this._snackBar.open("Informações atualizadas com sucesso!", 'Fechar', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
         duration: this.durationInSeconds * 1000,
       });
-      this.Accordion.closeAll();
+      this.getUser(update.id);
+
     } catch (err) {
       console.log(err)
     }
@@ -229,7 +213,8 @@ export class PerfilComponent implements OnInit {
           verticalPosition: this.verticalPosition,
           duration: this.durationInSeconds * 1000,
         });
-        this.Accordion.closeAll();
+        this.getUser(this.doctor.id);
+
       } else {
         let dataDetails = this.profileForm.getRawValue();
         await this.detailsService.update(this.details.id, dataDetails)
@@ -238,7 +223,7 @@ export class PerfilComponent implements OnInit {
           verticalPosition: this.verticalPosition,
           duration: this.durationInSeconds * 1000,
         });
-        this.Accordion.closeAll();
+        this.getUser(this.doctor.id);
       }
     } catch (err) {
       console.log(err);

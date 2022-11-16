@@ -1,6 +1,6 @@
 .container {
     margin-left: 20%;
-    padding-top: 3%;
+    // padding-top: 3%;
 
     overflow: auto;
     height: calc(100vh - 0px);
@@ -32,7 +32,7 @@
         justify-content: space-between;
         padding: 10px;
         width: 400px;
-        border: 3px solid #242F9B;
+        border: 3px solid #2e5dc2;
         border-radius: 12px;
     }
 
@@ -44,16 +44,11 @@
     }
 
     .search-box i {
-        color: #242F9B;
+        color: #2e5dc2;
     }
 
     .search-box input:focus {
         outline: none;
-    }
-
-    .header-info {
-        margin-right: 40%;
-
     }
 
 
@@ -84,7 +79,7 @@
 
     .containeer {
         width: 100%;
-        background: #DBDFFD;
+        background: rgba(1, 175, 255, 0.209);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -124,15 +119,21 @@
     }
 
     .icons-header i {
-        color: #242F9B;
+        color: #2e5dc2;
     }
 
     .info-button {
         margin-top: 20px;
-        border: #242F9B;
+        border: #2e5dc2;
         padding: 10px;
-        background-color: #242F9B;
+        background-color: #2e5dc2;
         color: #fff;
+    }
+
+    .info-button:hover {
+        color: #fff;
+        background-color: rgb(1, 176, 255);
+
     }
 
     .work-off {

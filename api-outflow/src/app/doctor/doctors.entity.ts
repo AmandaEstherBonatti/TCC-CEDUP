@@ -1,7 +1,7 @@
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { AddressEntity } from "../address/address.entity";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Gender } from "../client/enum/gender.enum";
 import { FeedPostEntity } from "../feed/feeds.entity";
+import { HistoricEntity } from "../historic/historic.entity";
 import { UsersEntity } from "../user/users.entity";
 import { KindOfDoctor } from "./enum/kind_of_doctor.enum";
 import { MainExpectation } from "./enum/main-expectation.enum";
@@ -40,14 +40,6 @@ export class DoctorsEntity {
     @Column({ nullable: true })
     crp: string;
 
-    @OneToOne(() => AddressEntity, {
-        cascade: ['insert', 'update', 'remove'],
-        orphanedRowAction: 'delete',
-        eager: true,
-        nullable: true
-    })
-    @JoinColumn()
-    Address: AddressEntity;
 
     @OneToOne(() => UsersEntity, {
         cascade: ['insert', 'update', 'remove'],
@@ -57,8 +49,10 @@ export class DoctorsEntity {
     @JoinColumn()
     User: UsersEntity;
 
-
     @OneToMany(() => FeedPostEntity, (feedPostEntity) => feedPostEntity.Doctor, { nullable: true })
     FeedPosts: FeedPostEntity[];
+
+    @OneToMany(() => HistoricEntity, (historic) => historic.Doctor, { nullable: true })
+    Historic: HistoricEntity[];
 
 }
