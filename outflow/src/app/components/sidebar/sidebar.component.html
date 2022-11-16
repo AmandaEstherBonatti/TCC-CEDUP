@@ -1,28 +1,28 @@
 <mat-sidenav #sidenav mode="side" opened class="example-sidenav " [fixedInViewport]="true">
     <div class="header">
-        <h1 class="logo" routerLink="/menu/inicial">Out<span>flow</span></h1>
+        <h1 class="logo" (click)=" exit()">Out<span>flow</span></h1>
     </div>
     <div class="content" fxLayout="column" fxLayoutAlign="space-between center">
-        <div class="list-menu" >
-            <div class="icon"  fxLayout="row" routerLink="/home/feed">
+        <div class="list-menu">
+            <div class="icon" fxLayout="row" routerLink="/home/feed">
                 <abbr title="Feed"><img src="../../../assets/home.png" class="nav-img"></abbr>
                 <p>Feed</p>
             </div>
-            <div class="icon"  fxLayout="row" routerLink="/home/perfil">
+            <div class="icon" fxLayout="row" (click)="openProfile()">
                 <abbr title="Perfil"><img src="../../../assets/perfil.png" class="nav-img"></abbr>
                 <p>Perfil</p>
             </div>
-            <div class="icon"  fxLayout="row" routerLink="/home/calendar">
+            <div class="icon" fxLayout="row" routerLink="/home/calendar">
                 <abbr title="Agenda"><img src="../../../assets/calendar.png" class="nav-img"></abbr>
                 <p>Agenda</p>
             </div>
-            <div class="icon"  fxLayout="row" routerLink="/home/clients">
+            <div class="icon" fxLayout="row" routerLink="/home/clients" *ngIf="role === 2">
                 <abbr title="Clientes"><img src="../../../assets/user.png" class="nav-img"></abbr>
                 <p>Clientes</p>
             </div>
-            <div class="icon"  fxLayout="row" routerLink="/home/consulting">
-                <abbr title="Consultas"><img src="../../../assets/money-bag.png" class="nav-img"></abbr>
-                <p>Consultas</p>
+            <div class="icon" fxLayout="row" routerLink="/home/profissionais" *ngIf="role === 1">
+                <abbr title="Profissionais"><img src="../../../assets/user.png" class="nav-img"></abbr>
+                <p>Profissionais</p>
             </div>
         </div>
     </div>

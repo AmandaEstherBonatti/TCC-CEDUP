@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
-import { ApiService } from 'src/providers/api.provider';
+import { PacientService } from 'src/providers/api.provider';
 
 export interface ExampleTab {
   label: string;
@@ -32,7 +32,7 @@ export class PacientComponent implements OnInit {
 
   asyncTabs!: Observable<ExampleTab[]>;
 
-  constructor(private fb: FormBuilder, private api: ApiService, private router: Router,
+  constructor(private fb: FormBuilder, private api: PacientService, private router: Router,
 
   ) {
     this.asyncTabs = new Observable((observer: Observer<ExampleTab[]>) => {

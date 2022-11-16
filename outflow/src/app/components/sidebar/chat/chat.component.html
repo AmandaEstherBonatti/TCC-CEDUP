@@ -1,0 +1,30 @@
+<div class="area">
+    <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <mat-form-field fxFlex="100" appearance="outline">
+            <input matInput [value]="usernameOther" disabled />
+        </mat-form-field>
+    </div>
+
+    <div class=" scrollarea">
+        <div *ngFor="let msg of messages">
+            <div [ngClass]="usernameOther === msg.username ? 'receiver' : 'send'">
+                <div>
+                    <strong>{{msg.username}}</strong>
+                </div>
+                <div>{{msg.message}}</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<form (submit)="submit()" class="input-message">
+    <div fxFlex="100" fxLayoutGap="16px">
+        <mat-form-field fxFlex="100" appearance="outline">
+            <input class="form-control" matInput placeholder="Write a message" wrap="hard" [value]="message"
+                (change)="message = $any($event.target).value">
+        </mat-form-field>
+    </div>
+</form>

@@ -11,6 +11,7 @@ import { NavigationEnd, Router } from "@angular/router";
 export class AppComponent {
   activeMenu!: "";
   url!: string;
+  view: boolean = false;
 
   constructor(
     private router: Router,
@@ -19,11 +20,12 @@ export class AppComponent {
 
 
   ngOnInit(): void {
-    this.router.navigate(['menu/inicial']);
     this.router.events
-    .pipe(filter((event) => event instanceof NavigationEnd))
-    .subscribe((res: any) => {
-      this.url = res.url;
-    });
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((res: any) => {
+        this.url = res.url;
+      });
+
+
   }
 }

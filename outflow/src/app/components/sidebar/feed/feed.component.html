@@ -3,56 +3,65 @@
 </div>
 <div class="container">
     <div class="header">
-        <h2>Página Inicial</h2>
+        <h2 style="color:#fff;">Feed de Auto-Ajuda</h2>
     </div>
-    <div class="profile">
+    <div *ngIf="role === 2" [ngClass]="stylesbol === false ? 'profile' : 'profile-url'">
         <div class="main" fxLayout="row">
-            <div class="icon-serv" >
-                <img src="https://osegredo.com.br/wp-content/uploads/2017/09/O-que-as-pessoas-felizes-t%C3%AAm-em-comum-site.jpg" alt="">
+            <div class="icon-serv">
+                <img src="{{urlProfileUser}}" alt="">
             </div>
-            <form [formGroup]="myFormGroup">
-                <input type="text" formControlName="public" placeholder="Algum exercício para compartilhar?" #feedInput [(ngModel)]="message" (focus)="onFocus()">
-                <button  mat-stroked-button color="primary" (click)="addPost()" class="publish">Publicar</button>
+            <form [formGroup]="myFormGroup" *ngIf="myFormGroup">
+                <div class="input-description">
+                    <mat-form-field fxFlex="50" appearance="outline">
+                        <textarea type="text" formControlName="description" wrap="hard"
+                            placeholder="Algum exercício para compartilhar?" #feedInput matInput [(ngModel)]="message"
+                            (focus)="onFocus()"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="file-upload-button" *ngIf="url">
+                    <label for="fileInput">
+                        <img src="{{url}}" alt="" />
+                    </label>
+                </div>
             </form>
         </div>
         <div class="icons" fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="image" fxLayoutAlign="space-between">
-                <label for="file-input">
-                    <img src="../../../../assets/imagem.png" >
-                </label>
-                <input id="file-input" type="file">
-            </div>
-            <div class="gif" fxLayoutAlign="space-between">
-                <img src="../../../../assets/gif.png" (click)="openDialog()">
-            </div>
             <div class="emoji" fxLayoutAlign="space-between">
                 <img src="../../../../assets/sorriso.png" (click)="toggleEmojiPicker()">
+            </div>
+            <div class="image" fxLayoutAlign="space-between">
+                <label for="file-input">
+                    <img src="../../../../assets/imagem.png">
+                </label>
+                <input id="file-input" type="file" (change)="fileChanged($event)">
+            </div>
+            <div class="button" fxLayoutAlign="space-between end">
+                <button mat-stroked-button (click)="addPost()" class="publish">Publicar</button>
             </div>
             <br>
         </div>
     </div>
     <hr>
-    <emoji-mart class="emoji-mart" set="twitter" *ngIf="showEmojiPicker" (emojiSelect)="addEmoji($event)" title="Pick your emoji..."></emoji-mart>
+    <emoji-mart class="emoji-mart" set="twitter" *ngIf="showEmojiPicker" (emojiSelect)="addEmoji($event)"
+        title="Pick your emoji..."></emoji-mart>
     <ul class="list-group">
-        <span class="list-group-item" *ngFor="let publi of publics; let i = index">
-            <div class="main" fxLayout="row">
-                <div class="icon-serv" >
-                    <img src="https://osegredo.com.br/wp-content/uploads/2017/09/O-que-as-pessoas-felizes-t%C3%AAm-em-comum-site.jpg" alt="">
+        <div class="list-group-item" *ngFor="let feed of feeds; " style="background:#FFF;">
+            <div class="main" fxLayout="row" *ngIf="feeds">
+                <div class="icon-serv">
+                    <img src="{{feed.Doctor.photoDoctor}}" alt="">
                 </div>
                 <div class="username">
-                    <h3><b>Nicoly keyssiane</b></h3>
-                    <small>@username</small>
+                    <h3 (click)="openProfile(feed.Doctor.User.id)"><b>{{feed.Doctor.name }} {{feed.Doctor.lastName
+                            }}</b></h3>
                 </div>
             </div>
             <div class="publication">
-                <h3>{{publi}}</h3>
-                <img *ngIf="link === true" [src]="publi">
+                <h3>{{feed.description}}</h3>
+                <img *ngIf="feed.view === true" src="{{feed.photoF}}">
             </div>
-            <div class="interaction" fxLayoutAlign="start start" >
-                <mat-icon id="mat-icon-like" (click)="likePost(i)">favorite</mat-icon>
-                <mat-icon class="mat-icon"> mode_comment</mat-icon>
-                <mat-icon class="mat-icon">share</mat-icon>
+            <div class="interaction" fxLayoutAlign="start start">
+                <mat-icon id="mat-icon-like">favorite</mat-icon>
             </div>
-        </span>
+        </div>
     </ul>
 </div>

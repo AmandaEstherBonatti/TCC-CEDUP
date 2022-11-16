@@ -17,6 +17,6 @@ export class NavbarComponent {
   }
 
   open() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home/feed']);
   }
 }

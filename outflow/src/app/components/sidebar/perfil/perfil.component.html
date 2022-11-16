@@ -1,5 +1,380 @@
-<app-sidebar></app-sidebar>
-<div class="container">
-    
-</div>
+<app-sidebar>
 
+</app-sidebar>
+<div class="container">
+    <div class="profile">
+        <div class="file-upload-button">
+            <label for="fileInput">
+                <img src="{{url}}" alt="" />
+            </label>
+            <input type="file" id="fileInput" (change)="fileChanged($event)" />
+        </div>
+
+    </div>
+    <div class="accordion" *ngIf="this.otherProfileId">
+        <mat-accordion #accordion="matAccordion" multi>
+            <mat-expansion-panel *ngIf="role === 1" (click)="setValue()">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Suas informações pessoais
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <form class="form" fxLayout="column" [formGroup]="pacientForm">
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field fxFlex="50" appearance="outline" class="input-name">
+                            <mat-label>Nome</mat-label>
+                            <input matInput type="text" formControlName="name" readonly>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="50" appearance="outline" class="input-name">
+                            <mat-label>Sobrenome</mat-label>
+                            <input type="text" matInput formControlName="lastName" readonly>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field matInput fxFlex="30" appearance="outline" class="input-ativation"
+                            mask="00/00/0000" [showMaskTyped]="true" [dropSpecialCharacters]="false">
+                            <mat-label>Data de Nascimento</mat-label>
+                            <input type="text" matInput formControlName="birthday" readonly>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="30" appearance="outline" class="input-ativation">
+                            <mat-label>Telefone</mat-label>
+                            <input type="text" matInput formControlName="phoneNumber" mask="+00 (00) 00000-0000"
+                                readonly>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="30" appearance="outline" class="input">
+                            <mat-label>Gênero</mat-label>
+                            <mat-select matInput disableRipple formControlName="gender" readonly>
+                                <mat-option [value]="1">Masculino</mat-option>
+                                <mat-option [value]="2">Feminino</mat-option>
+                                <mat-option [value]="3">Não binário</mat-option>
+                                <mat-option [value]="4">Homem trans</mat-option>
+                                <mat-option [value]="5">Mulher trans</mat-option>
+                                <mat-option [value]="6">Fluído</mat-option>
+                                <mat-option [value]="7">Outro</mat-option>
+                                <mat-option [value]="8">Prefiro não responder</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </form>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="this.role === 2" (click)="setValueDoctor()">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Suas informações pessoais
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <form class="form" fxLayout="column" [formGroup]="doctorForm">
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field fxFlex="50" appearance="outline" class="input-name">
+                            <mat-label>Nome</mat-label>
+                            <input type="text" matInput formControlName="name" readonly>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="50" appearance="outline" class="input-name">
+                            <mat-label>Sobrenome</mat-label>
+                            <input type="text" matInput formControlName="lastName" readonly>
+                        </mat-form-field>
+
+                    </div>
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field fxFlex="30" appearance="outline" class="input-half">
+                            <mat-label>CPF</mat-label>
+                            <input type="text" matInput mask="000.000.000-00" formControlName="cpf" readonly>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="30" appearance="outline" class="input-ativation">
+                            <mat-label>Telefone</mat-label>
+                            <input type="tel" matInput formControlName="phoneNumber" mask="+00 (00) 00000-0000"
+                                readonly>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="40" appearance="outline" class="input">
+                            <mat-label>Gênero</mat-label>
+                            <mat-select matInput disableRipple formControlName="gender" readonly>
+                                <mat-option [value]="1">Masculino</mat-option>
+                                <mat-option [value]="2">Feminino</mat-option>
+                                <mat-option [value]="3">Não binário</mat-option>
+                                <mat-option [value]="4">Homem trans</mat-option>
+                                <mat-option [value]="5">Mulher trans</mat-option>
+                                <mat-option [value]="6">Fluído</mat-option>
+                                <mat-option [value]="7">Outro</mat-option>
+                                <mat-option [value]="8">Prefiro não responder</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+
+                    </div>
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field fxFlex="40" appearance="outline" class="input">
+                            <mat-label>Sua especialidade</mat-label>
+                            <mat-select matInput disableRipple formControlName="kindOfDoctor" readonly>
+                                <mat-option [value]="1">Psicólogo(a)</mat-option>
+                                <mat-option [value]="2">Psicanalista(a)</mat-option>
+                                <mat-option [value]="3">Terapeuta</mat-option>
+                                <mat-option [value]="4">Coach</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="input-speciality" name="kindOfDoctor"
+                            *ngIf="this.doctor.kindOfDoctor === 1">
+                            <mat-label>CRP</mat-label>
+                            <input matInput formControlName="crp" readonly>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="input-speciality">
+                            <mat-label>Tempo de experiência</mat-label>
+                            <mat-select matInput disableRipple formControlName="timeExperience" readonly>
+                                <mat-option [value]="1">Acima de 6 anos</mat-option>
+                                <mat-option [value]="2">Entre 3 e 6 anos</mat-option>
+                                <mat-option [value]="3">Menos de 3 anos</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="40" appearance="outline" class="input-speciality">
+                            <mat-label>Principal expectativa com o Outflow</mat-label>
+                            <mat-select matInput disableRipple formControlName="mainExpectation" readonly>
+                                <mat-option [value]="1">Atender carteira de clientes remotamente</mat-option>
+                                <mat-option [value]="2">Aumentar minha carteira de clientes</mat-option>
+                                <mat-option [value]="3">Construir minha carteira de clientes</mat-option>
+                                <mat-option [value]="4">Gerenciamento de agenda e pagamento</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                </form>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="role === 2" (click)="setValue()">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon>work</mat-icon>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Suas informações como profissional
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <form [formGroup]="profileForm">
+                    <div fxFlex="100" fxLayoutGap="16px" fxFlexAlign="end">
+                        <mat-form-field fxFlex="35" appearance="outline">
+                            <mat-label>Descrição</mat-label>
+                            <textarea class="text-area" matInput readonly formControlName="description"></textarea>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="35" appearance="outline">
+                            <mat-label>Especialidades</mat-label>
+                            <textarea class="text-area" matInput placeholder="Especialidades"
+                                formControlName="specialty" readonly></textarea>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="15" appearance="outline">
+                            <mat-label>Valor por Hora</mat-label>
+                            <input type="number" placeholder="Valor por Hora" matInput prefix="R$" type="text"
+                                mask="separator.2" thousandSeparator="." separatorLimit="1000000000"
+                                formControlName="hourlyRate" readonly />
+                        </mat-form-field>
+                    </div>
+                </form>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <div class="accordion" *ngIf="!this.otherProfileId">
+        <mat-accordion #accordion="matAccordion" multi>
+            <mat-expansion-panel *ngIf="role === 1" (click)="setValue()">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Suas informações pessoais
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <form class="form" fxLayout="column" [formGroup]="pacientForm">
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field fxFlex="50" appearance="outline" class="input-name">
+                            <mat-label>Nome</mat-label>
+                            <input type="text" matInput formControlName="name" placeholder="Digite seu nome completo">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="50" appearance="outline" class="input-name">
+                            <mat-label>Sobrenome</mat-label>
+                            <input type="text" matInput formControlName="lastName"
+                                placeholder="Digite seu nome completo">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field matInput fxFlex="30" appearance="outline" class="input-ativation"
+                            mask="00/00/0000" [showMaskTyped]="true" [dropSpecialCharacters]="false">
+                            <mat-label>Data de Nascimento</mat-label>
+                            <input type="text" matInput formControlName="birthday">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="30" appearance="outline" class="input-ativation">
+                            <mat-label>Telefone</mat-label>
+                            <input type="text" matInput formControlName="phoneNumber" mask="+00 (00) 00000-0000">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="30" appearance="outline" class="input">
+                            <mat-label>Gênero</mat-label>
+                            <mat-select matInput disableRipple formControlName="gender">
+                                <mat-option [value]="1">Masculino</mat-option>
+                                <mat-option [value]="2">Feminino</mat-option>
+                                <mat-option [value]="3">Não binário</mat-option>
+                                <mat-option [value]="4">Homem trans</mat-option>
+                                <mat-option [value]="5">Mulher trans</mat-option>
+                                <mat-option [value]="6">Fluído</mat-option>
+                                <mat-option [value]="7">Outro</mat-option>
+                                <mat-option [value]="8">Prefiro não responder</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button fxFlex="10" mat-flat-button (click)="saveEditPacient()">
+                            Salvar
+                        </button>
+                    </div>
+                </form>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="this.role === 2" (click)="setValueDoctor()">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Suas informações pessoais
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <form class="form" fxLayout="column" [formGroup]="doctorForm">
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field fxFlex="50" appearance="outline" class="input-name">
+                            <mat-label>Nome</mat-label>
+                            <input type="text" matInput formControlName="name" placeholder="Digite seu nome completo">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="50" appearance="outline" class="input-name">
+                            <mat-label>Sobrenome</mat-label>
+                            <input type="text" matInput formControlName="lastName"
+                                placeholder="Digite seu nome completo">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field fxFlex="30" appearance="outline" class="input-half">
+                            <mat-label>CPF</mat-label>
+                            <input type="text" matInput mask="000.000.000-00" formControlName="cpf">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="30" appearance="outline" class="input-ativation">
+                            <mat-label>Telefone</mat-label>
+                            <input type="tel" matInput formControlName="phoneNumber" mask="+00 (00) 00000-0000">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="40" appearance="outline" class="input">
+                            <mat-label>Gênero</mat-label>
+                            <mat-select matInput disableRipple formControlName="gender">
+                                <mat-option [value]="1">Masculino</mat-option>
+                                <mat-option [value]="2">Feminino</mat-option>
+                                <mat-option [value]="3">Não binário</mat-option>
+                                <mat-option [value]="4">Homem trans</mat-option>
+                                <mat-option [value]="5">Mulher trans</mat-option>
+                                <mat-option [value]="6">Fluído</mat-option>
+                                <mat-option [value]="7">Outro</mat-option>
+                                <mat-option [value]="8">Prefiro não responder</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field fxFlex="40" appearance="outline" class="input">
+                            <mat-label>Sua especialidade</mat-label>
+                            <mat-select matInput disableRipple formControlName="kindOfDoctor">
+                                <mat-option [value]="1">Psicólogo(a)</mat-option>
+                                <mat-option [value]="2">Psicanalista(a)</mat-option>
+                                <mat-option [value]="3">Terapeuta</mat-option>
+                                <mat-option [value]="4">Coach</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="input-speciality" name="kindOfDoctor"
+                            *ngIf="this.doctor.kindOfDoctor === 1">
+                            <mat-label>CRP</mat-label>
+                            <input matInput formControlName="crp">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="input-speciality">
+                            <mat-label>Tempo de experiência</mat-label>
+                            <mat-select matInput disableRipple formControlName="timeExperience">
+                                <mat-option [value]="1">Acima de 6 anos</mat-option>
+                                <mat-option [value]="2">Entre 3 e 6 anos</mat-option>
+                                <mat-option [value]="3">Menos de 3 anos</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="40" appearance="outline" class="input-speciality">
+                            <mat-label>Principal expectativa com o Outflow</mat-label>
+                            <mat-select matInput disableRipple formControlName="mainExpectation">
+                                <mat-option [value]="1">Atender carteira de clientes remotamente</mat-option>
+                                <mat-option [value]="2">Aumentar minha carteira de clientes</mat-option>
+                                <mat-option [value]="3">Construir minha carteira de clientes</mat-option>
+                                <mat-option [value]="4">Gerenciamento de agenda e pagamento</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button fxFlex="10" mat-flat-button (click)="saveEditDoctor()">
+                            Salvar
+                        </button>
+
+                    </div>
+                </form>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="role === 2" (click)="setValue()">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon>work</mat-icon>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Suas informações como profissional
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <form [formGroup]="profileForm">
+                    <div fxFlex="100" fxLayoutGap="16px" fxFlexAlign="end">
+                        <mat-form-field fxFlex="35" appearance="outline">
+                            <mat-label>Descrição</mat-label>
+                            <textarea class="text-area" matInput placeholder="Descrição"
+                                formControlName="description"></textarea>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="35" appearance="outline">
+                            <mat-label>Especialidades</mat-label>
+                            <textarea class="text-area" matInput placeholder="Especialidades"
+                                formControlName="specialty"></textarea>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="15" appearance="outline">
+                            <mat-label>Valor por Hora</mat-label>
+                            <input type="number" placeholder="Valor por Hora" matInput prefix="R$" type="text"
+                                mask="separator.2" thousandSeparator="." separatorLimit="1000000000"
+                                formControlName="hourlyRate" />
+                        </mat-form-field>
+                        <button fxFlex="10" mat-flat-button (click)="save()">
+                            Salvar
+                        </button>
+                    </div>
+                </form>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon> vpn_key</mat-icon>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Informações do Login
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <form [formGroup]="userForm">
+                    <div fxFlex="100" fxLayoutGap="16px">
+                        <mat-form-field fxFlex="50" class="input" appearance="outline">
+                            <input matInput formControlName="email" placeholder="E-mail" />
+                        </mat-form-field>
+                        <mat-form-field fxFlex="40" class="input" appearance="outline">
+                            <input matInput formControlName="password" type="password" placeholder="Senha" />
+                        </mat-form-field>
+                        <button fxFlex="10" mat-flat-button (click)="saveEditUser()">
+                            Salvar
+                        </button>
+                    </div>
+                </form>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </div>
+    <div style="width: 100%; height:100%;" *ngIf="this.otherProfileId">
+        <button mat-flat-button class="button-chat" *ngIf="this.doctor" (click)="openChat()">
+            <mat-icon> chat_bubble</mat-icon> Conversar com {{doctor.name}}
+        </button>
+        <button mat-flat-button class="button-chat" *ngIf="this.client">
+            <mat-icon> chat_bubble</mat-icon> Conversar com {{client.name}}
+        </button>
+    </div>
+</div>

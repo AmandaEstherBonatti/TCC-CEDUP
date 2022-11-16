@@ -4,7 +4,7 @@ import { validateBasis } from '@angular/flex-layout';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/providers/api.provider';
+import { UserService } from 'src/providers/api.provider';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     private _fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private api: ApiService
+    private api: UserService
   ) {
 
   }
@@ -81,19 +81,17 @@ export class LoginComponent implements OnInit {
       try {
         const auth = await this.api.login(data);
         if (auth.token) {
-          
+          sessionStorage.setItem('token', auth.token)
+          sessionStorage.setItem('user_id', auth.id)
+          this.router.navigate(['/home']);
         }
-        
-        
         console.log(auth)
       } catch (error) {
-        console.log('ERROR 132' + error);
+        console.log(error);
         this.showBanner = true;
         this.message = 'Ops!E-mail e/ou senha inválidos.Tente novamente.';
       }
     }
     console.log('deu boms')
-    this.router.navigate(['feed']);
   }
-
 }

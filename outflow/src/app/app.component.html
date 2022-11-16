@@ -1,6 +1,7 @@
 <!-- <app-sidebar></app-sidebar> -->
-
 <app-navbar *ngIf="url == '/menu/inicial'"></app-navbar>
+
+<app-login *ngIf="url == '/login'"></app-login>
 <div class="content">
     <router-outlet></router-outlet>
 </div>

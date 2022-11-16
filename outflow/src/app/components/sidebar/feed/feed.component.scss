@@ -1,13 +1,60 @@
 .container {
-    margin-left: 23%;
+    position: absolute;
+    margin-left: 19%;
+    padding-right: 3%;
+
+    padding-left: 3%;
+    overflow: auto;
+    height: calc(100vh - 300px);
+
+    background: rgb(1, 176, 255);
+    background: linear-gradient(0deg, rgba(1, 176, 255, 1) 0%, rgba(100, 2, 255, 0.7648809523809523) 77%);
+
+    width: 80%;
+    height: 100%;
+    max-height: 600%
+}
+
+.file-upload-button {
+    margin-top: 3%;
+    margin-left: 27%;
+    margin-right: 30%;
+    border-radius: 5%;
+    border: 5px solid rgba(79, 198, 228, 0.5);
+    height: 25rem;
+    overflow: hidden;
+    position: relative;
+    width: 30rem;
+    font-size: 1.5rem;
+    text-align: center;
+
+
+
+    input[type="file"] {
+        font-size: 400px;
+        left: 0;
+
+        opacity: 0;
+        position: absolute;
+        top: 0;
+    }
+
+
+}
+
+.mat-remove {
+
+    margin-left: 10%;
 }
 
 .header {
     padding-top: 10px;
+    padding-left: 40%;
 }
 
 .icon-serv {
-    border: 2px solid #fff;
+    border: 2px solid rgba(79, 198, 228, 0.5);
+    ;
     position: relative;
     left: 0;
     bottom: 10%;
@@ -17,33 +64,60 @@
     border-radius: 100%;
     margin-top: 30px;
 }
+
 .icon-serv img {
     width: 65px;
+    // margin-left: 15%;
     object-fit: cover;
     position: relative;
-    top: 4px;
+    margin-bottom: 2px;
+    // top: 2px;
     height: 65px;
     line-height: 65px;
     border-radius: 100%;
 }
 
-.image input{
+.image input {
     display: none;
 }
 
-.image img{
+.image img {
     cursor: pointer;
 }
 
-form{
+.input-description {
+    // max-width: 100%;
+    max-height: 100%;
+    width: 180%;
+    margin-left: 2%;
+    margin-top: 3%;
+}
+
+form {
     width: 100%;
 }
 
-.profile{
-    margin-bottom: 20px;
+.profile {
+    border-radius: 10px 20px 30px;
+    width: 100%;
+    height: 30%;
+    border: 2px solid #2e5dc2;
+    background-color: #fff;
+    padding-left: 3%;
+
 }
 
-.profile input{
+.profile-url {
+    width: 100%;
+    height: 30%;
+    border: 2px solid #2e5dc2;
+    background-color: #fff;
+    padding-left: 3%;
+    overflow: auto;
+    height: calc(100vh - 100px);
+}
+
+.profile input {
     width: 100%;
     height: 20px;
     background: transparent;
@@ -53,7 +127,7 @@ form{
     margin-left: 10px;
 }
 
-.icons{
+.icons {
     max-width: 230px;
     max-height: 230px;
     width: auto;
@@ -62,48 +136,88 @@ form{
     cursor: pointer;
 }
 
-.image{
+.image {
     margin-right: 50px;
 }
 
-.gif{
+.gif {
     margin-right: 50px;
 }
 
-.emoji{
+.emoji {
     margin-right: 50px;
 }
 
-.publish{
+
+.button {
+    margin-left: 0%;
+    margin-top: 0px;
+
+}
+
+.button:hover {
+    color: #fff;
+
+    background-color: #2e5dc2;
+}
+
+.publish {
     cursor: pointer;
+
 }
 
-.list-group-item img{
+.list-group-item {
+    border-radius: 10px 20px 30px;
+    margin-top: 15px;
+    margin-bottom: 12px;
+    border: 2px solid #fff;
+    padding: 2%;
+    padding-top: 0%;
+}
+
+.list-group-item img {
     max-width: 90px;
     max-height: 120px;
+
+
 }
 
-.username{
-    margin-top: 30px;
+.main {
+    margin: 0%;
 }
 
-.username h3{
-    margin: 0!important;
+.username {
+    cursor: pointer;
+    margin-top: 40px;
+    margin-left: 2%;
 }
 
-.mat-icon{
-    margin-right: 30px;
+.username h3 {
+    margin: 0 !important;
+}
+
+.mat-icon {
+    margin-right: 10px;
     cursor: pointer;
 }
 
-#mat-icon-like:hover{
+#mat-icon-like:hover {
     color: red;
 }
 
-.publication{
-    margin-top: 10px;
+.publication {
+    justify-content: flex-start;
+    margin-left: 8%;
+
+    img {
+        size: 100%;
+        overflow: auto;
+        height: calc(100vh - 300px);
+        width: 100%;
+    }
+
 }
 
 ::ng-deep.mat-simple-snackbar-action {
-    color: #ff4081!important;
+    color: #ff4081 !important;
 }

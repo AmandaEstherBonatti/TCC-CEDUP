@@ -3,97 +3,105 @@
         <h1 class="logo" routerLink="/menu/inicial">Out<span>flow</span></h1>
     </div>
     <div class="main" fxLayout="row" fxFlex="100" fxLayoutAlign="space-around">
-        <div class="container">
-            <div class="header" fxLayout="column" fxLayoutAlign="center center">
-                <h1>Sobre você</h1>
-            </div>
-            <div class="address" fxLayout="row" fxLayoutAlign="center stretch">
-                <form class="form">
+        <form class="form" [formGroup]="doctorForm">
+            <div class="container" fxFlex="50">
+                <div class="header" fxLayout="column" fxLayoutAlign="center center">
+                    <h1>Sobre você</h1>
+                </div>
+                <div class="address" fxLayout="row" fxLayoutAlign="center stretch">
                     <mat-form-field appearance="outline" class="input">
                         <mat-label>Nome</mat-label>
-                        <input matInput>
+                        <input type="text" matInput formControlName="name" placeholder="Digite seu nome completo">
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="input">
                         <mat-label>Sobrenome</mat-label>
-                        <input matInput>
+                        <input type="text" matInput formControlName="lastName" placeholder="Digite seu nome completo">
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="input">
                         <mat-label>Gênero</mat-label>
-                        <mat-select disableRipple>
+                        <mat-select matInput disableRipple formControlName="gender">
                             <mat-option value="1">Masculino</mat-option>
                             <mat-option value="2">Feminino</mat-option>
                             <mat-option value="3">Não binário</mat-option>
+                            <mat-option value="4">Homem trans</mat-option>
+                            <mat-option value="5">Mulher trans</mat-option>
+                            <mat-option value="6">Fluído</mat-option>
+                            <mat-option value="7">Outro</mat-option>
+                            <mat-option value="8">Prefiro não responder</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <div fxLayoutAlign="space-evenly">
-                        <mat-form-field appearance="outline" class="input-half">
-                            <mat-label>Celular</mat-label>
-                            <input type="tel" matInput [formControl]="telFormControl" mask="+00 (00) 00000-0000">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" class="input-half">
-                            <mat-label>CPF</mat-label>
-                            <input type="text" matInput mask="000.000.000-00">
-                        </mat-form-field>
-                    </div>
-                    <mat-form-field appearance="outline" class="input">
-                        <mat-label>E-mail</mat-label>
-                        <input type="email" matInput placeholder="Digite seu endereço de e-mail">
+
+                    <mat-form-field appearance="outline" class="input-half">
+                        <mat-label>CPF</mat-label>
+                        <input type="text" matInput mask="000.000.000-00" formControlName="cpf">
                     </mat-form-field>
-                    <mat-form-field appearance="outline" class="input">
+                    <mat-form-field appearance="outline" class="input-half">
+                        <mat-label>Celular</mat-label>
+                        <input type="tel" matInput formControlName="phoneNumber" mask="+00 (00) 00000-0000">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="input" formGroupName="User">
+                        <mat-label>E-mail</mat-label>
+                        <input type="email" matInput placeholder="Digite seu endereço de e-mail"
+                            formControlName="email">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="input" formGroupName="User">
                         <mat-label>Senha</mat-label>
                         <img *ngIf="passwordView == true" (click)="viewPassword()" class="viewEye"
                             src="../../../assets/hide.png" alt="" matSuffix>
                         <img *ngIf="passwordView == false" (click)="viewPassword()" class="viewEye"
                             src="../../../assets/view.png" alt="" matSuffix>
-                        <input id="password-input" type="password" matInput>
+                        <input id="password-input" type="password" matInput formControlName="password">
                     </mat-form-field>
-                </form>
-            </div>
-        </div>
-        <div class="container">
-            <div class="header" fxLayout="column" fxLayoutAlign="center center">
-                <h1>Sua especialidade</h1>
-            </div>
-            <div class="address" fxLayout="column" fxLayoutAlign="stretch">
-                <div id="block" fxLayout="row" fxLayoutAlign="center center">
-                    <label class="labelExpanded" (click)="viewCRP()">
-                        <input type="radio" name="targetGroup">
-                        <div class="radio-btns">
-                            <img src="../../../assets/autismo.png" alt="">
-                            <p>Psicólogo(a)</p>
-                        </div>
-                    </label>
-                    <label class="labelExpanded" (click)="dontViewCRP()">
-                        <input type="radio" name="targetGroup">
-                        <div class="radio-btns">
-                            <img src="../../../assets/alvo.png">
-                            <p>Psicanalista(a)</p>
-                        </div>
-                    </label>
-                    <label class="labelExpanded" (click)="dontViewCRP()">
-                        <input type="radio" name="targetGroup">
-                        <div class="radio-btns">
-                            <img src="../../../assets/calma.png">
-                            <p>Terapeuta</p>
-                        </div>
-                    </label>
-                    <label class="labelExpanded" (click)="dontViewCRP()">
-                        <input type="radio" name="targetGroup">
-                        <div class="radio-btns">
-                            <img src="../../../assets/ideia (2).png">
-                            <p>Coach</p>
-                        </div>
-                    </label>
                 </div>
-                <br>
-                <form class="form">
-                    <mat-form-field appearance="outline" class="input-speciality" *ngIf="crpBox == true">
+            </div>
+            <div class="container" fxFlex="50">
+                <div class="header" fxLayout="column" fxLayoutAlign="center center">
+                    <h1>Sua especialidade</h1>
+                </div>
+                <div class="address" fxLayout="column" fxLayoutAlign="stretch">
+                    <div id="block" fxLayout="row" fxLayoutAlign="center">
+                        <label class="labelExpanded" (click)="viewCRP()">
+                            <input type="radio" name="targetGroup" formControlName="kindOfDoctor" value="1"
+                                name="kindOfDoctor">
+                            <div class="radio-btns">
+                                <img src="../../../assets/autismo.png" alt="">
+                                <p>Psicólogo(a)</p>
+                            </div>
+                        </label>
+                        <label class="labelExpanded" (click)="dontViewCRP()">
+                            <input type="radio" name="targetGroup" formControlName="kindOfDoctor" value="2"
+                                name="kindOfDoctor">
+                            <div class="radio-btns">
+                                <img src="../../../assets/alvo.png">
+                                <p>Psicanalista(a)</p>
+                            </div>
+                        </label>
+                        <label class="labelExpanded" (click)="dontViewCRP()">
+                            <input type="radio" name="targetGroup" formControlName="kindOfDoctor" value="3"
+                                name="kindOfDoctor">
+                            <div class="radio-btns">
+                                <img src="../../../assets/calma.png">
+                                <p>Terapeuta</p>
+                            </div>
+                        </label>
+                        <label class="labelExpanded" (click)="dontViewCRP()">
+                            <input type="radio" name="targetGroup" formControlName="kindOfDoctor" value="4"
+                                name="kindOfDoctor">
+                            <div class="radio-btns">
+                                <img src="../../../assets/ideia (2).png">
+                                <p>Coach</p>
+                            </div>
+                        </label>
+                    </div>
+                    <br>
+                    <mat-form-field appearance="outline" class="input-speciality" *ngIf="crpBox == true"
+                        name="kindOfDoctor">
                         <mat-label>CRP</mat-label>
-                        <input matInput>
+                        <input matInput formControlName="crp">
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="input-speciality">
                         <mat-label>Tempo de experiência</mat-label>
-                        <mat-select disableRipple>
+                        <mat-select matInput disableRipple formControlName="timeExperience">
                             <mat-option value="1">Acima de 6 anos</mat-option>
                             <mat-option value="2">Entre 3 e 6 anos</mat-option>
                             <mat-option value="3">Menos de 3 anos</mat-option>
@@ -101,23 +109,24 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="input-speciality">
                         <mat-label>Principal expectativa com o Outflow</mat-label>
-                        <mat-select disableRipple>
+                        <mat-select matInput disableRipple formControlName="mainExpectation">
                             <mat-option value="1">Atender carteira de clientes remotamente</mat-option>
                             <mat-option value="2">Aumentar minha carteira de clientes</mat-option>
                             <mat-option value="3">Construir minha carteira de clientes</mat-option>
                             <mat-option value="4">Gerenciamento de agenda e pagamento</mat-option>
                         </mat-select>
                     </mat-form-field>
-                </form>
-                <div class="terms">
-                    <mat-checkbox>Li e concordo com os <a href="https://zenklub.com.br/termos-especialistas/"
-                            target="_blank">Termos e Condições</a> e <a href="https://zenklub.com.br/privacidade/"
-                            target="_blank">Política de Privacidade</a></mat-checkbox>
-                </div>
-                <div class="login">
-                    <button class="login-btn">Quero me cadastrar</button>
+                    <div class="terms">
+                        <mat-checkbox>Li e concordo com os <a href="https://zenklub.com.br/termos-especialistas/"
+                                target="_blank">Termos e Condições</a> e <a href="https://zenklub.com.br/privacidade/"
+                                target="_blank">Política de
+                                Privacidade</a></mat-checkbox>
+                    </div>
+                    <div class="login">
+                        <button class="login-btn" (click)="save()">Quero me cadastrar</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
