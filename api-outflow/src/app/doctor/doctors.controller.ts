@@ -12,10 +12,11 @@ import {
     Query,
     UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { Public } from 'src/auth/public.decorator';
 import { DoctorService } from './doctors.service';
 import { CreateDoctorDto } from './dto/create-doctors.dto';
 import { UpdateDoctorDto } from './dto/update-doctors.dto';
-
 
 @Controller('api/v1/doctors')
 export class DoctorsController {
@@ -26,6 +27,7 @@ export class DoctorsController {
         return await this.doctorService.findAll();
     }
 
+    @Public()
     @Post()
     async store(@Body() body: CreateDoctorDto) {
         return await this.doctorService.store(body);

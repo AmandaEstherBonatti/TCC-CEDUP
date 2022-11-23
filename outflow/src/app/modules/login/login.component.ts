@@ -79,9 +79,12 @@ export class LoginComponent implements OnInit {
       };
 
       try {
-        const auth = await this.api.login(data);
+        console.log(formData)
+        const auth = await this.api.login(formData);
         if (auth.token) {
           sessionStorage.setItem('token', auth.token)
+          sessionStorage.setItem('role', auth.role)
+
           sessionStorage.setItem('user_id', auth.id)
           this.router.navigate(['/home']);
         }

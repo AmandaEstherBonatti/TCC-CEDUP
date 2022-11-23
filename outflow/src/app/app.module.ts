@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from '@angular/material/table';
 
-// import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -43,7 +42,6 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     LoginComponent,
     PacientComponent,
     DoctorComponent,
-    // SidebarComponent,
 
   ],
   imports: [

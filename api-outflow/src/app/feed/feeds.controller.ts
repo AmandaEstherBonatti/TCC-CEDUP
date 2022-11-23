@@ -22,6 +22,7 @@ import { CreateFeedDto } from './dto/create-feeds.dto';
 import { UpdateFeedDto } from './dto/update-feeds.dto';
 import { FeedService } from './feeds.service';
 import { diskStorage } from 'multer';
+import { Public } from 'src/auth/public.decorator';
 
 
 
@@ -67,6 +68,7 @@ export class FeedsController {
         await this.feedService.destroy(id);
     }
 
+    @Public()
     @Post('file/upload')
     @UseInterceptors(
         FileInterceptor('file', {
@@ -85,6 +87,7 @@ export class FeedsController {
         return response;
     }
 
+    @Public()
     @Get('file/upload/:imgpath')
     seeUploadedFile(@Param('imgpath') image, @Res() res) {
         let url = image.split('.')

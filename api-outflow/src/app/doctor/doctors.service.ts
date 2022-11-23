@@ -23,7 +23,11 @@ export class DoctorService {
     const options: FindManyOptions = {
       // order: { createdAt: 'DESC' },
     };
-    return await this.doctorRepository.find(options);
+    try {
+      return await this.doctorRepository.find(options);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   async findOneOrFail(id: string) {
@@ -35,15 +39,19 @@ export class DoctorService {
   }
 
   async store(data: CreateDoctorDto) {
-    const doctor = this.doctorRepository.create(data);
-    return await this.doctorRepository.save(doctor);
+    try {
+      const doctor = this.doctorRepository.create(data);
+      return await this.doctorRepository.save(doctor);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   async update(id: string, data: UpdateDoctorDto) {
     try {
       await this.doctorRepository.findOneById(id);
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
     return await this.doctorRepository.save({ id: id, ...data });
   }
@@ -59,107 +67,129 @@ export class DoctorService {
 
 
   async findPsychologist() {
-    return await this.doctorRepository.find({
-      where: [
-        { kindOfDoctor: 1 },
-      ],
-    });
+    try {
+      return await this.doctorRepository.find({
+        where: [
+          { kindOfDoctor: 1 },
+        ],
+      });
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   async findPsychoanalyst() {
-    return await this.doctorRepository.find({
-      where: [
-        { kindOfDoctor: 2 },
-      ],
-    });
+    try {
+      return await this.doctorRepository.find({
+        where: [
+          { kindOfDoctor: 2 },
+        ],
+      });
+    } catch (error) {
+      throw new NotFoundException(error.message);
+
+    }
   }
 
   async findTherapist() {
-    return await this.doctorRepository.find({
-      where: [
-        { kindOfDoctor: 3 },
-      ],
-    });
+    try {
+      return await this.doctorRepository.find({
+        where: [
+          { kindOfDoctor: 3 },
+        ],
+      });
+    } catch (error) {
+      throw new NotFoundException(error.message);
+
+    }
   }
 
   async findPsychiatrist() {
-    return await this.doctorRepository.find({
-      where: [
-        { kindOfDoctor: 4 },
-      ],
-    });
+    try {
+      return await this.doctorRepository.find({
+        where: [
+          { kindOfDoctor: 4 },
+        ],
+      });
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   async find(name: string, type: number) {
     let doctor;
-    if (name === '') {
-      switch (type) {
-        case 1:
-          doctor = this.findPsychologist();
-          return doctor;
-          break;
-        case 2:
-          doctor = this.findPsychoanalyst();
-          return doctor;
-          break;
-        case 3:
-          doctor = this.findTherapist();
-          return doctor;
-          break;
-        case 4:
-          doctor = this.findPsychiatrist();
-          return doctor;
-          break;
-        case 5:
-          doctor = this.findAll();
-          return doctor;
-          break;
+    try {
+      if (name === '') {
+        switch (type) {
+          case 1:
+            doctor = this.findPsychologist();
+            return doctor;
+            break;
+          case 2:
+            doctor = this.findPsychoanalyst();
+            return doctor;
+            break;
+          case 3:
+            doctor = this.findTherapist();
+            return doctor;
+            break;
+          case 4:
+            doctor = this.findPsychiatrist();
+            return doctor;
+            break;
+          case 5:
+            doctor = this.findAll();
+            return doctor;
+            break;
+        }
+      } else {
+        switch (type) {
+          case 1:
+            doctor = await this.doctorRepository.find({
+              where: [
+                { name: Like(`%${name}%`), kindOfDoctor: 1 },
+              ],
+            });
+            return doctor;
+            break;
+            break;
+          case 2:
+            doctor = await this.doctorRepository.find({
+              where: [
+                { name: Like(`%${name}%`), kindOfDoctor: 2 },
+              ]
+            });
+            return doctor;
+            break;
+          case 3:
+            doctor = await this.doctorRepository.find({
+              where: [
+                { name: Like(`%${name}%`), kindOfDoctor: 3 },
+              ]
+            });
+            return doctor;
+            break;
+          case 4:
+            doctor = await this.doctorRepository.find({
+              where: [
+                { name: Like(`%${name}%`), kindOfDoctor: 4 },
+              ]
+            });
+            return doctor;
+            break;
+          case 5:
+            doctor = await this.doctorRepository.find({
+              where: [
+                {
+                  name: Like(`%${name}%`),
+                },
+              ],
+            });
+            return doctor;
+        }
       }
-    } else {
-      switch (type) {
-        case 1:
-          doctor = await this.doctorRepository.find({
-            where: [
-              { name: Like(`%${name}%`), kindOfDoctor: 1 },
-            ],
-          });
-          return doctor;
-          break;
-          break;
-        case 2:
-          doctor = await this.doctorRepository.find({
-            where: [
-              { name: Like(`%${name}%`), kindOfDoctor: 2 },
-            ]
-          });
-          return doctor;
-          break;
-        case 3:
-          doctor = await this.doctorRepository.find({
-            where: [
-              { name: Like(`%${name}%`), kindOfDoctor: 3 },
-            ]
-          });
-          return doctor;
-          break;
-        case 4:
-          doctor = await this.doctorRepository.find({
-            where: [
-              { name: Like(`%${name}%`), kindOfDoctor: 4 },
-            ]
-          });
-          return doctor;
-          break;
-        case 5:
-          doctor = await this.doctorRepository.find({
-            where: [
-              {
-                name: Like(`%${name}%`),
-              },
-            ],
-          });
-          return doctor;
-      }
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
   }
 }

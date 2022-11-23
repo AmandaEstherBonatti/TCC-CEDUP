@@ -2,7 +2,7 @@
 import { Injectable } from '@nestjs/common';
 
 import { JwtService } from '@nestjs/jwt';
-import { compareSync } from 'bcrypt';
+import { compareSync, genSaltSync, hashSync } from 'bcrypt';
 import { UsersEntity } from 'src/app/user/users.entity';
 import { UsersService } from 'src/app/user/users.service';
 
@@ -14,26 +14,37 @@ export class AuthService {
   ) { }
 
   async validateUser(email: string, password: string) {
-    let user: UsersEntity;
+
+    let user: any;
     try {
       user = await this.userService.findOne(email);
+
     } catch (error) {
-      return null;
+      return console.log(error.message);
     }
 
     const isPasswordValid = compareSync(password, user.password);
+
     if (!isPasswordValid) return null;
 
     return user;
   }
 
-  async login(user: UsersEntity) {
-    console.log(user)
-    const payload = { sud: user.id, login: user.email };
-    return {
-      id: user.id,
-      token: this.jwtService.sign(payload),
-    };
+
+
+  async login(email: string, password: string) {
+    let obj = await this.validateUser(email, password);
+    console.log(obj)
+    // let useer = await this.validateUser(user.email, user.password)
+    const payload = { sud: obj.id, login: obj.email };
+    let token = this.jwtService.sign(payload)
+
+    let data = {
+      id: obj.id,
+      role: obj.role,
+      token: token
+    }
+    return data
   }
 
   verifyToken(jwt: any) {

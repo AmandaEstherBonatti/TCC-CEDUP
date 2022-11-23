@@ -17,15 +17,14 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Public } from 'src/auth/decorators/public.decorator';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { diskStorage } from 'multer';
 import { UsersService } from './users.service';
 import { editFileName } from './utils/file-upload-rename';
 import { imageFileFilter } from './utils/photo-upload-validator';
+import { Public } from 'src/auth/public.decorator';
 
-// @UseGuards(AuthGuard('jwt'))
 @Controller('api/v1/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
@@ -63,6 +62,7 @@ export class UsersController {
     await this.usersService.destroy(id);
   }
 
+  @Public()
   @Post('file/upload')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -81,6 +81,7 @@ export class UsersController {
     return response;
   }
 
+  @Public()
   @Get('file/upload/:imgpath')
   seeUploadedFile(@Param('imgpath') image, @Res() res) {
     let url = image.split('.')

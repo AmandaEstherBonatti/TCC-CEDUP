@@ -20,26 +20,28 @@ export class DetailsProfileService {
     private readonly detailsProfileRepository: Repository<DetailsProfileEntity>,
   ) { }
 
-
-
   async findOneOrFail(id: string) {
     try {
       return await this.detailsProfileRepository.findOneBy({ id });
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
   }
 
   async store(data: CreateDetailsProfileDto) {
-    const feed = this.detailsProfileRepository.create(data);
-    return await this.detailsProfileRepository.save(feed);
+    try {
+      const feed = this.detailsProfileRepository.create(data);
+      return await this.detailsProfileRepository.save(feed);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   async update(id: string, data: UpdateDetailsProfileDto) {
     try {
       await this.detailsProfileRepository.findOneById(id);
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
     return await this.detailsProfileRepository.save({ id: id, ...data });
   }

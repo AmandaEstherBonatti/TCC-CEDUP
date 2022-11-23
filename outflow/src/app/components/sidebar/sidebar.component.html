@@ -16,11 +16,11 @@
                 <abbr title="Agenda"><img src="../../../assets/calendar.png" class="nav-img"></abbr>
                 <p>Agenda</p>
             </div>
-            <div class="icon" fxLayout="row" routerLink="/home/clients" *ngIf="role === 2">
+            <div *ngIf="this.role === '2'" class="icon" fxLayout="row" routerLink="/home/clients">
                 <abbr title="Clientes"><img src="../../../assets/user.png" class="nav-img"></abbr>
                 <p>Clientes</p>
             </div>
-            <div class="icon" fxLayout="row" routerLink="/home/profissionais" *ngIf="role === 1">
+            <div *ngIf="this.role === '1'" class="icon" fxLayout="row" routerLink="/home/profissionais">
                 <abbr title="Profissionais"><img src="../../../assets/user.png" class="nav-img"></abbr>
                 <p>Profissionais</p>
             </div>

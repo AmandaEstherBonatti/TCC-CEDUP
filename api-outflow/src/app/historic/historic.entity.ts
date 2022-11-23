@@ -18,9 +18,9 @@ export class HistoricEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => ClientEntity, (client) => client.Historic, { nullable: true, eager: true })
+  @ManyToOne(() => ClientEntity, (client) => client.Historic, { nullable: true })
   Client: ClientEntity;
 
-  @ManyToOne(() => DoctorsEntity, (doctor) => doctor.Historic, { nullable: true, eager: true })
+  @ManyToOne(() => DoctorsEntity, (doctor) => doctor.Historic, { nullable: true })
   Doctor: DoctorsEntity;
 } 
