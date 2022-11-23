@@ -58,7 +58,7 @@ export class ClientsComponent implements OnInit {
   openProfile(profileId: string) {
     console.log(profileId)
     sessionStorage.setItem('other_profile', '0')
-    sessionStorage.setItem('other_profile_id', profileId)
+    sessionStorage.setItem('client_profile_id', profileId)
     this.router.navigate(['home/perfil']);
   }
 

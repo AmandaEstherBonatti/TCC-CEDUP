@@ -149,6 +149,17 @@ export class PacientService {
 
     ngOnInit(): void { }
 
+
+    findOne(id: string | null): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.apiGateway
+                .get("clients/:id", { id: id })
+                .subscribe((response: HttpResponse<any>) => {
+                    resolve(response.body);
+                }, reject);
+        });
+    }
+
     createPacient(pacient: any) {
         return new Promise((resolve, reject) => {
             this.apiGateway

@@ -61,6 +61,7 @@ export class SidebarComponent implements OnInit {
   openProfile() {
     sessionStorage.removeItem('other_profile')
     sessionStorage.removeItem('other_profile_id')
+    sessionStorage.removeItem('client_profile_id')
 
     this.router.navigate(['home/perfil']);
 
