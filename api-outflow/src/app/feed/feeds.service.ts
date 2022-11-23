@@ -20,49 +20,38 @@ export class FeedService {
   ) { }
 
   async findAll() {
-    // return this.feedRepository
-    //   .createQueryBuilder('feed_post_entity')
-    //   .leftJoinAndSelect('feed_post_entity.User', 'User')
-    //   .orderBy('feed_post_entity. createdAt', 'DESC')
-    //   .take(take)
-    //   .skip(skip)
-    //   .getMany()
-
-
-    return await this.feedRepository.find({
-      select: ['id', 'description', 'photoFeed', 'createdAt'],
-      relations: ['Doctor']
-    });
-
-    // return await this.feedRepository.query('select feed_post_entity.id, users_entity.photo, feed_post_entity.description,feed_post_entity.photo,feed_post_entity.createdAt, ' +
-    //   'feed_post_entity.userId, ' +
-    //   'doctors_entity.id,doctors_entity.name, doctors_entity.lastName from users_entity  ' +
-    //   'left join feed_post_entity on feed_post_entity.userId = users_entity.id ' +
-    //   'left join doctors_entity on doctors_entity.userId = users_entity.id')
-
-
+    try {
+      return await this.feedRepository.find({
+        select: ['id', 'description', 'photoFeed', 'createdAt'],
+        relations: ['Doctor']
+      });
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
-
-
 
   async findOneOrFail(id: string) {
     try {
       return await this.feedRepository.findOneBy({ id });
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
   }
 
   async store(data: CreateFeedDto) {
-    const feed = this.feedRepository.create(data);
-    return await this.feedRepository.save(feed);
+    try {
+      const feed = this.feedRepository.create(data);
+      return await this.feedRepository.save(feed);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   async update(id: string, data: UpdateFeedDto) {
     try {
       await this.feedRepository.findOneById(id);
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
     return await this.feedRepository.save({ id: id, ...data });
   }

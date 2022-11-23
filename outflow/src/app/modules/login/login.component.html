@@ -1,9 +1,5 @@
 <div id="login-page" fxFlex="100">
-  <app-banner
-    [message]="message"
-    [showBanner]="showBanner"
-    (handleCheck)="handleBanner($event)"
-  ></app-banner>
+  <app-banner [message]="message" [showBanner]="showBanner" (handleCheck)="handleBanner($event)"></app-banner>
   <div fxLayout="row">
     <div fxLayout="column" fxFlex="100">
       <h1 class="logo" routerLink="/menu/inicial">Out<span>flow</span></h1>
@@ -11,61 +7,42 @@
       <div class="login-wrapper">
         <h2 class="no-margin">Fazer Login</h2>
         <p class="login-text">Digite seu e-mail e sua senha</p>
-
         <div class="login-form">
           <form [formGroup]="loginForm" fxLayout="column" (submit)="onSubmit()">
             <p class="form">
               <mat-form-field class="input" appearance="outline">
                 <input matInput formControlName="email" placeholder="E-mail" />
-                <mat-error
-                  *ngIf="
+                <mat-error *ngIf="
                     loginForm && loginForm.controls['email'].hasError('email')
-                  "
-                >
-                  E-mail inválido</mat-error
-                >
-                <mat-error
-                  *ngIf="
+                  ">
+                  E-mail inválido</mat-error>
+                <mat-error *ngIf="
                     loginForm &&
                     loginForm.controls['email'].hasError('required')
-                  "
-                >
+                  ">
                   Campo obrigatório
                 </mat-error>
               </mat-form-field>
             </p>
             <p class="form">
               <mat-form-field class="input" appearance="outline">
-                <input
-                  matInput
-                  formControlName="password"
-                  type="password"
-                  placeholder="Senha"
-                />
-                <mat-error
-                  *ngIf="
+                <input matInput formControlName="password" type="password" placeholder="Senha" />
+                <mat-error *ngIf="
                     loginForm &&
                     loginForm.controls['password'].hasError('required')
-                  "
-                >
+                  ">
                   Campo obrigatório
                 </mat-error>
-                <mat-error
-                  *ngIf="
+                <mat-error *ngIf="
                     loginForm &&
                     loginForm.controls['password'].hasError('minlength')
-                  "
-                >
-                  Senha muito curta</mat-error
-                >
-                <mat-error
-                  *ngIf="
+                  ">
+                  Senha muito curta</mat-error>
+                <mat-error *ngIf="
                     loginForm &&
                     loginForm.controls['password'].hasError('maxlength')
-                  "
-                >
-                  {{ "login.error_long_password" }}</mat-error
-                >
+                  ">
+                  {{ "login.error_long_password" }}</mat-error>
               </mat-form-field>
             </p>
             <button (click)="buttonClick()" class="w-100" mat-raised-button>

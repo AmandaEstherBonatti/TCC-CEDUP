@@ -53,10 +53,19 @@ export class UsersEntity {
     })
     DetailsProfile: DetailsProfileEntity
 
-
-
     @BeforeInsert()
     hasPassword() {
-        this.password = hashSync(this.password, 10);
+        this.password = hashSync(this.password.toString(), 10);
+    }
+
+    constructor(user?: Partial<UsersEntity>) {
+        this.id = user?.id;
+        this.email = user?.email;
+        this.password = user?.password;
+        this.role = user?.role;
+        this.photo = user?.photo;
+        this.Client = user?.Client;
+        this.Doctor = user?.Doctor;
+        this.DetailsProfile = user?.DetailsProfile;
     }
 }

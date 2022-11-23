@@ -17,17 +17,31 @@ export class HistoricService {
     ) { }
 
     async findByDoctor(id: string) {
-        return await this.historicRepository.createQueryBuilder('historic')
-            .leftJoinAndSelect('historic.Client', 'Client')
-            .where(`doctorId="${id}"`)
-            .getMany();
+        try {
+            const historics = await this.historicRepository.createQueryBuilder('historic')
+                .leftJoinAndSelect('historic.Client', 'Client')
+                .where(`doctorId="${id}"`)
+                .getMany();
+
+            let data = [...new Map(historics.map((m) => [m.Client.id, m])).values()];
+
+            return data;
+
+        } catch (error) {
+            throw new NotFoundException(error.message);
+        }
+
     }
 
     async findAll() {
         const options: FindManyOptions = {
             // order: { createdAt: 'DESC' },
         };
-        return await this.historicRepository.find(options);
+        try {
+            return await this.historicRepository.find(options);
+        } catch (error) {
+            throw new NotFoundException(error.message);
+        }
     }
 
     async findOneOrFail(
@@ -35,21 +49,25 @@ export class HistoricService {
     ) {
         try {
             return await this.historicRepository.findOneBy({ id });
-        } catch {
-            throw new NotFoundException();
+        } catch (error) {
+            throw new NotFoundException(error.message);
         }
     }
 
     async store(data: CreateHistoricDto) {
-        const historic = this.historicRepository.create(data);
-        return await this.historicRepository.save(historic);
+        try {
+            const historic = this.historicRepository.create(data);
+            return await this.historicRepository.save(historic);
+        } catch (error) {
+            throw new NotFoundException(error.message);
+        }
     }
 
     async update(id: string, data: UpdateHistoricDto) {
         try {
             await this.historicRepository.findOneBy({ id });
-        } catch {
-            throw new NotFoundException();
+        } catch (error) {
+            throw new NotFoundException(error.message);
         }
         return await this.historicRepository.save({ id: id, ...data });
     }

@@ -19,36 +19,37 @@ export class ClientService {
 
   async findAll() {
     const options: FindManyOptions = {
-      order: { createdAt: 'DESC' },
+      // order: { createdAt: 'DESC' },
     };
-    return await this.clientRepository.find(options);
+    try {
+      return await this.clientRepository.find(options);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
-
-  // async findByUser(id: string){
-  //   return await this.clientRepository.find({
-  //     select: ['id', 'name', 'lastName', 'birthday', 'gender', 'phoneNumber'],
-  //     where: { User: id },
-  //   })
-  // }
 
   async findOneOrFail(id: string) {
     try {
       return await this.clientRepository.findOneBy({ id });
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
   }
 
   async store(data: CreateClientDto) {
-    const client = this.clientRepository.create(data);
-    return await this.clientRepository.save(client);
+    try {
+      const client = this.clientRepository.create(data);
+      return await this.clientRepository.save(client);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   async update(id: string, data: UpdateClientDto) {
     try {
       await this.clientRepository.findOneById(id);
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
     return await this.clientRepository.save({ id: id, ...data });
   }

@@ -23,12 +23,16 @@ export class UsersService {
     const options: FindManyOptions = {
       order: { createdAt: 'DESC' },
     };
-    return await this.usersRepository.find(options);
+    try {
+      return await this.usersRepository.find(options);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
-  async findOneOrFail(id: string) {
+  async findOneOrFail(id: string): Promise<any> {
     try {
-      return from(this.usersRepository.findOne({
+      return this.usersRepository.findOne({
         where: { id },
         relations: {
           Client: true,
@@ -36,32 +40,37 @@ export class UsersService {
           DetailsProfile: true
 
         },
-      }));
+      });
 
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
   }
 
   async findOne(email: string) {
     try {
       return await this.usersRepository.findOneBy({ email });
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
   }
 
   async store(data: CreateUserDto) {
-    const user = this.usersRepository.create(data);
-    return await this.usersRepository.save(user);
+    try {
+      const user = this.usersRepository.create(data);
+      return await this.usersRepository.save(user);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
+
   }
 
   async update(id: string, data: UpdateUserDto) {
     try {
       const user = await this.usersRepository.findOneBy({ id });
       data.password = hashSync(user.password, 10);
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
     return await this.usersRepository.save({ id: id, ...data });
   }
@@ -69,8 +78,8 @@ export class UsersService {
   async destroy(id: string) {
     try {
       await this.usersRepository.findOneById(id);
-    } catch {
-      throw new NotFoundException();
+    } catch (error) {
+      throw new NotFoundException(error.message);
     }
     return await this.usersRepository.softDelete({ id });
   }

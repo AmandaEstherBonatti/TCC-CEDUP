@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ClientsModule } from './app/client/clients.module';
 import { DoctorsModule } from './app/doctor/doctors.module';
@@ -11,10 +10,14 @@ import { DetailsProfileModule } from './app/details-profile/details-profile.modu
 import { MessageController } from './message/message.controller';
 import { PusherService } from './message/message.service';
 import { HistoricModule } from './app/historic/historic.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './auth/auth.guard';
+import { HttpModule } from '@nestjs/axios';
 
 
 @Module({
   imports: [
+    HttpModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: process.env.TYPEORM_CONNECTION,
@@ -29,6 +32,11 @@ import { HistoricModule } from './app/historic/historic.module';
     AuthModule, DetailsProfileModule, HistoricModule
   ],
   controllers: [MessageController],
-  providers: [AppService, PusherService],
+  providers: [PusherService,
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AuthGuard,
+    // },
+  ],
 })
 export class AppModule { }

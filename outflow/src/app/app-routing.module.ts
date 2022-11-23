@@ -32,9 +32,9 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-    import('./components/sidebar/sidebar.module').then(
-      (m) => m.NavbarModule
-    ),
+      import('./components/sidebar/sidebar.module').then(
+        (m) => m.NavbarModule
+      ),
   },
 
   {
@@ -44,46 +44,6 @@ const routes: Routes = [
         (m) => m.HomePageModule
       ),
   },
-
-  // {
-  //   path: 'feed',
-  //   loadChildren: () =>
-  //     import('./components/sidebar/feed/feed.module').then(
-  //       (m) => m.FeedModule
-  //     ),
-  // },
-
-  // {
-  //   path: 'perfil',
-  //   loadChildren: () =>
-  //   import('./components/sidebar/perfil/perfil.module').then(
-  //     (m) => m.PerfilModule
-  //   )
-  // },
-
-  // {
-  //   path: 'consulting',
-  //   loadChildren: () =>
-  //   import('./components/sidebar/consulting/consulting.module').then(
-  //     (m) => m.ConsultingModule
-  //   )
-  // },
-
-  // {
-  //   path: 'clients',
-  //   loadChildren: () =>
-  //   import('./components/sidebar/clients/clients.module').then(
-  //     (m) => m.ClientsModule
-  //   )
-  // },
-
-  // {
-  //   path: 'calendar',
-  //   loadChildren: () =>
-  //   import('./components/sidebar/calendar/calendar.module').then(
-  //     (m) => m.CalendarModule
-  //   )
-  // }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

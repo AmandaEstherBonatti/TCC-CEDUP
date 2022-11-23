@@ -12,6 +12,7 @@ import {
     Query,
     UseGuards,
 } from '@nestjs/common';
+import { Public } from 'src/auth/public.decorator';
 import { ClientService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
@@ -25,6 +26,7 @@ export class ClientsController {
         return await this.clientService.findAll();
     }
 
+    @Public()
     @Post()
     async store(@Body() body: CreateClientDto) {
         return await this.clientService.store(body);

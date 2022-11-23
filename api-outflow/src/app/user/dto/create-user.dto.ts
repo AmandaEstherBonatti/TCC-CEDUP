@@ -7,6 +7,7 @@ import {
 } from 'class-validator';
 import { ClientEntity } from 'src/app/client/clients.entity';
 import { DoctorsEntity } from 'src/app/doctor/doctors.entity';
+import { Role } from '../enum/role.enum';
 
 export class CreateUserDto {
 
@@ -17,6 +18,9 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   password: string;
+
+  @IsNotEmpty()
+  role: Role;
 
   @IsOptional()
   @IsObject()

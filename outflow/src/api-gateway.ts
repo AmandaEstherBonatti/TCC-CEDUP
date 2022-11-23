@@ -56,6 +56,7 @@ export class ApiGateway {
 
   get(url: string, params?: any, showLoading?: boolean): Observable<any> {
     let options = new ApiGatewayOptions();
+
     options.baseUrl = environment.baseUrl;
     options.method = RequestMethod.Get;
     options.url = url;

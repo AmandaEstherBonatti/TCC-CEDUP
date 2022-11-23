@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/providers/api.provider';
@@ -16,33 +17,38 @@ export class SidebarComponent implements OnInit {
   user: any;
   token: any;
   role: any;
+  validation: any;
   url!: string;
 
 
-  constructor(private api: UserService, private router: Router, private userService: User
+  constructor(private api: UserService, private router: Router, private userService: User, private httpClient: HttpClient
   ) { }
 
   async ngOnInit() {
+    this.role = sessionStorage.getItem('role');
     this.token = sessionStorage.getItem('token');
-    console.log(this.token);
+    console.log(this.role)
+
     if (this.token) {
       this.userId = sessionStorage.getItem('user_id')
+      console.log(this.userId)
       await this.getUser(this.userId);
       sessionStorage.setItem('role', this.role)
     } else {
-      // sessionStorage.clear();
-      // this.router.navigate(['menu/inicial']);
+      sessionStorage.clear();
+      this.router.navigate(['menu/inicial']);
     }
 
   }
 
   exit() {
     this.userService.logout()
+    sessionStorage.clear();
   }
 
   async getUser(id: string) {
     this.user = await this.api.findOneUser(id)
-    this.role = this.user.role
+
     return await this.user && this.role
   }
 
