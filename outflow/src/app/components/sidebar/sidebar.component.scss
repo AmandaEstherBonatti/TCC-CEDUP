@@ -24,6 +24,32 @@
     margin-top: 15px;
 }
 
+.logout {
+    margin-top: 80%;
+    margin-right: 35%;
+    font-size: 1rem;
+
+    mat-icon {
+        margin-right: 8px;
+    }
+}
+
+
+.logout:hover {
+    margin-top: 80%;
+    margin-right: 35%;
+    font-size: 1rem;
+    border: 1px solid rgb(189, 219, 227);
+    background: rgba(1, 175, 255, 0.426);
+
+
+
+    mat-icon {
+        color: #fff;
+        margin-right: 8px;
+    }
+}
+
 .logo span {
     color: rgb(189, 219, 227);
 }

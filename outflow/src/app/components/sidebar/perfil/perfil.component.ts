@@ -31,8 +31,8 @@ export class PerfilComponent implements OnInit {
 
   otherProfile: any;
   otherProfileId: any;
-  clientProfileId: any;
-  view: boolean = false;
+  otheClientId: any;
+
 
   details: any;
   file!: any;
@@ -63,23 +63,20 @@ export class PerfilComponent implements OnInit {
     this.userId = sessionStorage.getItem('user_id');
     this.otherProfile = Number(sessionStorage.getItem('other_profile'));
     this.otherProfileId = sessionStorage.getItem('other_profile_id');
-    this.clientProfileId = sessionStorage.getItem('client_profile_id');
-    console.log(this.otherProfileId)
+    this.otheClientId = sessionStorage.getItem('client_profile_id');
 
-    if (this.clientProfileId) {
-      await this.getClientes(this.clientProfileId);
+
+    if (this.otheClientId) {
+      await this.getClient(this.otheClientId)
     }
     if (!this.token) {
       this.router.navigate(['menu/inicial']);
     } else {
       if (this.otherProfileId) {
-        this.view = true
-        console.log(this.otherProfileId)
+        this.initForm()
         await this.getUser(this.otherProfileId)
         this.role = this.user.role;
-        this.initForm()
       } else {
-        this.view = false
         this.initForm()
         await this.getUser(this.userId)
         this.role = this.user.role;
@@ -92,11 +89,12 @@ export class PerfilComponent implements OnInit {
     }
   }
 
-  async getClientes(id: string) {
+  async getClient(id: string) {
     this.client = await this.pacientService.findOne(id);
-    return this.otherProfileId = this.client.User.id;
+    this.otherProfileId = this.client.User.id;
+    sessionStorage.setItem('other_profile_id', this.otherProfileId)
+    return this.otherProfileId;
   }
-
   async getUser(userId: string) {
     this.user = await this.userService.findOneUser(userId);
     if (this.user.Client === null) {
@@ -143,6 +141,7 @@ export class PerfilComponent implements OnInit {
   async setValue() {
     if (this.otherProfileId) {
       this.client = this.user.Client;
+      console.log(this.client)
       this.pacientForm.patchValue(this.client);
     } else {
       this.client = this.user.Client;
@@ -273,4 +272,3 @@ export class PerfilComponent implements OnInit {
     }
   }
 }
-

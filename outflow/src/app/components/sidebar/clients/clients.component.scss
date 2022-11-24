@@ -27,4 +27,19 @@
         font-size: 35px;
 
     }
+
+    .table-button {
+        mat-icon {
+            color: #2e5dc2;
+        }
+    }
+
+    .table-button:hover {
+        background-color: #2e5dc2;
+
+        mat-icon {
+            color: #fff;
+
+        }
+    }
 }

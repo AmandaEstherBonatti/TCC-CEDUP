@@ -352,7 +352,7 @@
                         Informações do Login
                     </mat-panel-description>
                 </mat-expansion-panel-header>
-                <form [formGroup]="userForm">
+                <form *ngIf="this.userForm" [formGroup]="userForm">
                     <div fxFlex="100" fxLayoutGap="16px">
                         <mat-form-field fxFlex="50" class="input" appearance="outline">
                             <input matInput formControlName="email" placeholder="E-mail" />
@@ -373,7 +373,7 @@
         <button mat-flat-button class="button-chat" *ngIf="this.doctor" (click)="openChat()">
             <mat-icon> chat_bubble</mat-icon> Conversar com {{doctor.name}}
         </button>
-        <button mat-flat-button class="button-chat" *ngIf="this.client">
+        <button mat-flat-button class="button-chat" *ngIf="this.client" (click)="openChat()">
             <mat-icon> chat_bubble</mat-icon> Conversar com {{client.name}}
         </button>
     </div>

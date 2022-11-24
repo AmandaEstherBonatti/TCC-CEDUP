@@ -12,18 +12,24 @@
                 <abbr title="Perfil"><img src="../../../assets/perfil.png" class="nav-img"></abbr>
                 <p>Perfil</p>
             </div>
-            <div class="icon" fxLayout="row" routerLink="/home/calendar">
+            <div *ngIf="this.role === '2'" class="icon" fxLayout="row" routerLink="/home/calendar">
                 <abbr title="Agenda"><img src="../../../assets/calendar.png" class="nav-img"></abbr>
                 <p>Agenda</p>
             </div>
             <div *ngIf="this.role === '2'" class="icon" fxLayout="row" routerLink="/home/clients">
                 <abbr title="Clientes"><img src="../../../assets/user.png" class="nav-img"></abbr>
-                <p>Clientes</p>
+                <p>Pacientes</p>
             </div>
             <div *ngIf="this.role === '1'" class="icon" fxLayout="row" routerLink="/home/profissionais">
                 <abbr title="Profissionais"><img src="../../../assets/user.png" class="nav-img"></abbr>
                 <p>Profissionais</p>
             </div>
+        </div>
+        <div class="logout" fxLayout="row">
+            <button mat-button (click)=" exit()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>{{ "Logout" }}</span>
+            </button>
         </div>
     </div>
 </mat-sidenav>

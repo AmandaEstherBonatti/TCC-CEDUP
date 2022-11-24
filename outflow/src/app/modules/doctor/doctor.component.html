@@ -73,7 +73,7 @@
                                 name="kindOfDoctor">
                             <div class="radio-btns">
                                 <img src="../../../assets/alvo.png">
-                                <p>Psicanalista(a)</p>
+                                <p>Psicanalista</p>
                             </div>
                         </label>
                         <label class="labelExpanded" (click)="dontViewCRP()">
@@ -89,7 +89,7 @@
                                 name="kindOfDoctor">
                             <div class="radio-btns">
                                 <img src="../../../assets/ideia (2).png">
-                                <p>Coach</p>
+                                <p>Psiquiatra</p>
                             </div>
                         </label>
                     </div>
@@ -97,7 +97,7 @@
                     <mat-form-field appearance="outline" class="input-speciality" *ngIf="crpBox == true"
                         name="kindOfDoctor">
                         <mat-label>CRP</mat-label>
-                        <input matInput formControlName="crp">
+                        <input matInput formControlName="crp" mask="00/000.000">
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="input-speciality">
                         <mat-label>Tempo de experiência</mat-label>

@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('role', auth.role)
 
           sessionStorage.setItem('user_id', auth.id)
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home/perfil']);
         }
         console.log(auth)
       } catch (error) {
