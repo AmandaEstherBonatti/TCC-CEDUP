@@ -79,7 +79,6 @@ export class LoginComponent implements OnInit {
       };
 
       try {
-        console.log(formData)
         const auth = await this.api.login(formData);
         if (auth.token) {
           sessionStorage.setItem('token', auth.token)
@@ -88,13 +87,11 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('user_id', auth.id)
           this.router.navigate(['/home/perfil']);
         }
-        console.log(auth)
       } catch (error) {
         console.log(error);
         this.showBanner = true;
         this.message = 'Ops!E-mail e/ou senha inválidos.Tente novamente.';
       }
     }
-    console.log('deu boms')
   }
 }

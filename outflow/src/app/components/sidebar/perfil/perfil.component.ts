@@ -141,7 +141,6 @@ export class PerfilComponent implements OnInit {
   async setValue() {
     if (this.otherProfileId) {
       this.client = this.user.Client;
-      console.log(this.client)
       this.pacientForm.patchValue(this.client);
     } else {
       this.client = this.user.Client;

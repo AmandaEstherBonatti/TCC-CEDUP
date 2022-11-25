@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GiphyResult, GifData, SearchReqeust } from './giphy-dialog.interface';
 import { Subject, Observable } from 'rxjs';
-import { filter, distinct , tap, distinctUntilChanged } from 'rxjs/operators';
+import { filter, distinct, tap, distinctUntilChanged } from 'rxjs/operators';
 
 
 @Injectable({
@@ -38,7 +38,7 @@ export class GiphyDialogService {
     });
   }
 
-  private getSearchResults(searchTerm: string, offset: number, pageSize: number){
+  private getSearchResults(searchTerm: string, offset: number, pageSize: number) {
     const params = {
       api_key: GiphyDialogService.giphyApiKey,
       q: searchTerm,
@@ -50,7 +50,6 @@ export class GiphyDialogService {
 
     this.http.get<GiphyResult>(GiphyDialogService.giphyUrl, { params }).subscribe((giphyResult) => {
       this.imageResult = this.imageResult.concat(giphyResult.data);
-      console.log(giphyResult)
       this.currentOffset = giphyResult.pagination.offset + giphyResult.pagination.count;
 
       this.searchResultsSubject.next(this.imageResult);
@@ -66,14 +65,14 @@ export class GiphyDialogService {
 
     this.resetSearch.next(null);
 
-    this.searchRequest.next({searchTerm: this.currentSearchTerm, offset: this.currentOffset, pageSize: this.pageSize});
+    this.searchRequest.next({ searchTerm: this.currentSearchTerm, offset: this.currentOffset, pageSize: this.pageSize });
   }
 
-  next(){
-    this.searchRequest.next({searchTerm: this.currentSearchTerm, offset: this.currentOffset, pageSize: this.pageSize});
+  next() {
+    this.searchRequest.next({ searchTerm: this.currentSearchTerm, offset: this.currentOffset, pageSize: this.pageSize });
   }
 
-  setPageSize(size: number){
+  setPageSize(size: number) {
     this.pageSize = size;
   }
 }

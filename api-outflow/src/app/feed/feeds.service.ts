@@ -23,7 +23,8 @@ export class FeedService {
     try {
       return await this.feedRepository.find({
         select: ['id', 'description', 'photoFeed', 'createdAt'],
-        relations: ['Doctor']
+        relations: ['Doctor'],
+        order: { createdAt: 'DESC' },
       });
     } catch (error) {
       throw new NotFoundException(error.message);

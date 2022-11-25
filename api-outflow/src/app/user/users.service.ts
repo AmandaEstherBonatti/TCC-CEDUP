@@ -68,7 +68,6 @@ export class UsersService {
   async update(id: string, data: UpdateUserDto) {
     try {
       const user = await this.usersRepository.findOneBy({ id });
-      data.password = hashSync(user.password, 10);
     } catch (error) {
       throw new NotFoundException(error.message);
     }

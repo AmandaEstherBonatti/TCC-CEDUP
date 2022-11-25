@@ -36,6 +36,18 @@ export class ChatComponent implements OnInit {
         this.otherProfileId = sessionStorage.getItem('other_profile_id');
 
         await this.getUser(this.userId, this.otherProfileId)
+        if (this.user.Doctor) {
+            this.doctor = this.user.Doctor
+        } else {
+            this.client = this.user.Client
+        }
+        if (this.otherUser.Doctor) {
+            this.otherDoctor = this.otherUser.Doctor
+            this.usernameOther = `${this.otherDoctor.name} ${this.otherDoctor.lastName}`
+        } else {
+            this.otherClient = this.otherUser.Client
+            this.usernameOther = `${this.otherClient.name} ${this.otherClient.lastName}`
+        }
         Pusher.logToConsole = true;
         const pusher = new Pusher('c1153228710bff5d6c2e', {
             cluster: 'us2'
@@ -61,7 +73,6 @@ export class ChatComponent implements OnInit {
             try {
                 let historic = this.myFormGroup.getRawValue();
                 const h = await this.historicService.create(historic)
-                console.log(h)
 
             } catch (e) {
                 console.log(e)
@@ -75,7 +86,6 @@ export class ChatComponent implements OnInit {
             try {
                 let historic = this.myFormGroup.getRawValue();
                 const h = await this.historicService.create(historic)
-                console.log(h)
 
             } catch (e) {
                 console.log(e)
@@ -87,18 +97,7 @@ export class ChatComponent implements OnInit {
         this.user = await this.userService.findOneUser(userId);
         this.otherUser = await this.userService.findOneUser(otherUserId);
 
-        if (this.user.Doctor) {
-            this.doctor = this.user.Doctor
-        } else {
-            this.client = this.user.Client
-        }
-        if (this.otherUser.Doctor) {
-            this.otherDoctor = this.otherUser.Doctor
-            this.usernameOther = `${this.otherDoctor.name} ${this.otherDoctor.lastName}`
-        } else {
-            this.otherClient = this.otherUser.Client
-            this.usernameOther = `${this.otherClient.name} ${this.otherClient.lastName}`
-        }
+
     }
 
     onChange(value: string) {
@@ -106,7 +105,6 @@ export class ChatComponent implements OnInit {
     }
     submit(): void {
         if (this.user.Doctor) {
-            console.log(this.user.Doctor)
             this.http.post('http://localhost:3500/api/v1/chat/message', {
                 username: `${this.doctor.name} ${this.doctor.lastName}`,
                 message: this.message

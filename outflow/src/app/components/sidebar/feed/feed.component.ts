@@ -118,11 +118,9 @@ export class FeedComponent {
                 feed.photoF = `http://localhost:3500/api/v1/feeds/file/upload/${feed.photoFeed}`
             }
         }
-        console.log(this.feeds)
     }
 
     openProfile(profileId: string) {
-        console.log(profileId)
         sessionStorage.setItem('other_profile', '0')
         sessionStorage.setItem('other_profile_id', profileId)
         this.router.navigate(['home/perfil']);
@@ -135,7 +133,6 @@ export class FeedComponent {
             this.doctor = this.user.Doctor
             this.initForm()
         }
-        console.log(this.doctor)
     }
 
     initForm() {

@@ -53,6 +53,15 @@ export class UsersEntity {
     })
     DetailsProfile: DetailsProfileEntity
 
+    @CreateDateColumn({ type: 'datetime' })
+    createdAt: Date;
+
+    @UpdateDateColumn({ name: 'updated_at', type: 'datetime' })
+    updatedAt: Date;
+
+    @DeleteDateColumn({ type: 'datetime' })
+    deletedAt: Date;
+
     @BeforeInsert()
     hasPassword() {
         this.password = hashSync(this.password.toString(), 10);

@@ -27,11 +27,9 @@ export class SidebarComponent implements OnInit {
   async ngOnInit() {
     this.role = sessionStorage.getItem('role');
     this.token = sessionStorage.getItem('token');
-    console.log(this.role)
 
     if (this.token) {
       this.userId = sessionStorage.getItem('user_id')
-      console.log(this.userId)
       await this.getUser(this.userId);
       sessionStorage.setItem('role', this.role)
     } else {

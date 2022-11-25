@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Gender } from "../client/enum/gender.enum";
 import { FeedPostEntity } from "../feed/feeds.entity";
 import { HistoricEntity } from "../historic/historic.entity";
@@ -40,6 +40,8 @@ export class DoctorsEntity {
     @Column({ nullable: true })
     crp: string;
 
+    @Column({ nullable: true })
+    photo: string;
 
     @OneToOne(() => UsersEntity, {
         cascade: ['insert', 'update', 'remove'],
@@ -54,5 +56,14 @@ export class DoctorsEntity {
 
     @OneToMany(() => HistoricEntity, (historic) => historic.Doctor, { nullable: true })
     Historic: HistoricEntity[];
+
+    @CreateDateColumn({ type: 'datetime' })
+    createdAt: Date;
+
+    @UpdateDateColumn({ name: 'updated_at', type: 'datetime' })
+    updatedAt: Date;
+
+    @DeleteDateColumn({ type: 'datetime' })
+    deletedAt: Date;
 
 }

@@ -82,10 +82,8 @@ export class PacientComponent implements OnInit {
 
   async save() {
     let data = this.pacientForm.getRawValue();
-    console.log(data)
     const paciente = await this.api.createPacient(data);
     this.router.navigate(['/login']);
-    console.log(paciente)
 
   }
 }

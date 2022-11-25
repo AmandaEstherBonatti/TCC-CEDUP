@@ -15,7 +15,8 @@ export class AuthService {
 
   async validateUser(email: string, password: string) {
 
-    let user: any;
+    var user: any;
+
     try {
       user = await this.userService.findOne(email);
 
@@ -23,9 +24,12 @@ export class AuthService {
       return console.log(error.message);
     }
 
+
     const isPasswordValid = compareSync(password, user.password);
 
     if (!isPasswordValid) return null;
+
+
 
     return user;
   }
@@ -34,8 +38,6 @@ export class AuthService {
 
   async login(email: string, password: string) {
     let obj = await this.validateUser(email, password);
-    console.log(obj)
-    // let useer = await this.validateUser(user.email, user.password)
     const payload = { sud: obj.id, login: obj.email };
     let token = this.jwtService.sign(payload)
 
@@ -60,7 +62,6 @@ export class AuthService {
       secret: process.env.JWT_SECRET_KEY,
     });
 
-    console.log(verifyToken)
     return verifyToken ?? null;
   }
 }

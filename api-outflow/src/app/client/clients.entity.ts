@@ -39,6 +39,9 @@ export class ClientEntity {
   @OneToMany(() => HistoricEntity, (historic) => historic.Client, { nullable: true })
   Historic: HistoricEntity[];
 
+  @Column({ nullable: true })
+  photo: string;
+
   @OneToOne(() => UsersEntity, {
     cascade: ['insert', 'update', 'remove'],
     orphanedRowAction: 'delete',
@@ -46,5 +49,14 @@ export class ClientEntity {
   })
   @JoinColumn()
   User: UsersEntity;
+
+  @CreateDateColumn({ type: 'datetime' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at', type: 'datetime' })
+  updatedAt: Date;
+
+  @DeleteDateColumn({ type: 'datetime' })
+  deletedAt: Date;
 
 }

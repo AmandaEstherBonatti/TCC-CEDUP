@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { DoctorsEntity } from "../doctor/doctors.entity";
 import { UsersEntity } from "../user/users.entity";
 
@@ -14,9 +14,15 @@ export class FeedPostEntity {
     @Column({ nullable: true })
     photoFeed: string;
 
-    @CreateDateColumn()
-    createdAt: Date;
-
     @ManyToOne(() => DoctorsEntity, (user) => user.FeedPosts, { cascade: ['insert', 'update', 'remove'], })
     Doctor: DoctorsEntity;
+
+    @CreateDateColumn({ type: 'datetime' })
+    createdAt: Date;
+
+    @UpdateDateColumn({ name: 'updated_at', type: 'datetime' })
+    updatedAt: Date;
+
+    @DeleteDateColumn({ type: 'datetime' })
+    deletedAt: Date;
 }

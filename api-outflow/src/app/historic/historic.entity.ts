@@ -23,4 +23,13 @@ export class HistoricEntity {
 
   @ManyToOne(() => DoctorsEntity, (doctor) => doctor.Historic, { nullable: true })
   Doctor: DoctorsEntity;
+
+  @CreateDateColumn({ type: 'datetime' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at', type: 'datetime' })
+  updatedAt: Date;
+
+  @DeleteDateColumn({ type: 'datetime' })
+  deletedAt: Date;
 } 

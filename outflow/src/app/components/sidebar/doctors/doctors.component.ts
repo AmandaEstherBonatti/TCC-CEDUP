@@ -41,7 +41,6 @@ export class DoctorsComponent implements OnInit {
 
 
     openProfile(profileId: string) {
-        console.log(profileId)
         sessionStorage.setItem('other_profile_id', profileId)
         this.router.navigate(['home/perfil']);
     }
@@ -77,7 +76,6 @@ export class DoctorsComponent implements OnInit {
                 } else {
                     doctor.photoDoctor = '../../../../assets/cloud.jpg'
                 }
-                console.log(this.data)
             }
         } catch (error) {
             console.error(error);
@@ -100,7 +98,6 @@ export class DoctorsComponent implements OnInit {
             } else {
                 doctor.photoDoctor = '../../../../assets/cloud.jpg'
             }
-            console.log(this.data)
         }
     }
 }

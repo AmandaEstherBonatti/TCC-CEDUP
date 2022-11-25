@@ -34,7 +34,6 @@ export class ClientsComponent implements OnInit {
 
   async ngOnInit() {
     this.userId = sessionStorage.getItem('user_id');
-    console.log(this.userId)
     this.token = sessionStorage.getItem('token')!;
     if (!this.token) {
       this.router.navigate(['menu/inicial']);
@@ -51,12 +50,10 @@ export class ClientsComponent implements OnInit {
     if (this.user.Doctor) {
       this.doctor = this.user.Doctor
     }
-    console.log()
   }
 
 
   openProfile(profileId: string) {
-    console.log(profileId)
     sessionStorage.setItem('other_profile', '0')
     sessionStorage.setItem('client_profile_id', profileId)
     this.router.navigate(['home/perfil']);
@@ -65,7 +62,6 @@ export class ClientsComponent implements OnInit {
 
   async getClientes() {
     this.dataSource = await this.historicService.findByDoctor(this.doctor.id)
-    console.log(this.dataSource)
   }
 
 }

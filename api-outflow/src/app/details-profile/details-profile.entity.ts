@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 import { UsersEntity } from "../user/users.entity";
 
@@ -23,4 +23,13 @@ export class DetailsProfileEntity {
     })
     @JoinColumn()
     User: UsersEntity;
+
+    @CreateDateColumn({ type: 'datetime' })
+    createdAt: Date;
+
+    @UpdateDateColumn({ name: 'updated_at', type: 'datetime' })
+    updatedAt: Date;
+
+    @DeleteDateColumn({ type: 'datetime' })
+    deletedAt: Date;
 }
